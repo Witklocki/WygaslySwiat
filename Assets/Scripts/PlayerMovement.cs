@@ -4,28 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-
-    public Rigidbody rb;
-
-    Vector3 movement;
-
-    private void Start()
-    {
-        
-    }
+    public FixedJoystick moveJoystick;
+    public float movementSpeed = 5.0f;
 
     private void Update()
     {
-        //inputs
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.z = Input.GetAxisRaw("Vertical");
-    }
 
-    private void FixedUpdate()
-    {
-        movement.Normalize();
-        //movement
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        float horizontal = moveJoystick.Horizontal;
+        float vertical = moveJoystick.Vertical;
+
+
+        Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
+        transform.Translate(direction * movementSpeed * Time.deltaTime, Space.World);
     }
 }
