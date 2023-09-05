@@ -17,4 +17,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
         transform.Translate(direction * movementSpeed * Time.deltaTime, Space.World);
     }
+    
+
 }
