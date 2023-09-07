@@ -46,5 +46,3 @@ public class InventorySlot
         amount += value;
     }
 }
-
-/* 14:16*/

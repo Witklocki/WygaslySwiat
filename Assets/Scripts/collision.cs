@@ -6,23 +6,35 @@ public class collision : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Exit")
+        string tag = other.gameObject.tag;
+        switch (tag)
         {
-            print("Emtry");
+            case "Exit":
+                print("Emtry Exit");
+                break;
+            case "lab":
+                print("Emtry lab");
+                break;
+            case "storage":
+                print("Emtry storage");
+                break;
+            case "armory":
+                print("Emtry armory");
+                break;
+            case "savedPeople":
+                print("Emtry savedPeople");
+                break;
         }
+
     }
+
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Exit")
-        {
-            print("Inside");
-        }
+
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Exit")
-        {
-            print("Exit");
-        }
+ 
     }
 }
