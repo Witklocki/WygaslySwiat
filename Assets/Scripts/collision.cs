@@ -24,6 +24,8 @@ public class collision : MonoBehaviour
             case "savedPeople":
                 print("Emtry savedPeople");
                 break;
+            case "Fence":
+                break;
         }
 
     }
@@ -31,10 +33,18 @@ public class collision : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-
+        switch (other.gameObject.tag)
+        {
+            case "Fence":
+                   break;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
- 
+        switch (other.gameObject.tag)
+        {
+            case "Fence":
+                break;
+        }
     }
 }

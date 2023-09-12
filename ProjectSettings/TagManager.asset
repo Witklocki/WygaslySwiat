@@ -9,6 +9,7 @@ TagManager:
   - savedPeople
   - lab
   - Exit
+  - Fence
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - whatIsGround
   - 
   - 
   - 
