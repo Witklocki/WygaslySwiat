@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public FixedJoystick moveJoystick;
     public Rigidbody rb;
     public Map map;
-    public float movementSpeed = 5.0f;
+    public PlayerObject player;
     public float groundDrag;
 
 
@@ -70,7 +70,9 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
 
-        rb.AddForce(direction * movementSpeed * 10f);
+        rb.MovePosition((Vector3)transform.position + (direction * player.moveSpeed * Time.deltaTime));
+
+
         if (rb.position.x > map.map.rangX)
         {
             rb.MovePosition(new Vector3(map.map.rangX, rb.position.y, rb.position.z));
@@ -100,9 +102,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); 
 
-        if(flatVelocity.magnitude > movementSpeed)
+        if(flatVelocity.magnitude > player.moveSpeed)
         {
-            Vector3 limitedVel = flatVelocity.normalized * movementSpeed;
+            Vector3 limitedVel = flatVelocity.normalized * player.moveSpeed;
             rb.velocity = new Vector3(limitedVel.x,rb.velocity.y, limitedVel.z);
         }
     }
