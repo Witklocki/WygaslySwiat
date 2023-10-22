@@ -51,6 +51,8 @@ public class EnemyAI : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindWithTag("Player").transform;
+
         playerObject = AssetDatabase.LoadAssetAtPath<PlayerObject>("Assets/Scripts/Player/PlayerData.asset");
         rb.freezeRotation = true;
 
