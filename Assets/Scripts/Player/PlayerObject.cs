@@ -11,8 +11,6 @@ public class PlayerObject :ScriptableObject
     public float moveSpeed;
     public float defense;
     public float attackSpeed;
-    //weapon variable
-
     public void Reset()
     {
         healthPoint = maxHealth;
@@ -26,5 +24,6 @@ public class PlayerObject :ScriptableObject
                 break;
         }
     }
+
 
 }

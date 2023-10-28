@@ -10,6 +10,7 @@ TagManager:
   - lab
   - Exit
   - Fence
+  - WeaponPickup
   layers:
   - Default
   - TransparentFX
