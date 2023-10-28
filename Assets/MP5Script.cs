@@ -6,5 +6,6 @@ public class MP5Script : MonoBehaviour
 {
     public ItemObject mp5;
     public Animator animator;
+    public bool canPickup = true;
 
 }

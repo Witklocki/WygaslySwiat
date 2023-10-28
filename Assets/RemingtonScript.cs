@@ -6,5 +6,6 @@ public class RemingtonScript : MonoBehaviour
 {
     public ItemObject remington;
     public Animator animator;
+    public bool canPickup = true;
 
 }

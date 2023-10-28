@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: []
   weaponInventory:
-  - weaponObject: {fileID: 11400000, guid: 3ecf56e48aa231e469c0108c2597a21c, type: 2}
+  - weaponObject: {fileID: 11400000, guid: 3a76317851817fb49b3e0267b11b8b09, type: 2}
     amount: 1

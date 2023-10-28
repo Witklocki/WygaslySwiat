@@ -7,7 +7,7 @@ using UnityEngine;
 public class InventoryObject : ScriptableObject
 {
     public List<InventorySlot> container = new List<InventorySlot>();
-    public List<WeaponSlot> weaponInventory = new List<WeaponSlot>();
+    public List<WeaponSlot> weaponInventory = new();
     private GameObject tempDetectedWeapon;
     public GameObject TempDetectedWeapon => tempDetectedWeapon;
     public void AddItem(ItemObject _item, int _amount)
@@ -28,27 +28,22 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-    public void AddWeapon(WeaponObject weapon, int amount)
+    public void AddWeapon(WeaponObject weapon)
     {
-        bool hasWeapon = false;
-        for (int i = 0; i < weaponInventory.Count; i++)
+        for (int i = 0; i < weaponInventory.Count(); i++)
         {
             if (weaponInventory[i].weaponObject == weapon)
             {
-                weaponInventory[i].amount += amount;
-                hasWeapon = true;
                 return;
             }
         }
-
-        if (!hasWeapon)
-        {
-            weaponInventory.Add(new WeaponSlot(weapon, amount));
-        }
+        weaponInventory.Add(new WeaponSlot(weapon));
     }
 
     public bool ContainsWeapon()
     {
+        Debug.Log(tempDetectedWeapon);
+
         return weaponInventory.Any();
     }
 
@@ -85,11 +80,9 @@ public class InventorySlot
 public class WeaponSlot
 {
     public WeaponObject weaponObject;
-    public int amount;
 
-    public WeaponSlot(WeaponObject _weaponObject, int _amount)
+    public WeaponSlot(WeaponObject _weaponObject)
     {
         this.weaponObject = _weaponObject;
-        this.amount = _amount;
     }
 }

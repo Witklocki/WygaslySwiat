@@ -7,6 +7,11 @@ public class collision : MonoBehaviour
     public InventoryObject inventory;
     public PlayerMovement playerMovement;
     private WeaponParent weaponParent;
+
+    private void Start()
+    {
+        inventory.ClearWeaponInventory();
+    }
     private void OnTriggerEnter(Collider other)
     {
         GameObject detectedWeapon = inventory.TempDetectedWeapon;
@@ -50,16 +55,18 @@ public class collision : MonoBehaviour
                         {
                             inventory.SetLastDetectedWeapon(knife.gameObject); // Store the last detected weapon GameObject
                             inventory.ClearWeaponInventory();
-                            Debug.Log("Clear");
+                            Debug.Log("Clear Knife");
                             if (detectedWeapon != null)
                             {
                                 Destroy(detectedWeapon);
                                 Vector3 spawnPosition = playerMovement.transform.position + new Vector3(5, 0, 0); // Adjust the position as needed
-                                Instantiate(detectedWeapon, spawnPosition, Quaternion.Euler(45, 0, 0));
-
+                                if (!knife.gameObject.activeSelf)
+                                {
+                                    Instantiate(detectedWeapon, spawnPosition, Quaternion.Euler(45, 0, 0));
+                                }
                             }
                         }
-                        inventory.AddWeapon(weapon, 1);
+                        inventory.AddWeapon(weapon);
                         if (!knife.gameObject.activeSelf)
                         {
                             Instantiate(knife.gameObject);
@@ -88,15 +95,18 @@ public class collision : MonoBehaviour
                         {
                             inventory.SetLastDetectedWeapon(baseball.gameObject); // Store the last detected weapon GameObject
                             inventory.ClearWeaponInventory();
-                            Debug.Log("Clear");
+                            Debug.Log("Clear Base");
                             if (detectedWeapon != null)
                             {
                                 Destroy(detectedWeapon);
                                 Vector3 spawnPosition = playerMovement.transform.position + new Vector3(5, 0, 0); // Adjust the position as needed
-                                Instantiate(detectedWeapon, spawnPosition, Quaternion.Euler(45, 0, 0));
+                                if (!baseball.gameObject.activeSelf)
+                                {
+                                    Instantiate(detectedWeapon, spawnPosition, Quaternion.Euler(45, 0, 0));
+                                }
                             }
                         }
-                        inventory.AddWeapon(weapon, 1);
+                        inventory.AddWeapon(weapon);
 
                         if (!baseball.gameObject.activeSelf)
                         {
@@ -116,35 +126,217 @@ public class collision : MonoBehaviour
                         Destroy(baseball.GetComponent<Rigidbody>());
                     }
                 }
-                if (crowbar)
+                if (crowbar && crowbar.canPickup)
                 {
                     Debug.Log(crowbar.crowbar);
-                    inventory.AddItem(crowbar.crowbar, 1);
-                    Destroy(other.gameObject);
+                    ItemObject item = crowbar.crowbar;
+                    if (item is WeaponObject)
+                    {
+                        WeaponObject weapon = (WeaponObject)item;
+                        if (inventory.ContainsWeapon())
+                        {
+                            inventory.SetLastDetectedWeapon(crowbar.gameObject); // Store the last detected weapon GameObject
+                            inventory.ClearWeaponInventory();
+                            Debug.Log("Clear Crowbar");
+                            if (detectedWeapon != null)
+                            {
+                                Destroy(detectedWeapon);
+                                Vector3 spawnPosition = playerMovement.transform.position + new Vector3(5, 0, 0); // Adjust the position as needed
+                                if (!crowbar.gameObject.activeSelf)
+                                {
+                                    Instantiate(detectedWeapon, spawnPosition, Quaternion.Euler(45, 0, 0));
+                                }
+                            }
+                        }
+                        inventory.AddWeapon(weapon);
+
+                        if (!crowbar.gameObject.activeSelf)
+                        {
+                            Instantiate(crowbar.gameObject);
+                        }
+                        if (playerMovement != null && playerMovement.equippedWeaponSlot != null)
+                        {
+                            Animator pickedUpAnimator = crowbar.GetComponent<Animator>();
+
+                            crowbar.transform.SetParent(playerMovement.equippedWeaponSlot.transform);
+                            crowbar.transform.localPosition = Vector3.zero; // Adjust as needed
+                            crowbar.transform.localRotation = Quaternion.identity; // Adjust as needed
+
+                        }
+
+                        crowbar.GetComponent<Collider>().enabled = false;
+                        Destroy(crowbar.GetComponent<Rigidbody>());
+                    }
                 }
-                if (glock)
+                if (glock && glock.canPickup)
                 {
                     Debug.Log(glock.glock);
-                    inventory.AddItem(glock.glock, 1);
-                    Destroy(other.gameObject);
+                    ItemObject item = glock.glock;
+                    if (item is WeaponObject)
+                    {
+                        WeaponObject weapon = (WeaponObject)item;
+                        if (inventory.ContainsWeapon())
+                        {
+                            inventory.SetLastDetectedWeapon(glock.gameObject); // Store the last detected weapon GameObject
+                            inventory.ClearWeaponInventory();
+                            Debug.Log("Clear glock");
+                            if (detectedWeapon != null)
+                            {
+                                Destroy(detectedWeapon);
+                                Vector3 spawnPosition = playerMovement.transform.position + new Vector3(5, 0, 0); // Adjust the position as needed
+                                if (!glock.gameObject.activeSelf)
+                                {
+                                    Instantiate(detectedWeapon, spawnPosition, Quaternion.Euler(45, 0, 0));
+                                }
+                            }
+                        }
+                        inventory.AddWeapon(weapon);
+
+                        if (!glock.gameObject.activeSelf)
+                        {
+                            Instantiate(glock.gameObject);
+                        }
+                        if (playerMovement != null && playerMovement.equippedWeaponSlot != null)
+                        {
+                            Animator pickedUpAnimator = glock.GetComponent<Animator>();
+
+                            glock.transform.SetParent(playerMovement.equippedWeaponSlot.transform);
+                            glock.transform.localPosition = Vector3.zero; // Adjust as needed
+                            glock.transform.localRotation = Quaternion.identity; // Adjust as needed
+
+                        }
+
+                        glock.GetComponent<Collider>().enabled = false;
+                        Destroy(glock.GetComponent<Rigidbody>());
+                    }
                 }
-                if (rewolwer)
+                if (rewolwer && rewolwer.canPickup)
                 {
                     Debug.Log(rewolwer.rewolwer);
-                    inventory.AddItem(rewolwer.rewolwer, 1);
-                    Destroy(other.gameObject);
+                    ItemObject item = rewolwer.rewolwer;
+                    if (item is WeaponObject)
+                    {
+                        WeaponObject weapon = (WeaponObject)item;
+                        if (inventory.ContainsWeapon())
+                        {
+                            inventory.SetLastDetectedWeapon(rewolwer.gameObject); // Store the last detected weapon GameObject
+                            inventory.ClearWeaponInventory();
+                            Debug.Log("Clear Rewo");
+                            if (detectedWeapon != null)
+                            {
+                                Destroy(detectedWeapon);
+
+                                Vector3 spawnPosition = playerMovement.transform.position + new Vector3(5, 0, 0); // Adjust the position as needed
+                                if (!rewolwer.gameObject.activeSelf)
+                                {
+                                    Instantiate(detectedWeapon, spawnPosition, Quaternion.Euler(45, 0, 0));
+                                }
+                            }
+                        }
+                        inventory.AddWeapon(weapon);
+
+                        if (!rewolwer.gameObject.activeSelf)
+                        {
+                            Instantiate(rewolwer.gameObject);
+                        }
+                        if (playerMovement != null && playerMovement.equippedWeaponSlot != null)
+                        {
+                            Animator pickedUpAnimator = rewolwer.GetComponent<Animator>();
+
+                            rewolwer.transform.SetParent(playerMovement.equippedWeaponSlot.transform);
+                            rewolwer.transform.localPosition = Vector3.zero; // Adjust as needed
+                            rewolwer.transform.localRotation = Quaternion.identity; // Adjust as needed
+
+                        }
+
+                        rewolwer.GetComponent<Collider>().enabled = false;
+                        Destroy(rewolwer.GetComponent<Rigidbody>());
+                    }
                 }
-                if (mp5)
+                if (mp5 && mp5.canPickup)
                 {
                     Debug.Log(mp5.mp5);
-                    inventory.AddItem(mp5.mp5, 1);
-                    Destroy(other.gameObject);
+                    ItemObject item = mp5.mp5;
+                    if (item is WeaponObject)
+                    {
+                        WeaponObject weapon = (WeaponObject)item;
+                        if (inventory.ContainsWeapon())
+                        {
+                            inventory.SetLastDetectedWeapon(mp5.gameObject); // Store the last detected weapon GameObject
+                            inventory.ClearWeaponInventory();
+                            Debug.Log("Clear mp5");
+                            if (detectedWeapon != null)
+                            {
+                                Destroy(detectedWeapon);
+                                Vector3 spawnPosition = playerMovement.transform.position + new Vector3(5, 0, 0); // Adjust the position as needed
+                                if (!mp5.gameObject.activeSelf)
+                                {
+                                    Instantiate(detectedWeapon, spawnPosition, Quaternion.Euler(45, 0, 0));
+                                }
+                            }
+                        }
+                        inventory.AddWeapon(weapon);
+                        if (!mp5.gameObject.activeSelf)
+                        {
+                            Instantiate(mp5.gameObject);
+                        }
+                        if (playerMovement != null && playerMovement.equippedWeaponSlot != null)
+                        {
+                            Animator pickedUpAnimator = mp5.GetComponent<Animator>();
+
+                            mp5.transform.SetParent(playerMovement.equippedWeaponSlot.transform);
+                            mp5.transform.localPosition = Vector3.zero; // Adjust as needed
+                            mp5.transform.localRotation = Quaternion.identity; // Adjust as needed
+
+                        }
+
+                        mp5.GetComponent<Collider>().enabled = false;
+                        Destroy(mp5.GetComponent<Rigidbody>());
+                    }
                 }
-                if (remington)
+
+                if (remington && remington.canPickup)
                 {
                     Debug.Log(remington.remington);
-                    inventory.AddItem(remington.remington, 1);
-                    Destroy(other.gameObject);
+                    ItemObject item = remington.remington;
+                    if (item is WeaponObject)
+                    {
+                        WeaponObject weapon = (WeaponObject)item;
+                        if (inventory.ContainsWeapon())
+                        {
+                            inventory.SetLastDetectedWeapon(remington.gameObject); // Store the last detected weapon GameObject
+                            inventory.ClearWeaponInventory();
+
+                            Debug.Log("Clear remington");
+                            if (detectedWeapon != null)
+                            {
+                                Destroy(detectedWeapon);
+                                Vector3 spawnPosition = playerMovement.transform.position + new Vector3(5, 0, 0); // Adjust the position as needed
+                                if (!remington.gameObject.activeSelf)
+                                {
+                                    Instantiate(detectedWeapon, spawnPosition, Quaternion.Euler(45, 0, 0));
+                                }
+                            }
+                        }
+                        inventory.AddWeapon(weapon);
+
+                        if (!remington.gameObject.activeSelf)
+                        {
+                            Instantiate(remington.gameObject);
+                        }
+                        if (playerMovement != null && playerMovement.equippedWeaponSlot != null)
+                        {
+                            Animator pickedUpAnimator = remington.GetComponent<Animator>();
+
+                            remington.transform.SetParent(playerMovement.equippedWeaponSlot.transform);
+                            remington.transform.localPosition = Vector3.zero; // Adjust as needed
+                            remington.transform.localRotation = Quaternion.identity; // Adjust as needed
+
+                        }
+
+                        remington.GetComponent<Collider>().enabled = false;
+                        Destroy(remington.GetComponent<Rigidbody>());
+                    }
                 }
                 break;
 

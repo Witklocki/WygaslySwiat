@@ -20,8 +20,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isDown;
     public Vector3 direction;
 
-    public float circleRadius = 0.3f;
+    public float circleRadius = 0.5f;
     public float weaponHeight = 0.5f; // Set the desired Y position
+    public float weaponDepth = 0.8f;
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
@@ -84,7 +85,15 @@ public class PlayerMovement : MonoBehaviour
             if (equippedWeaponSlot != null)
             {
 
-                Vector3 weaponPosition = transform.position + new Vector3(0, weaponHeight, 0) + (targetRotation * Vector3.right * circleRadius);
+                Vector3 playerPosition = transform.position;
+                Vector3 localWeaponPosition = new Vector3(circleRadius, weaponHeight, -weaponDepth);
+
+                // Rotate the local position based on the player's rotation
+                localWeaponPosition = Quaternion.Euler(0, 0, 0) * localWeaponPosition;
+
+                // Transform local position to world space
+                Vector3 weaponPosition = playerPosition + targetRotation * localWeaponPosition;
+
                 equippedWeaponSlot.transform.position = weaponPosition;
                 equippedWeaponSlot.transform.rotation = targetRotation; 
             }

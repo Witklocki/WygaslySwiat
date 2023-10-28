@@ -6,5 +6,6 @@ public class GlockScript : MonoBehaviour
 {
     public ItemObject glock;
     public Animator animator;
+    public bool canPickup = true;
 
 }
