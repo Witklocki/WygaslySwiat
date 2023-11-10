@@ -11,8 +11,8 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private float radius = 15.0f;
     [SerializeField] private bool debug_bool;
-    private SpriteRenderer boomerAttackArea;
 
+    public Animator animator;
     public EnemyObject enemy;
     public Transform player;
     public Rigidbody rb;
@@ -32,10 +32,16 @@ public class EnemyAI : MonoBehaviour
     public bool playerInRange;                           //  If the player is in range of vision, state of chasing
     public bool isPatrol;                                //  If the enemy is patrol, state of patroling
     public bool caughtPlayer;                            //  if the enemy has caught the player
+    public bool isEnemyDead;
     public bool attacking;
     private float colorOpacity = 0.6f;
     private float areaAttackVisibilityTime = 1.5f;
     private bool attacked = false;
+
+    [SerializeField] private bool isRight = false;
+    [SerializeField] private bool isLeft = false;
+    [SerializeField] private bool isUp = false;
+    [SerializeField] private bool isDown = false;
 
 
     // Start is called before the first frame update
@@ -43,7 +49,7 @@ public class EnemyAI : MonoBehaviour
     {
 
         isPatrol = true;
-        caughtPlayer = false;
+        isEnemyDead = caughtPlayer = false;
         playerInRange = false;
         attacking = false;
         waitTime = 0;                 //  Set the wait time variable that will change
@@ -55,22 +61,32 @@ public class EnemyAI : MonoBehaviour
 
         playerObject = AssetDatabase.LoadAssetAtPath<PlayerObject>("Assets/Scripts/Player/PlayerData.asset");
         rb.freezeRotation = true;
+        navMeshAgent.updateRotation = false;
+
+        transform.localEulerAngles = new Vector3(45, 0, 0);
 
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = enemy.moveSpeed;
         nextPosition = transform.position;
 
+        animator = gameObject.GetComponent<Animator>();
+        animator.runtimeAnimatorController = Resources.Load("Assets/Animations/Enemys/ZombieNormalAnimationController") as RuntimeAnimatorController;
+
+        animator.SetTrigger("normal");
+
         GameObject boomerAttackAreaObject = new GameObject("BoomerAttackAreaObject", typeof(SpriteRenderer));
-        boomerAttackArea = boomerAttackAreaObject.GetComponent<SpriteRenderer>();
-        boomerAttackArea.sprite = attackCircle;
-        boomerAttackArea.color = new Color(1, 0, 0, 0.0f);
-        boomerAttackArea.transform.position = transform.position;
-        boomerAttackArea.transform.Rotate(90.0f, 0.0f, 0.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.localEulerAngles = new Vector3(45, 0, 0);
+
+        if (isEnemyDead)
+        {
+            EnemyDead();
+        }
+
         IsPlayerSeen();
         if (!isPatrol)
         {
@@ -81,14 +97,6 @@ public class EnemyAI : MonoBehaviour
             Patroling();
         }
         navMeshAgent.SetDestination(nextPosition);
-        if(boomerAttackArea != null)
-        {
-            areaAttackVisibilityTime -= Time.deltaTime;
-            if (areaAttackVisibilityTime <= 0)
-            {
-                Destroy(boomerAttackArea);
-            }
-        }
 
     }
 
@@ -99,10 +107,10 @@ public class EnemyAI : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, nextPosition);
         }
-        if (attacking)
+       /* if (attacking)
         {
             Gizmos.DrawSphere(transform.position, 3.0f);
-        }
+        }*/
     }
 
 
@@ -130,7 +138,20 @@ public class EnemyAI : MonoBehaviour
 
     void Move(float speed)
     {
+        float distanceX = nextPosition.x - transform.position.x;
+        float distanceZ = nextPosition.z - transform.position.z;
+        isRight = distanceX > 0 && Math.Abs(distanceX) > Math.Abs(distanceZ);
+        isLeft = distanceX < 0 && Math.Abs(distanceX) > Math.Abs(distanceZ);
+        isUp = distanceZ > 0 && Math.Abs(distanceZ) > Math.Abs(distanceX);
+        isDown = distanceZ < 0 && Math.Abs(distanceZ) > Math.Abs(distanceX);
+
+
         navMeshAgent.isStopped = false;
+        animator.SetBool("isRight", isRight);
+        animator.SetBool("isLeft", isLeft);
+        animator.SetBool("isUp", isUp);
+        animator.SetBool("isDown", isDown);
+
         navMeshAgent.speed = speed;
     }
 
@@ -184,9 +205,6 @@ public class EnemyAI : MonoBehaviour
                 attacking = false;
                 if (this.enemy.type == EnemyType.Boomer)
                 {
-                    boomerAttackArea.color = new Color(1, 0, 0, 0.6f);
-                    boomerAttackArea.transform.localScale = new Vector3(3, 3);
-                    boomerAttackArea.transform.position = transform.position;
                     attacked = true;
 
                 }
@@ -207,6 +225,23 @@ public class EnemyAI : MonoBehaviour
         else
         {
             Move(enemy.moveSpeed);
+        }
+    }
+
+    public void EnemyDead()
+    {
+        Destroy(gameObject);
+    }
+
+    void IsEnemyDead()
+    {
+        if (enemy.healthPoint <= 0)
+        {
+            playerInRange = false;
+            attacking = false;
+            caughtPlayer = false;
+            isPatrol = false;   
+            isEnemyDead = true;
         }
     }
 }
