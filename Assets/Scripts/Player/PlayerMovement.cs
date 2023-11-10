@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float circleRadius = 0.5f;
     public float weaponHeight = 0.5f; // Set the desired Y position
     public float weaponDepth = 0.8f;
+
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;

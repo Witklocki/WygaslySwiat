@@ -785,8 +785,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crowbar: {fileID: 11400000, guid: 73d9e7f246adaf94797642dcfec70f2a, type: 2}
-  animator: {fileID: 0}
+  animator: {fileID: 826657381}
   canPickup: 1
+  isEquipped: 0
+  attackJoystick: {fileID: 543055465}
 --- !u!1 &824523391
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,6 +884,8 @@ GameObject:
   m_Component:
   - component: {fileID: 826657379}
   - component: {fileID: 826657380}
+  - component: {fileID: 826657381}
+  - component: {fileID: 826657382}
   m_Layer: 8
   m_Name: WeaponParent
   m_TagString: Untagged
@@ -917,6 +921,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b14adc44c092444fb595c8b1d6acb0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &826657381
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826657378}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fdfc566783f26e343b72efec5a52c4c4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &826657382
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826657378}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.64, y: 0.64}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &1038169094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1247,7 +1324,15 @@ PrefabInstance:
     - target: {fileID: 1720590666623594339, guid: 07de66cd238d081459898b7a805b5338, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 604775702}
+      objectReference: {fileID: 826657381}
+    - target: {fileID: 1720590666623594339, guid: 07de66cd238d081459898b7a805b5338, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720590666623594339, guid: 07de66cd238d081459898b7a805b5338, type: 3}
+      propertyPath: isEquipped
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1720590666623594339, guid: 07de66cd238d081459898b7a805b5338, type: 3}
       propertyPath: attackJoystick
       value: 
@@ -1844,6 +1929,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rewolwer
       objectReference: {fileID: 0}
+    - target: {fileID: 5435695372388716412, guid: 4f09bee6ec842084cbe12368baedb83d, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 826657381}
+    - target: {fileID: 5435695372388716412, guid: 4f09bee6ec842084cbe12368baedb83d, type: 3}
+      propertyPath: newSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3cb89977ebc0e8d42973ef2f57c2ca71, type: 3}
+    - target: {fileID: 5435695372388716412, guid: 4f09bee6ec842084cbe12368baedb83d, type: 3}
+      propertyPath: oldSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dac6f8f739b33ca4ba859a674b863135, type: 3}
+    - target: {fileID: 5435695372388716412, guid: 4f09bee6ec842084cbe12368baedb83d, type: 3}
+      propertyPath: attackJoystick
+      value: 
+      objectReference: {fileID: 543055465}
     - target: {fileID: 5435695372388716413, guid: 4f09bee6ec842084cbe12368baedb83d, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1909,6 +2010,26 @@ PrefabInstance:
       propertyPath: glock
       value: 
       objectReference: {fileID: 11400000, guid: e8232d06c8c468c42854763bccfbfc05, type: 2}
+    - target: {fileID: 2485935534069251957, guid: af5753fb779db8b49ab1dfcc4f47f424, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 826657381}
+    - target: {fileID: 2485935534069251957, guid: af5753fb779db8b49ab1dfcc4f47f424, type: 3}
+      propertyPath: newSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7e677140ee993ca498df7fd4569728ec, type: 3}
+    - target: {fileID: 2485935534069251957, guid: af5753fb779db8b49ab1dfcc4f47f424, type: 3}
+      propertyPath: oldSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 67eb11a117a263a4bb3edbf9cfe7c25c, type: 3}
+    - target: {fileID: 2485935534069251957, guid: af5753fb779db8b49ab1dfcc4f47f424, type: 3}
+      propertyPath: attackJoystick
+      value: 
+      objectReference: {fileID: 543055465}
+    - target: {fileID: 5521387678144875651, guid: af5753fb779db8b49ab1dfcc4f47f424, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5521387678144875652, guid: af5753fb779db8b49ab1dfcc4f47f424, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -2038,8 +2159,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7351181448250422769, guid: 84f23ae11b1b0414a9aa80fcfab50062, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 826657381}
+    - target: {fileID: 7351181448250422769, guid: 84f23ae11b1b0414a9aa80fcfab50062, type: 3}
+      propertyPath: newSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 097bac3fe99d60a49bf33ad5f882d2d5, type: 3}
+    - target: {fileID: 7351181448250422769, guid: 84f23ae11b1b0414a9aa80fcfab50062, type: 3}
+      propertyPath: oldSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 068a7fd7db262a348ad98009ec556485, type: 3}
+    - target: {fileID: 7351181448250422769, guid: 84f23ae11b1b0414a9aa80fcfab50062, type: 3}
+      propertyPath: attackJoystick
+      value: 
+      objectReference: {fileID: 543055465}
+    - target: {fileID: 7408101234495834056, guid: 84f23ae11b1b0414a9aa80fcfab50062, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 068a7fd7db262a348ad98009ec556485, type: 3}
     - target: {fileID: 7408101234495834056, guid: 84f23ae11b1b0414a9aa80fcfab50062, type: 3}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408101234495834056, guid: 84f23ae11b1b0414a9aa80fcfab50062, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2055,6 +2200,22 @@ PrefabInstance:
       propertyPath: mp5
       value: 
       objectReference: {fileID: 11400000, guid: 3a76317851817fb49b3e0267b11b8b09, type: 2}
+    - target: {fileID: 6756218275001865324, guid: e102910af91f21d47ad1db83f26a5aaa, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 826657381}
+    - target: {fileID: 6756218275001865324, guid: e102910af91f21d47ad1db83f26a5aaa, type: 3}
+      propertyPath: newSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d5e40d64e531ef749bea94139acae99c, type: 3}
+    - target: {fileID: 6756218275001865324, guid: e102910af91f21d47ad1db83f26a5aaa, type: 3}
+      propertyPath: oldSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5388e2674757a5042be69c4734a7a390, type: 3}
+    - target: {fileID: 6756218275001865324, guid: e102910af91f21d47ad1db83f26a5aaa, type: 3}
+      propertyPath: attackJoystick
+      value: 
+      objectReference: {fileID: 543055465}
     - target: {fileID: 6913196502215753454, guid: e102910af91f21d47ad1db83f26a5aaa, type: 3}
       propertyPath: m_Name
       value: MP5
@@ -2181,6 +2342,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 473241272}
     m_Modifications:
+    - target: {fileID: -2122491267211965580, guid: 90086765bdbc33f4db41a75d931687f2, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 826657381}
+    - target: {fileID: -2122491267211965580, guid: 90086765bdbc33f4db41a75d931687f2, type: 3}
+      propertyPath: attackJoystick
+      value: 
+      objectReference: {fileID: 543055465}
     - target: {fileID: 9217643740541924062, guid: 90086765bdbc33f4db41a75d931687f2, type: 3}
       propertyPath: m_Size.x
       value: 0.64

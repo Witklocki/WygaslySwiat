@@ -10,6 +10,12 @@ public class InventoryObject : ScriptableObject
     public List<WeaponSlot> weaponInventory = new();
     private GameObject tempDetectedWeapon;
     public GameObject TempDetectedWeapon => tempDetectedWeapon;
+
+    public void Start()
+    {
+        weaponInventory.Clear();
+        tempDetectedWeapon = null;
+    }
     public void AddItem(ItemObject _item, int _amount)
     {
         bool hasItem = false;
@@ -54,6 +60,10 @@ public class InventoryObject : ScriptableObject
     public void SetLastDetectedWeapon(GameObject weaponObject)
     {
         tempDetectedWeapon = weaponObject;
+    }
+    public GameObject GetLastDetectedWeapon()
+    {
+        return tempDetectedWeapon;
     }
 }
 

@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class WeaponParent : MonoBehaviour
 {
-
-    
-
-    /*public Animator animator;
+/*
+    public Animator animator;
     public FixedJoystick attackJoystick;
     private float attackCooldown = 0.0f;
 
@@ -19,8 +17,8 @@ public class WeaponParent : MonoBehaviour
             if (attackCooldown <= 0f)
             {
                 PlayerAttack();
-                
-                attackCooldown = 0.5f; 
+
+                attackCooldown = 0.5f;
             }
         }
 

@@ -17,6 +17,6 @@ MonoBehaviour:
   description: 
   sellAble: 0
   price: 0
-  weapon: {fileID: 0}
+  weapon: {fileID: 11400000}
   damageBonus: 0
   deffenceBonus: 0

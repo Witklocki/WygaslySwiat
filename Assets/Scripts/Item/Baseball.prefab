@@ -93,9 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5089635628040822337}
+  - component: {fileID: 1720590666623594339}
   - component: {fileID: 5024092238400052773}
   - component: {fileID: -2711588928938152025}
-  - component: {fileID: 1720590666623594339}
   m_Layer: 0
   m_Name: Baseball
   m_TagString: WeaponPickup
@@ -119,6 +119,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &1720590666623594339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083832644245371103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc19756747504f4aae7873cd392e0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseball: {fileID: 11400000, guid: 3ecf56e48aa231e469c0108c2597a21c, type: 2}
+  animator: {fileID: 0}
+  canPickup: 1
+  isEquipped: 1
+  attackJoystick: {fileID: 0}
 --- !u!65 &5024092238400052773
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -148,19 +165,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1720590666623594339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8083832644245371103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddc19756747504f4aae7873cd392e0d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseball: {fileID: 11400000, guid: 3ecf56e48aa231e469c0108c2597a21c, type: 2}
-  animator: {fileID: 0}
-  canPickup: 1
-  attackJoystick: {fileID: 0}

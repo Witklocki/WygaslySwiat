@@ -94,8 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5521387678243783863}
   - component: {fileID: 2485935534069251957}
-  - component: {fileID: 6040387242814511041}
   - component: {fileID: 8460070767657299973}
+  - component: {fileID: 6040387242814511041}
   m_Layer: 0
   m_Name: Glock
   m_TagString: WeaponPickup
@@ -133,6 +133,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glock: {fileID: 11400000, guid: e8232d06c8c468c42854763bccfbfc05, type: 2}
   animator: {fileID: 0}
+  canPickup: 1
+  isEquipped: 0
+  attackJoystick: {fileID: 0}
+--- !u!65 &8460070767657299973
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521387678243783862}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.58051014, y: 0.577703, z: 1.0673318}
+  m_Center: {x: -0.020760536, y: -0.005176113, z: 0.19848989}
 --- !u!54 &6040387242814511041
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,16 +165,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &8460070767657299973
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5521387678243783862}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.58051014, y: 0.577703, z: 1.0673318}
-  m_Center: {x: -0.020760536, y: -0.005176113, z: 0.19848989}
