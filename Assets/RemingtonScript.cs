@@ -12,7 +12,9 @@ public class RemingtonScript : MonoBehaviour
     public Sprite oldSprite;
     public Sprite newSprite;
     private float attackCooldown = 0.0f;
-
+    //Shooting
+    public Transform shootingPoint;
+    public GameObject bulletPrefab;
     private void Update()
     {
         if (isEquipped)
@@ -50,6 +52,12 @@ public class RemingtonScript : MonoBehaviour
         {
             // Change the sprite of the child SpriteRenderer
             childSpriteRenderer.sprite = newSprite;
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            float randomAngle = Random.Range(-22.5f, 22.5f); // Random angle within a 45-degree cone
+            Quaternion finalRotation = transform.rotation * Quaternion.Euler(0f, 0f, randomAngle);
+            Instantiate(bulletPrefab, shootingPoint.position, finalRotation);
         }
     }
 }

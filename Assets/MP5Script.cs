@@ -12,7 +12,9 @@ public class MP5Script : MonoBehaviour
     public Sprite oldSprite;
     public Sprite newSprite;
     private float attackCooldown = 0.0f;
-
+    //Shooting
+    public Transform shootingPoint;
+    public GameObject bulletPrefab;
     private void Update()
     {
         if (isEquipped)
@@ -51,5 +53,6 @@ public class MP5Script : MonoBehaviour
             // Change the sprite of the child SpriteRenderer
             childSpriteRenderer.sprite = newSprite;
         }
+        Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
     }
 }

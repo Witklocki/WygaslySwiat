@@ -12,6 +12,9 @@ public class RewolwerScript : MonoBehaviour
     public Sprite oldSprite;
     public Sprite newSprite;
     private float attackCooldown = 0.0f;
+    //Shooting
+    public Transform shootingPoint;
+    public GameObject bulletPrefab;
 
     private void Update()
     {
@@ -51,5 +54,6 @@ public class RewolwerScript : MonoBehaviour
             // Change the sprite of the child SpriteRenderer
             childSpriteRenderer.sprite = newSprite;
         }
+        Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
     }
 }
