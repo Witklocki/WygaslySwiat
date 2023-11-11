@@ -11,15 +11,18 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
     public Map map;
     public PlayerObject player;
+
     public float groundDrag;
-
-
+    public GameObject equippedWeaponSlot;
     private bool isRight;
     private bool isLeft;
     private bool isUp;
     private bool isDown;
+    public Vector3 direction;
 
-
+    public float circleRadius = 0.5f;
+    public float weaponHeight = 0.5f; // Set the desired Y position
+    public float weaponDepth = 0.8f;
 
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -44,12 +47,13 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
-
+        
     }
 
     private void FixedUpdate()
     {
         movePlayer();
+
     }
 
     private void movePlayer()
@@ -68,10 +72,33 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("SpeedH", Mathf.Abs(horizontal));
         animator.SetFloat("Speed", Mathf.Abs(vertical));
 
-        Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
+         direction = new Vector3(horizontal, 0, vertical).normalized;
 
         rb.MovePosition((Vector3)transform.position + (direction * player.moveSpeed * Time.deltaTime));
 
+
+        if (direction != Vector3.zero)
+        {
+            // Calculate the rotation based on the movement direction
+
+            Quaternion targetRotation = Quaternion.Euler(45, 0, Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg);
+
+            if (equippedWeaponSlot != null)
+            {
+
+                Vector3 playerPosition = transform.position;
+                Vector3 localWeaponPosition = new Vector3(circleRadius, weaponHeight, -weaponDepth);
+
+                // Rotate the local position based on the player's rotation
+                localWeaponPosition = Quaternion.Euler(0, 0, 0) * localWeaponPosition;
+
+                // Transform local position to world space
+                Vector3 weaponPosition = playerPosition + targetRotation * localWeaponPosition;
+
+                equippedWeaponSlot.transform.position = weaponPosition;
+                equippedWeaponSlot.transform.rotation = targetRotation; 
+            }
+        }
 
         if (rb.position.x > map.map.rangX)
         {
@@ -108,6 +135,4 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(limitedVel.x,rb.velocity.y, limitedVel.z);
         }
     }
-
-
 }

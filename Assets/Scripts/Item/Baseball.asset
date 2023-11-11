@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842cad9e03f389e4e9164ea13a01fba0, type: 3}
+  m_Name: Baseball
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8083832644245371103, guid: 07de66cd238d081459898b7a805b5338, type: 3}
+  type: 5
+  description: Baseball
+  sellAble: 0
+  price: 0
+  weapon: {fileID: 11400000}
+  damageBonus: 0
+  deffenceBonus: 0
