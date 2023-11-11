@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
 {
     public List<InventorySlot> container = new List<InventorySlot>();
+    public List<WeaponSlot> weaponInventory = new();
+    private GameObject tempDetectedWeapon;
+    public GameObject TempDetectedWeapon => tempDetectedWeapon;
 
+    public void Start()
+    {
+        weaponInventory.Clear();
+        tempDetectedWeapon = null;
+    }
     public void AddItem(ItemObject _item, int _amount)
     {
         bool hasItem = false;
@@ -25,6 +34,37 @@ public class InventoryObject : ScriptableObject
         }
     }
 
+    public void AddWeapon(WeaponObject weapon)
+    {
+        for (int i = 0; i < weaponInventory.Count(); i++)
+        {
+            if (weaponInventory[i].weaponObject == weapon)
+            {
+                return;
+            }
+        }
+        weaponInventory.Add(new WeaponSlot(weapon));
+    }
+
+    public bool ContainsWeapon()
+    {
+        Debug.Log(tempDetectedWeapon);
+
+        return weaponInventory.Any();
+    }
+
+    public void ClearWeaponInventory()
+    {
+        weaponInventory.Clear();
+    }
+    public void SetLastDetectedWeapon(GameObject weaponObject)
+    {
+        tempDetectedWeapon = weaponObject;
+    }
+    public GameObject GetLastDetectedWeapon()
+    {
+        return tempDetectedWeapon;
+    }
 }
 
 
@@ -44,5 +84,15 @@ public class InventorySlot
     public void AddAmount(int value)
     {
         amount += value;
+    }
+}
+[System.Serializable]
+public class WeaponSlot
+{
+    public WeaponObject weaponObject;
+
+    public WeaponSlot(WeaponObject _weaponObject)
+    {
+        this.weaponObject = _weaponObject;
     }
 }

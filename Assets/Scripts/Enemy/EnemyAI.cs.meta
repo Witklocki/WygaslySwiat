@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: abeba56332a4c044e933bcca4023ce50
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - enemy: {instanceID: 0}
+  - player: {instanceID: 0}
+  - rb: {instanceID: 0}
+  - navMeshAgent: {instanceID: 0}
+  - playerObject: {instanceID: 0}
+  - attackCircle: {fileID: -2413806693520163455, guid: 609a98402a16df54088632e0cd7fe851, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

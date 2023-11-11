@@ -10,6 +10,7 @@ public enum ItemType
     QuestItems,
     MetalicParts,
     Wood,
+    Weapon,
     Default
 }
 public abstract class ItemObject : ScriptableObject

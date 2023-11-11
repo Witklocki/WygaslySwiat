@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5803d324bcec449814f66940daa8ad, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: 842cad9e03f389e4e9164ea13a01fba0, type: 3}
+  m_Name: MP5
   m_EditorClassIdentifier: 
-  container: []
-  weaponInventory:
-  - weaponObject: {fileID: 11400000, guid: 3a76317851817fb49b3e0267b11b8b09, type: 2}
-    amount: 1
+  prefab: {fileID: 6913196502215753454, guid: e102910af91f21d47ad1db83f26a5aaa, type: 3}
+  type: 5
+  description: 
+  sellAble: 0
+  price: 0
+  weapon: {fileID: 0}
+  damageBonus: 0
+  deffenceBonus: 0

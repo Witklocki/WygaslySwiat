@@ -10,6 +10,7 @@ TagManager:
   - lab
   - Exit
   - Fence
+  - WeaponPickup
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Obstacles
   - whatIsGround
   - 
   - 

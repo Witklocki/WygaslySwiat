@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8a38d3ec268ce94e86e46ca29437373, type: 3}
-  m_Name: Sword
+  m_Script: {fileID: 11500000, guid: 842cad9e03f389e4e9164ea13a01fba0, type: 3}
+  m_Name: Rewolwer
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  type: 1
-  description: Can be use to attack
+  prefab: {fileID: 5435695372388716402, guid: 4f09bee6ec842084cbe12368baedb83d, type: 3}
+  type: 5
+  description: 
   sellAble: 0
   price: 0
-  damageBonus: 5
+  weapon: {fileID: 11400000}
+  damageBonus: 0
   deffenceBonus: 0

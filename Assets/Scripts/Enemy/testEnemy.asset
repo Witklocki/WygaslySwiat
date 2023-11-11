@@ -9,10 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5803d324bcec449814f66940daa8ad, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: 751c192e411f44e4793c277f2b711f15, type: 3}
+  m_Name: testEnemy
   m_EditorClassIdentifier: 
-  container: []
-  weaponInventory:
-  - weaponObject: {fileID: 11400000, guid: 3a76317851817fb49b3e0267b11b8b09, type: 2}
-    amount: 1
+  healthPoint: 100
+  maxHealth: 100
+  healthMultiplayer: 1
+  attack: 2
+  attackMultiplayer: 1
+  moveSpeed: 3
+  runSpeed: 3.5
+  viewRadius: 10
+  viewAngle: 360
+  type: 0

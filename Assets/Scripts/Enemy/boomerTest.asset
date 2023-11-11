@@ -9,10 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5803d324bcec449814f66940daa8ad, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: 71e08bc5d5bc126408516e37453fbde0, type: 3}
+  m_Name: boomerTest
   m_EditorClassIdentifier: 
-  container: []
-  weaponInventory:
-  - weaponObject: {fileID: 11400000, guid: 3a76317851817fb49b3e0267b11b8b09, type: 2}
-    amount: 1
+  healthPoint: 20
+  maxHealth: 20
+  healthMultiplayer: 1
+  attack: 5
+  attackMultiplayer: 1
+  moveSpeed: 2.5
+  runSpeed: 3
+  viewRadius: 12.5
+  viewAngle: 360
+  type: 2
