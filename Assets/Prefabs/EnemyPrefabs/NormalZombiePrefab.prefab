@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1729602375143270797}
   - component: {fileID: 1729602375143270796}
   - component: {fileID: 1256442459983306424}
-  - component: {fileID: 2372249415566980229}
+  - component: {fileID: 6189525079039432172}
   m_Layer: 0
   m_Name: NormalZombiePrefab
   m_TagString: Untagged
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 20
   debug_bool: 1
-  animator: {fileID: 0}
+  animator: {fileID: 6189525079039432172}
   enemy: {fileID: 11400000, guid: d2c5cf31b6023ce46bc90703902ffef7, type: 2}
   player: {fileID: 0}
   rb: {fileID: 1729602375143270795}
@@ -123,6 +123,10 @@ MonoBehaviour:
   caughtPlayer: 0
   isEnemyDead: 0
   attacking: 0
+  isRight: 0
+  isLeft: 0
+  isUp: 0
+  isDown: 0
 --- !u!212 &1256442459983306424
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -175,7 +179,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &2372249415566980229
+--- !u!95 &6189525079039432172
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -185,7 +189,7 @@ Animator:
   m_GameObject: {fileID: 1729602375143270788}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fa53b56e79f54bf4a9d31b2e78193cfa, type: 2}
+  m_Controller: {fileID: 9100000, guid: ca1b02cdd4298f54fb660fc6f3e2ead8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

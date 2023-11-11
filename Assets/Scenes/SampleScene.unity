@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 337140626}
   - component: {fileID: 337140630}
   - component: {fileID: 337140631}
+  - component: {fileID: 337140632}
   m_Layer: 10
   m_Name: Terrain
   m_TagString: Untagged
@@ -338,6 +339,18 @@ MonoBehaviour:
   enemyCounter: 0
   enemyCounterDestroyer: 0
   enemyList: []
+--- !u!114 &337140632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337140625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb8fe6064cbb164cb70aebea3eff1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &572314175
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1729602375143270788, guid: 7b618cf40fb5d06438d9336706c129d6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1729602375143270794, guid: 7b618cf40fb5d06438d9336706c129d6, type: 3}
       propertyPath: m_IsTrigger
@@ -461,10 +474,6 @@ PrefabInstance:
     - target: {fileID: 1729602375143270795, guid: 7b618cf40fb5d06438d9336706c129d6, type: 3}
       propertyPath: m_Constraints
       value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729602375143270796, guid: 7b618cf40fb5d06438d9336706c129d6, type: 3}
-      propertyPath: animator
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1729602375143270799, guid: 7b618cf40fb5d06438d9336706c129d6, type: 3}
       propertyPath: m_RootOrder

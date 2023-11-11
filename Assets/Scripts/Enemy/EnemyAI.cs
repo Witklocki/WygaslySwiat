@@ -69,9 +69,9 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.speed = enemy.moveSpeed;
         nextPosition = transform.position;
 
-        animator = gameObject.GetComponent<Animator>();
-        animator.runtimeAnimatorController = Resources.Load("Assets/Animations/Enemys/ZombieNormalAnimationController") as RuntimeAnimatorController;
-
+    /*    animator = gameObject.GetComponent<Animator>();
+        animator.runtimeAnimatorController = Resources.Load("Assets/Animations/Enemys/NormalZombiePrefab") as RuntimeAnimatorController;
+*/
         animator.SetTrigger("normal");
 
         GameObject boomerAttackAreaObject = new GameObject("BoomerAttackAreaObject", typeof(SpriteRenderer));
@@ -132,31 +132,30 @@ public class EnemyAI : MonoBehaviour
 
     void Stop()
     {
+        isRight = isLeft = isDown = isUp = false; 
+        if (animator.gameObject.activeSelf)
+        {
+            animator.SetBool("isRight", isRight);
+            animator.SetBool("isLeft", isLeft);
+            animator.SetBool("isUp", isUp);
+            animator.SetBool("isDown", isDown);
+            animator.SetTrigger("Idle");
+        }
         navMeshAgent.isStopped = true;
         navMeshAgent.speed = 0;
     }
 
     void Move(float speed)
     {
-        float distanceX = nextPosition.x - transform.position.x;
-        float distanceZ = nextPosition.z - transform.position.z;
-        isRight = distanceX > 0 && Math.Abs(distanceX) > Math.Abs(distanceZ);
-        isLeft = distanceX < 0 && Math.Abs(distanceX) > Math.Abs(distanceZ);
-        isUp = distanceZ > 0 && Math.Abs(distanceZ) > Math.Abs(distanceX);
-        isDown = distanceZ < 0 && Math.Abs(distanceZ) > Math.Abs(distanceX);
-
-
         navMeshAgent.isStopped = false;
-        animator.SetBool("isRight", isRight);
-        animator.SetBool("isLeft", isLeft);
-        animator.SetBool("isUp", isUp);
-        animator.SetBool("isDown", isDown);
+    
 
         navMeshAgent.speed = speed;
     }
 
     void Patroling()
     {
+        checkingDirection();
         if (Vector3.Distance(nextPosition, transform.position) <= 1.5f && !playerInRange)
         {
             if (waitTime <= 0)
@@ -177,7 +176,8 @@ public class EnemyAI : MonoBehaviour
     void Chasing()
     {
         nextPosition = player.position;
-        float distance = Vector3.Distance(player.transform.position, transform.transform.position);
+        checkingDirection();
+        float distance = Vector3.Distance(player.transform.position, transform.position);
         if (distance < 0.9f || attacking)
         {
             caughtPlayer = true;
@@ -242,6 +242,24 @@ public class EnemyAI : MonoBehaviour
             caughtPlayer = false;
             isPatrol = false;   
             isEnemyDead = true;
+        }
+    }
+
+    void checkingDirection()
+    {
+        Vector3 direction = (nextPosition - transform.position).normalized;
+        Debug.Log(direction);
+        isRight = direction.x > 0 && Math.Abs(direction.x) > Math.Abs(direction.z);
+        isLeft = direction.x < 0 && Math.Abs(direction.x) > Math.Abs(direction.z);
+        isUp = direction.z > 0 && Math.Abs(direction.z) > Math.Abs(direction.x);
+        isDown = direction.z < 0 && Math.Abs(direction.z) > Math.Abs(direction.x);
+
+        if (animator.gameObject.activeSelf)
+        {
+            animator.SetBool("isRight", isRight);
+            animator.SetBool("isLeft", isLeft);
+            animator.SetBool("isUp", isUp);
+            animator.SetBool("isDown", isDown);
         }
     }
 }
