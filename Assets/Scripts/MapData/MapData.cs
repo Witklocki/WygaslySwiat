@@ -6,5 +6,6 @@ public class MapData : ScriptableObject
 {
     public float rangX;
     public float rangY;
+    public float maxEnemy;
 
 }

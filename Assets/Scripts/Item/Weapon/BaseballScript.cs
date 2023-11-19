@@ -1,16 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseballScript : MonoBehaviour
 {
-    public ItemObject baseball;
+    public WeaponObject baseball;
     public Animator animator;
     public bool canPickup = true;
     public bool isEquipped = false;
     public FixedJoystick attackJoystick ;
 
     private float attackCooldown = 0.0f;
+    [SerializeField] private bool isAttacking = false;
 
     private void Update()
     {
@@ -18,7 +20,7 @@ public class BaseballScript : MonoBehaviour
         {
 
             if (attackJoystick.Vertical != 0 || attackJoystick.Horizontal != 0)
-            {
+            { 
                 // Check if the attack cooldown has passed
                 if (attackCooldown <= 0f)
                 {
@@ -26,6 +28,10 @@ public class BaseballScript : MonoBehaviour
 
                     attackCooldown = 0.5f;
                 }
+            }
+            else
+            {
+                isAttacking = false;
             }
 
             // Reduce the attack cooldown timer
@@ -39,8 +45,19 @@ public class BaseballScript : MonoBehaviour
     void PlayerAttack()
     {
 
-        Debug.Log("BaseballAttack");
+        isAttacking = true;
         animator.SetTrigger("BaseballAttack");
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.tag == "Enemy" && isAttacking)
+        {
+            Debug.Log("BaseballAttack");
+            other.gameObject.GetComponent<EnemyAI>().enemy.healthPoint -= baseball.damageBonus;
+            Debug.Log(other.gameObject.GetComponent<EnemyAI>().enemy.healthPoint);
+        }
     }
 }

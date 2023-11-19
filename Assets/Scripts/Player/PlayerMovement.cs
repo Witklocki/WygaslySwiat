@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        player.healthPoint = 26;
     }
 
 

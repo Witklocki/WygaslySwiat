@@ -136,6 +136,7 @@ MonoBehaviour:
   canPickup: 1
   isEquipped: 1
   attackJoystick: {fileID: 0}
+  isAttacking: 0
 --- !u!65 &5024092238400052773
 BoxCollider:
   m_ObjectHideFlags: 0
