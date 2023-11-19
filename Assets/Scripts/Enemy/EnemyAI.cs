@@ -37,6 +37,7 @@ public class EnemyAI : MonoBehaviour
     private float colorOpacity = 0.6f;
     private float areaAttackVisibilityTime = 1.5f;
     private bool attacked = false;
+    private float gloabalDistance = 0;
 
     [SerializeField] private bool isRight = false;
     [SerializeField] private bool isLeft = false;
@@ -59,7 +60,7 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player").transform;
 
-        playerObject = AssetDatabase.LoadAssetAtPath<PlayerObject>("Assets/Scripts/Player/PlayerData.asset");
+        playerObject = Resources.Load<PlayerObject>("Assets/Scripts/Player/PlayerData");
         rb.freezeRotation = true;
         navMeshAgent.updateRotation = false;
 
@@ -69,9 +70,9 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.speed = enemy.moveSpeed;
         nextPosition = transform.position;
 
-    /*    animator = gameObject.GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
         animator.runtimeAnimatorController = Resources.Load("Assets/Animations/Enemys/NormalZombiePrefab") as RuntimeAnimatorController;
-*/
+
         animator.SetTrigger("normal");
 
         GameObject boomerAttackAreaObject = new GameObject("BoomerAttackAreaObject", typeof(SpriteRenderer));
@@ -118,6 +119,7 @@ public class EnemyAI : MonoBehaviour
     private void IsPlayerSeen()
     {
         float distance = Vector3.Distance(player.transform.position, transform.transform.position);
+        gloabalDistance = distance;
         if(distance <= enemy.viewRadius)
         {
             playerInRange = true;
@@ -178,7 +180,8 @@ public class EnemyAI : MonoBehaviour
         nextPosition = player.position;
         checkingDirection();
         float distance = Vector3.Distance(player.transform.position, transform.position);
-        if (distance < 0.9f || attacking)
+        gloabalDistance = distance;
+        if (distance < 1.3f || attacking)
         {
             caughtPlayer = true;
             attacking = true;
@@ -208,7 +211,6 @@ public class EnemyAI : MonoBehaviour
                     attacked = true;
 
                 }
-                Debug.Log(playerObject.healthPoint);
             }
             else
             {
@@ -218,7 +220,6 @@ public class EnemyAI : MonoBehaviour
 
                 }
                 attackTime -= Time.deltaTime;
-                Debug.Log("Attack");
             }
             
         }
@@ -248,7 +249,6 @@ public class EnemyAI : MonoBehaviour
     void checkingDirection()
     {
         Vector3 direction = (nextPosition - transform.position).normalized;
-        Debug.Log(direction);
         isRight = direction.x > 0 && Math.Abs(direction.x) > Math.Abs(direction.z);
         isLeft = direction.x < 0 && Math.Abs(direction.x) > Math.Abs(direction.z);
         isUp = direction.z > 0 && Math.Abs(direction.z) > Math.Abs(direction.x);

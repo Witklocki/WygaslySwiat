@@ -11,6 +11,7 @@ TagManager:
   - Exit
   - Fence
   - WeaponPickup
+  - Enemy
   layers:
   - Default
   - TransparentFX

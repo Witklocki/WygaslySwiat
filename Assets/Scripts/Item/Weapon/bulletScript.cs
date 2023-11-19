@@ -27,4 +27,12 @@ public class bulletScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<EnemyAI>().enemy.healthPoint -= 10;
+            Destroy(gameObject);
+        }
+    }
 }
