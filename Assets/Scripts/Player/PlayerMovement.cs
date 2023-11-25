@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -30,6 +31,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        if (map.IsUnityNull())
+        {
+            map = GameObject.FindGameObjectWithTag("Map").GetComponentInChildren<Terrain>().GetComponent<Map>();
+        }
+
         rb = GetComponent<Rigidbody>();
         player.healthPoint = 26;
     }

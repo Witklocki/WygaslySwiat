@@ -12,6 +12,8 @@ TagManager:
   - Fence
   - WeaponPickup
   - Enemy
+  - Map
+  - whatIsGround
   layers:
   - Default
   - TransparentFX
