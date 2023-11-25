@@ -3077,7 +3077,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187165170}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: -150, y: 0.56, z: 150}
+  m_LocalPosition: {x: -208.4, y: 0.56, z: 193.6}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3218,7 +3218,7 @@ MonoBehaviour:
   animator: {fileID: 1187165176}
   moveJoystick: {fileID: 1271800443}
   rb: {fileID: 1187165174}
-  map: {fileID: 0}
+  map: {fileID: 113212479}
   player: {fileID: 11400000, guid: 3bdb7796a224c6f418817ea71083e583, type: 2}
   groundDrag: 10
   equippedWeaponSlot: {fileID: 1204004791}
@@ -4745,6 +4745,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1800290225}
   - component: {fileID: 1800290226}
+  - component: {fileID: 1800290227}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Untagged
@@ -4760,7 +4761,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800290224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.91, y: 0, z: 485.77}
+  m_LocalPosition: {x: 32.91, y: 0, z: 483.18}
   m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4779,8 +4780,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.41145715, y: 0.440962, z: 0.5305176}
-  m_Center: {x: 0.026451541, y: 0.2018944, z: 0.15428162}
+  m_Size: {x: 0.41145715, y: 0.44096202, z: 0.7011212}
+  m_Center: {x: 0.026451549, y: 0.2018944, z: 0.06897998}
+--- !u!114 &1800290227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800290224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deaf4f7835930e9489481c837dbd994d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneIndex: 2
 --- !u!1001 &1826838698
 PrefabInstance:
   m_ObjectHideFlags: 0
