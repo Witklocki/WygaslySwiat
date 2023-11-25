@@ -1024,6 +1024,7 @@ GameObject:
   - component: {fileID: 440937229}
   - component: {fileID: 440937231}
   - component: {fileID: 440937232}
+  - component: {fileID: 440937233}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Exit
@@ -1109,8 +1110,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 1.2, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 0.35}
+  m_Size: {x: 2.5, y: 1.2, z: 1.2671876}
+  m_Center: {x: 0, y: 0, z: -0.07697511}
 --- !u!54 &440937232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1127,6 +1128,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &440937233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440937228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deaf4f7835930e9489481c837dbd994d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneIndex: 1
 --- !u!1 &463615992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,7 +1436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -3343,8 +3357,13 @@ MonoBehaviour:
   moveJoystick: {fileID: 512293414}
   rb: {fileID: 2114191208}
   map: {fileID: 1956193397}
-  movementSpeed: 5
+  player: {fileID: 0}
   groundDrag: 10
+  equippedWeaponSlot: {fileID: 0}
+  direction: {x: 0, y: 0, z: 0}
+  circleRadius: 0.5
+  weaponHeight: 0.5
+  weaponDepth: 0.8
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -3377,3 +3396,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874ef56a137750b459f24da9ea8f6ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  playerMovement: {fileID: 0}
