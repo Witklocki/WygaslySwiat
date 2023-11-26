@@ -12,6 +12,7 @@ TagManager:
   - Fence
   - WeaponPickup
   - Enemy
+  - Drop
   layers:
   - Default
   - TransparentFX

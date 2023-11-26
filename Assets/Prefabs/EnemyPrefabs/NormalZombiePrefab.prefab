@@ -103,12 +103,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 20
   debug_bool: 1
+  dropPrefab: {fileID: 9172233093204734577, guid: 1602f24e4a733bc4bb6db3a88a95a0aa, type: 3}
   animator: {fileID: 6189525079039432172}
   enemy: {fileID: 11400000, guid: d2c5cf31b6023ce46bc90703902ffef7, type: 2}
   player: {fileID: 0}
   rb: {fileID: 1729602375143270795}
   navMeshAgent: {fileID: 0}
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 11400000, guid: 3bdb7796a224c6f418817ea71083e583, type: 2}
   attackCircle: {fileID: -2413806693520163455, guid: 609a98402a16df54088632e0cd7fe851, type: 3}
   startWaitTime: 4
   playerMask:
@@ -123,10 +124,6 @@ MonoBehaviour:
   caughtPlayer: 0
   isEnemyDead: 0
   attacking: 0
-  isRight: 0
-  isLeft: 0
-  isUp: 0
-  isDown: 0
 --- !u!212 &1256442459983306424
 SpriteRenderer:
   m_ObjectHideFlags: 0

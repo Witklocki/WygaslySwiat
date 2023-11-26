@@ -7,10 +7,18 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// 
+/// Code responsilbe for operating of enemy component
+/// 
+/// </summary>
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private float radius = 15.0f;
     [SerializeField] private bool debug_bool;
+
+    public GameObject dropPrefab;
+    private GameObject boomerAttackArea;
 
     public Animator animator;
     public EnemyObject enemy;
@@ -22,16 +30,16 @@ public class EnemyAI : MonoBehaviour
 
     public float startWaitTime = 2;
     
-    public LayerMask playerMask;                    //  To detect the player with the raycast
-    public LayerMask obstacleMask;                  //  To detect the obstacules with the raycast
+    public LayerMask playerMask;                    
+    public LayerMask obstacleMask;                
 
     Vector3 nextPosition;
 
-    float waitTime;                               //  Variable of the wait time that makes the delay
+    float waitTime;                               
     public float attackTime;
-    public bool playerInRange;                           //  If the player is in range of vision, state of chasing
-    public bool isPatrol;                                //  If the enemy is patrol, state of patroling
-    public bool caughtPlayer;                            //  if the enemy has caught the player
+    public bool playerInRange;                           
+    public bool isPatrol;                                
+    public bool caughtPlayer;                            
     public bool isEnemyDead;
     public bool attacking;
     private float colorOpacity = 0.6f;
@@ -39,10 +47,14 @@ public class EnemyAI : MonoBehaviour
     private bool attacked = false;
     private float gloabalDistance = 0;
 
-    [SerializeField] private bool isRight = false;
-    [SerializeField] private bool isLeft = false;
-    [SerializeField] private bool isUp = false;
-    [SerializeField] private bool isDown = false;
+    /// <summary>
+    /// 
+    /// </summary>
+
+    private bool isRight = false;
+    private bool isLeft = false;
+    private bool isUp = false;
+    private bool isDown = false;
 
 
     // Start is called before the first frame update
@@ -75,7 +87,7 @@ public class EnemyAI : MonoBehaviour
 
         animator.SetTrigger("normal");
 
-        GameObject boomerAttackAreaObject = new GameObject("BoomerAttackAreaObject", typeof(SpriteRenderer));
+        boomerAttackArea = new GameObject("BoomerAttackAreaObject", typeof(SpriteRenderer));
     }
 
     // Update is called once per frame
@@ -116,6 +128,10 @@ public class EnemyAI : MonoBehaviour
 
 
 
+    /// <summary>
+    /// 
+    /// 
+    /// </summary>
     private void IsPlayerSeen()
     {
         float distance = Vector3.Distance(player.transform.position, transform.transform.position);
@@ -231,6 +247,10 @@ public class EnemyAI : MonoBehaviour
 
     public void EnemyDead()
     {
+        Vector3 dropPosition = transform.position;
+        dropPosition.y = -0.1f;
+        Instantiate(dropPrefab, dropPosition, Quaternion.identity);
+        Destroy(boomerAttackArea);
         Destroy(gameObject);
     }
 

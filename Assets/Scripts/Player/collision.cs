@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class collision : MonoBehaviour
@@ -8,6 +10,7 @@ public class collision : MonoBehaviour
     public PlayerMovement playerMovement;
     private WeaponParent weaponParent;
     private GameObject weaponToSpawn;
+    public DropObject dropObject;
 
     private void Start()
     {
@@ -37,6 +40,10 @@ public class collision : MonoBehaviour
                 print("Emtry savedPeople");
                 break;
             case "Fence":
+                break;
+            case "Drop":
+                dropObject += other.gameObject.GetComponent<GenerateDropData>().GetDrop();
+                other.gameObject.GetComponent<GenerateDropData>().PickedUp();
                 break;
             case "WeaponPickup":
                 var knife = other.gameObject.GetComponent<KnifeScript>();
