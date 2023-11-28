@@ -23,7 +23,6 @@ public class GameObjectController : MonoBehaviour
         enemyList = new List<GameObject>();
         playerPosition = GameObject.FindWithTag("Player").transform;
         StartCoroutine(SpawnEnemy());
-        Debug.Log(maxEnemysOnMap);
     }
 
     private void Update()
@@ -62,7 +61,7 @@ public class GameObjectController : MonoBehaviour
     {
 
         int number = Random.Range(0, 100);
-        if (number < 85)
+        if (number < 100)
         {
             return Instantiate(enemyNormal, RandomPointGenerator.RandomPointGenerate(playerPosition.position, 100), Quaternion.identity);
         }
