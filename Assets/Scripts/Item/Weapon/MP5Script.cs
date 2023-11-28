@@ -2,19 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MP5Script : MonoBehaviour
+public class MP5Script : LoadWeapon
 {
     public ItemObject mp5;
     public Animator animator;
     public bool canPickup = true;
     public bool isEquipped = false;
-    public FixedJoystick attackJoystick;
     public Sprite oldSprite;
     public Sprite newSprite;
     private float attackCooldown = 0.0f;
     //Shooting
     public Transform shootingPoint;
     public GameObject bulletPrefab;
+
+    private void Start()
+    {
+        if (!MP5Exist)
+        {
+            if (MP5IsEquipped) { MP5Exist = true; } else { MP5Exist = false; }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Update()
     {
         if (isEquipped)

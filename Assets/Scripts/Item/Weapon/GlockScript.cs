@@ -2,21 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlockScript : MonoBehaviour
+public class GlockScript : LoadWeapon
 {
     public ItemObject glock;
     public Animator animator;
     public bool canPickup = true;
     public bool isEquipped = false;
-    public FixedJoystick attackJoystick;
     public Sprite oldSprite;
     public Sprite newSprite;
     private float attackCooldown = 0.0f;
     //Shooting
     public Transform shootingPoint;
     public GameObject bulletPrefab;
-    
 
+    private void Start()
+    {
+        if (!glockExist)
+        {
+            if (glockIsEquipped) { glockExist = true; } else { glockExist = false; }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Update()
     {
         if (isEquipped)

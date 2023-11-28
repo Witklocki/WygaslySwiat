@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: f3d9bad196928b343966ed42b170118c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -128,5 +128,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6590891, y: 0.4615974, z: 0.47650298}
-  m_Center: {x: -0.0003247261, y: 0.2292919, z: 0.22481461}
+  m_Size: {x: 0.5926504, y: 0.4615974, z: 0.39888993}
+  m_Center: {x: -0.000175941, y: 0.2292919, z: 0.075558856}

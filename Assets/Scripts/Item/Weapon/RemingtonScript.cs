@@ -2,19 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RemingtonScript : MonoBehaviour
+public class RemingtonScript : LoadWeapon
 {
     public ItemObject remington;
     public Animator animator;
     public bool canPickup = true;
     public bool isEquipped = false;
-    public FixedJoystick attackJoystick;
     public Sprite oldSprite;
     public Sprite newSprite;
     private float attackCooldown = 0.0f;
     //Shooting
     public Transform shootingPoint;
     public GameObject bulletPrefab;
+
+    private void Start()
+    {
+        if (!remingtonExist)
+        {
+            if (remingtonIsEquipped) { remingtonExist = true; } else { remingtonExist = false; }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Update()
     {
         if (isEquipped)

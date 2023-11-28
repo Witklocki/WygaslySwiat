@@ -2,16 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrowbarScript : MonoBehaviour
+public class CrowbarScript : LoadWeapon
 {
     public ItemObject crowbar;
     public Animator animator;
     public bool canPickup = true;
     public bool isEquipped = false;
-    public FixedJoystick attackJoystick;
 
     private float attackCooldown = 0.0f;
-
+    private void Start()
+    {
+        if (!crowbarExist)
+        {
+            if (crowbarIsEquipped) { crowbarExist = true; } else { crowbarExist = false; }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Update()
     {
         if (isEquipped)
