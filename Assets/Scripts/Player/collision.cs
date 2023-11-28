@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class collision : MonoBehaviour
+public class collision : LoadWeapon
 {
     public InventoryObject inventory;
     public PlayerMovement playerMovement;
@@ -14,9 +14,28 @@ public class collision : MonoBehaviour
 
     private void Start()
     {
-        inventory.ClearWeaponInventory();
+        //inventory.ClearWeaponInventory();
+        //StartCoroutine(DebugTempDetectedWeapon());
     }
-    
+/*    IEnumerator DebugTempDetectedWeapon()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+
+            // Debug the content of TempDetectedWeapon
+            bool lastDetectedWeapon = inventory.ContainsWeapon();
+            if (!lastDetectedWeapon || lastDetectedWeapon)
+            {
+                Debug.Log("TempDetectedWeapon: " + lastDetectedWeapon);
+                // Add additional debugging information if needed
+            }
+            else
+            {
+                Debug.Log("TempDetectedWeapon is null");
+            }
+        }
+    }*/
     private void OnTriggerEnter(Collider other)
     {
         GameObject detectedWeapon = inventory.TempDetectedWeapon;
@@ -53,18 +72,24 @@ public class collision : MonoBehaviour
                 var rewolwer = other.gameObject.GetComponent<RewolwerScript>();
                 var mp5 = other.gameObject.GetComponent<MP5Script>();
                 var remington = other.gameObject.GetComponent<RemingtonScript>();
+                baseballIsEquipped = false; knifeIsEquipped = false; remingtonIsEquipped = false;
+                rewolwerIsEquipped = false; crowbarIsEquipped = false; glockIsEquipped = false;
+                MP5IsEquipped = false;
                 if (knife && knife.canPickup)
                 {
-                    
+                    knifeIsEquipped = true;
                     Debug.Log(knife.knife);
                     ItemObject item = knife.knife;
+
                     if (item is WeaponObject)
                     {
                         WeaponObject weapon = (WeaponObject)item;
                         if (inventory.ContainsWeapon())
                         {
+
                             inventory.SetLastDetectedWeapon(knife.gameObject); // Store the last detected weapon GameObject
                             inventory.ClearWeaponInventory();
+
                             Debug.Log("Clear Knife");
                             if (detectedWeapon != null)
                             {
@@ -72,14 +97,18 @@ public class collision : MonoBehaviour
 
                                 DeEquipWeapon(weaponToSpawn);
                             }
+
                         }
                         inventory.AddWeapon(weapon);
-                        
+
                         inventory.SetLastDetectedWeapon(knife.gameObject); // Store the last detected weapon GameObject
+
+
 
                         if (!knife.gameObject.activeSelf)
                         {
                             Instantiate(knife.gameObject);
+
                         }
                         if (playerMovement != null && playerMovement.equippedWeaponSlot != null)
                         {
@@ -104,22 +133,30 @@ public class collision : MonoBehaviour
                 }
                 if (baseball && baseball.canPickup)
                 {
-                    
+                    baseballIsEquipped = true; 
+
                     Debug.Log(baseball.baseball);
                     ItemObject item = baseball.baseball;
+                    
+
                     if (item is WeaponObject)
                     {
                         WeaponObject weapon = (WeaponObject)item;
                         if (inventory.ContainsWeapon())
                         {
+
+
                             inventory.SetLastDetectedWeapon(baseball.gameObject); // Store the last detected weapon GameObject
                             inventory.ClearWeaponInventory();
+
                             Debug.Log("Clear Base");
                             if (detectedWeapon != null)
                             {
                                 Destroy(detectedWeapon);
                                 DeEquipWeapon(weaponToSpawn);
                             }
+
+
                         }
                         inventory.AddWeapon(weapon);
                         inventory.SetLastDetectedWeapon(baseball.gameObject); // Store the last detected weapon GameObject
@@ -127,11 +164,12 @@ public class collision : MonoBehaviour
                         if (!baseball.gameObject.activeSelf)
                         {
                             Instantiate(baseball.gameObject);
+
+
                         }
                         if (playerMovement != null && playerMovement.equippedWeaponSlot != null)
                         {
                             Animator pickedUpAnimator = baseball.GetComponent<Animator>();
-
                             baseball.transform.SetParent(playerMovement.equippedWeaponSlot.transform);
                             baseball.transform.localPosition = Vector3.zero; // Adjust as needed
                             baseball.transform.localRotation = Quaternion.identity; // Adjust as needed
@@ -144,13 +182,13 @@ public class collision : MonoBehaviour
                             baseball.isEquipped = true;
 
                         }
-
                         baseball.GetComponent<Collider>().enabled = false;
                         Destroy(baseball.GetComponent<Rigidbody>());
                     }
                 }
                 if (crowbar && crowbar.canPickup)
                 {
+                    crowbarIsEquipped = true;
                     Debug.Log(crowbar.crowbar);
                     ItemObject item = crowbar.crowbar;
                     if (item is WeaponObject)
@@ -198,6 +236,8 @@ public class collision : MonoBehaviour
                 }
                 if (glock && glock.canPickup)
                 {
+                    glockIsEquipped = true;
+
                     Debug.Log(glock.glock);
                     ItemObject item = glock.glock;
                     if (item is WeaponObject)
@@ -245,6 +285,8 @@ public class collision : MonoBehaviour
                 }
                 if (rewolwer && rewolwer.canPickup)
                 {
+                    rewolwerIsEquipped = true;
+
                     Debug.Log(rewolwer.rewolwer);
                     ItemObject item = rewolwer.rewolwer;
                     if (item is WeaponObject)
@@ -292,6 +334,8 @@ public class collision : MonoBehaviour
                 }
                 if (mp5 && mp5.canPickup)
                 {
+                    MP5IsEquipped = true;
+
                     Debug.Log(mp5.mp5);
                     ItemObject item = mp5.mp5;
                     if (item is WeaponObject)
@@ -329,7 +373,7 @@ public class collision : MonoBehaviour
                             {
                                 script.enabled = true;
                             }
-                                mp5.isEquipped = true;
+                            mp5.isEquipped = true;
                         }
 
                         mp5.GetComponent<Collider>().enabled = false;
@@ -339,6 +383,8 @@ public class collision : MonoBehaviour
 
                 if (remington && remington.canPickup)
                 {
+                    remingtonIsEquipped = true;
+
                     Debug.Log(remington.remington);
                     ItemObject item = remington.remington;
                     if (item is WeaponObject)
@@ -346,6 +392,8 @@ public class collision : MonoBehaviour
                         WeaponObject weapon = (WeaponObject)item;
                         if (inventory.ContainsWeapon())
                         {
+
+
                             inventory.SetLastDetectedWeapon(remington.gameObject); // Store the last detected weapon GameObject
                             inventory.ClearWeaponInventory();
 
@@ -356,6 +404,7 @@ public class collision : MonoBehaviour
                                 DeEquipWeapon(weaponToSpawn);
 
                             }
+
                         }
                         inventory.AddWeapon(weapon);
                         inventory.SetLastDetectedWeapon(remington.gameObject); // Store the last detected weapon GameObject
@@ -363,6 +412,7 @@ public class collision : MonoBehaviour
                         if (!remington.gameObject.activeSelf)
                         {
                             Instantiate(remington.gameObject);
+
                         }
                         if (playerMovement != null && playerMovement.equippedWeaponSlot != null)
                         {
@@ -377,7 +427,7 @@ public class collision : MonoBehaviour
                             {
                                 script.enabled = true;
                             }
-                                remington.isEquipped = true;
+                            remington.isEquipped = true;
                         }
                         remington.GetComponent<Collider>().enabled = false;
                         Destroy(remington.GetComponent<Rigidbody>());
@@ -386,7 +436,7 @@ public class collision : MonoBehaviour
                 break;
 
         }
-        
+
     }
 
 
@@ -395,7 +445,7 @@ public class collision : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Fence":
-                   break;
+                break;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -409,13 +459,13 @@ public class collision : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+
         inventory.container.Clear();
         inventory.weaponInventory.Clear();
     }
     private void DeEquipWeapon(GameObject weapon)
     {
         Vector3 spawnPosition = playerMovement.transform.position + new Vector3(5, 0, 0); // Adjust the position as needed
-
         BoxCollider boxCollider = weapon.GetComponent<BoxCollider>();
         boxCollider.enabled = true;
 
@@ -427,7 +477,7 @@ public class collision : MonoBehaviour
 
 
         Instantiate(weapon, spawnPosition, Quaternion.Euler(45, 0, 0));
-        
+        //weapon.SetActive(true);
     }
 
 }

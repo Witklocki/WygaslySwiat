@@ -1,19 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     public Animator animator;
     public FixedJoystick moveJoystick;
+    public FixedJoystick attackJoystick;
     public Rigidbody rb;
     public Map map;
     public PlayerObject player;
-
     public float groundDrag;
     public GameObject equippedWeaponSlot;
+    // Ensure only one player is created
+
+    private static bool playerCreated = false;
     private bool isRight;
     private bool isLeft;
     private bool isUp;
@@ -28,16 +33,121 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     bool grounded;
 
+
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        player.healthPoint = 26;
+        if (!playerCreated)
+        {
+            if (map.IsUnityNull())
+            {
+                map = GameObject.FindGameObjectWithTag("Map").GetComponentInChildren<Terrain>().GetComponent<Map>();
+            }
+
+            rb = GetComponent<Rigidbody>();
+            player.healthPoint = 26;
+            playerCreated = true;
+        }
+        else
+        {
+            // If playerCreated is true, destroy the duplicate player
+            Destroy(gameObject);
+        }
     }
 
+    private void Awake()
+    {
+        DontDestroyOnLoad (gameObject);
+    }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Suburbs") // Replace "YourPlayerScene" with the actual scene name where the player is present
+        {
+            StartCoroutine(SetPlayerPosition());
+            FindAndAssignJoystick<FixedJoystick>(ref moveJoystick, "MoveJoystick");
+            FindAndAssignMap<Map>("YourMapName");
+
+        }
+        if (scene.name == "SavePlace") // Replace "YourPlayerScene" with the actual scene name where the player is present
+        {
+
+            StartCoroutine(SetPlayerPosition());
+            FindAndAssignJoystick<FixedJoystick>(ref moveJoystick, "MoveJoystick");
+            FindAndAssignMap<Map>("YourMapName");
+        }
+    }
+    private void FindAndAssignJoystick<T>(ref T joystick, string joystickName) where T : FixedJoystick
+    {
+        // Assuming the Canvas is a top-level object in the scene
+        Canvas canvas = FindObjectOfType<Canvas>();
+
+        if (canvas != null)
+        {
+            // Find the FixedJoystick within the Canvas
+            FixedJoystick[] joysticks = canvas.GetComponentsInChildren<FixedJoystick>();
+
+            // Assuming you have only one FixedJoystick, you might need to adjust this logic if there are multiple
+            if (joysticks.Length > 0)
+            {
+                moveJoystick = joysticks[0];
+            }
+            else
+            {
+                Debug.LogWarning("FixedJoystick not found in the Canvas.");
+            }
+            // Find the AttackJoystick within the Canvas
+            FixedJoystick[] attackJoysticks = canvas.GetComponentsInChildren<FixedJoystick>();
+
+            // Assuming you have only one AttackJoystick, you might need to adjust this logic if there are multiple
+            if (attackJoysticks.Length > 0)
+            {
+                attackJoystick = attackJoysticks[0];
+            }
+            else
+            {
+                Debug.LogWarning("AttackJoystick not found in the Canvas.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Canvas not found in the scene.");
+        }
+    }
+    private void FindAndAssignMap<T>(string mapName) where T : Map
+    {
+        Map[] maps = FindObjectsOfType<T>();
+
+        if (maps.Length > 0)
+        {
+            map = maps[0];
+        }
+        else
+        {
+            Debug.LogWarning($"{mapName} not found in the scene.");
+        }
+    }
+
+    private IEnumerator SetPlayerPosition()
+    {
+        // Wait for one frame to ensure all objects are properly initialized
+        yield return null;
+
+        transform.position = SpawnManager.Instance.customSpawnPosition;
+    }
     private void Update()
     {
+
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         PlayerSpeedControll();
         if (grounded)
@@ -53,11 +163,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movePlayer();
-
+        MovePlayer();
     }
 
-    private void movePlayer()
+    private void MovePlayer()
     {
         float horizontal = moveJoystick.Horizontal;
         float vertical = moveJoystick.Vertical;
@@ -75,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
 
          direction = new Vector3(horizontal, 0, vertical).normalized;
 
-        rb.MovePosition((Vector3)transform.position + (direction * player.moveSpeed * Time.deltaTime));
+        rb.MovePosition((Vector3)transform.position + (player.moveSpeed * Time.deltaTime * direction));
 
 
         if (direction != Vector3.zero)
@@ -88,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
             {
 
                 Vector3 playerPosition = transform.position;
-                Vector3 localWeaponPosition = new Vector3(circleRadius, weaponHeight, -weaponDepth);
+                Vector3 localWeaponPosition = new(circleRadius, weaponHeight, -weaponDepth);
 
                 // Rotate the local position based on the player's rotation
                 localWeaponPosition = Quaternion.Euler(0, 0, 0) * localWeaponPosition;
@@ -100,6 +209,7 @@ public class PlayerMovement : MonoBehaviour
                 equippedWeaponSlot.transform.rotation = targetRotation; 
             }
         }
+
 
         if (rb.position.x > map.map.rangX)
         {
@@ -128,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayerSpeedControll()
     {
-        Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); 
+        Vector3 flatVelocity = new(rb.velocity.x, 0f, rb.velocity.z); 
 
         if(flatVelocity.magnitude > player.moveSpeed)
         {
@@ -136,4 +246,5 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(limitedVel.x,rb.velocity.y, limitedVel.z);
         }
     }
+
 }

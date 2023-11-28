@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
+
+
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
 {
@@ -11,11 +14,13 @@ public class InventoryObject : ScriptableObject
     private GameObject tempDetectedWeapon;
     public GameObject TempDetectedWeapon => tempDetectedWeapon;
 
+
     public void Start()
     {
         weaponInventory.Clear();
         tempDetectedWeapon = null;
     }
+
     public void AddItem(ItemObject _item, int _amount)
     {
         bool hasItem = false;
@@ -44,6 +49,10 @@ public class InventoryObject : ScriptableObject
             }
         }
         weaponInventory.Add(new WeaponSlot(weapon));
+        /*    if (!weaponInventory.Any(w => w.weaponObject == weapon))
+            {
+                weaponInventory.Add(new WeaponSlot(weapon));
+            }*/
     }
 
     public bool ContainsWeapon()
@@ -61,6 +70,7 @@ public class InventoryObject : ScriptableObject
     {
         tempDetectedWeapon = weaponObject;
     }
+
     public GameObject GetLastDetectedWeapon()
     {
         return tempDetectedWeapon;

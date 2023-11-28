@@ -2,18 +2,30 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class BaseballScript : MonoBehaviour
+public class BaseballScript : LoadWeapon
 {
     public WeaponObject baseball;
     public Animator animator;
     public bool canPickup = true;
     public bool isEquipped = false;
-    public FixedJoystick attackJoystick ;
 
     private float attackCooldown = 0.0f;
     [SerializeField] private bool isAttacking = false;
 
+
+    private void Start()
+    {
+        if (!baseballExist)
+        {
+            if (baseballIsEquipped) { baseballExist = true; }else { baseballExist = false; }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Update()
     {
         if (isEquipped)

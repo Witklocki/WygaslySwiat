@@ -2,15 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnifeScript : MonoBehaviour
+public class KnifeScript : LoadWeapon
 {
     public ItemObject knife;
     public Animator animator;
     public bool canPickup = true;
     public bool isEquipped = false;
-    public FixedJoystick attackJoystick;
 
     private float attackCooldown = 0.0f;
+
+    private void Start()
+    {
+        if (!knifeExist)
+        {
+            if (knifeIsEquipped) { knifeExist = true; } else { knifeExist = false; }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Update()
     {

@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RewolwerScript : MonoBehaviour
+public class RewolwerScript : LoadWeapon
 {
     public ItemObject rewolwer;
     public Animator animator;
     public bool canPickup = true;
     public bool isEquipped = false;
-    public FixedJoystick attackJoystick;
     public Sprite oldSprite;
     public Sprite newSprite;
     private float attackCooldown = 0.0f;
@@ -16,6 +15,18 @@ public class RewolwerScript : MonoBehaviour
     public Transform shootingPoint;
     public GameObject bulletPrefab;
 
+
+    private void Start()
+    {
+        if (!rewolwerExist)
+        {
+            if (rewolwerIsEquipped) { rewolwerExist = true; } else { rewolwerExist = false; }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Update()
     {
         if (isEquipped)
