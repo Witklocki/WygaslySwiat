@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Animator animator;
     public FixedJoystick moveJoystick;
-    public FixedJoystick attackJoystick;
+    //public FixedJoystick attackJoystick;
     public Rigidbody rb;
     public Map map;
     public PlayerObject player;
@@ -112,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
             // Assuming you have only one AttackJoystick, you might need to adjust this logic if there are multiple
             if (attackJoysticks.Length > 0)
             {
-                attackJoystick = attackJoysticks[0];
+                //attackJoystick = attackJoysticks[0];
             }
             else
             {

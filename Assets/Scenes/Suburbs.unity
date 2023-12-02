@@ -3167,6 +3167,7 @@ MonoBehaviour:
   attackJoystick: {fileID: 0}
   inventory: {fileID: 11400000, guid: 99d6878d393df8545b58d96475496acc, type: 2}
   playerMovement: {fileID: 1187165177}
+  dropObject: {fileID: 0}
 --- !u!136 &1187165173
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3284,7 +3285,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1187165176}
   moveJoystick: {fileID: 1271800443}
-  attackJoystick: {fileID: 745873625}
   rb: {fileID: 1187165174}
   map: {fileID: 113212479}
   player: {fileID: 11400000, guid: 3bdb7796a224c6f418817ea71083e583, type: 2}
@@ -4992,7 +4992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deaf4f7835930e9489481c837dbd994d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 1
+  sceneIndex: 2
 --- !u!1001 &1826838698
 PrefabInstance:
   m_ObjectHideFlags: 0
