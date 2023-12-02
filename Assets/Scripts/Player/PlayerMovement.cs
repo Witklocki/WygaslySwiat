@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerObject player;
     public float groundDrag;
     public GameObject equippedWeaponSlot;
+    public HealthBar healthBar;
     // Ensure only one player is created
 
     private static bool playerCreated = false;
@@ -37,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        healthBar.SetMaxHealth(player.maxHealth);
+
         if (!playerCreated)
         {
             if (map.IsUnityNull())
@@ -45,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             rb = GetComponent<Rigidbody>();
-            player.healthPoint = 26;
+            player.healthPoint = player.maxHealth;
             playerCreated = true;
         }
         else
@@ -81,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
         }
         if (scene.name == "SavePlace") // Replace "YourPlayerScene" with the actual scene name where the player is present
         {
-
             StartCoroutine(SetPlayerPosition());
             FindAndAssignJoystick<FixedJoystick>(ref moveJoystick, "MoveJoystick");
             FindAndAssignMap<Map>("YourMapName");
@@ -108,6 +110,8 @@ public class PlayerMovement : MonoBehaviour
             }
             // Find the AttackJoystick within the Canvas
             FixedJoystick[] attackJoysticks = canvas.GetComponentsInChildren<FixedJoystick>();
+            
+            
 
             // Assuming you have only one AttackJoystick, you might need to adjust this logic if there are multiple
             if (attackJoysticks.Length > 0)
@@ -118,6 +122,18 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.LogWarning("AttackJoystick not found in the Canvas.");
             }
+
+            HealthBar tmpHealthBars = canvas.GetComponentInChildren<HealthBar>();
+
+            if (tmpHealthBars != null)
+            {
+                healthBar = tmpHealthBars;
+            }
+            else
+            {
+                Debug.LogWarning("Health bar not found in the Canvas.");
+            }
+
         }
         else
         {
@@ -147,9 +163,16 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        healthBar.SetHealth(player.healthPoint);
+
+        if (player.healthPoint <= 0)
+        {
+            PlayerIsDead();
+        }
 
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         PlayerSpeedControll();
+
         if (grounded)
         {
             rb.drag = groundDrag;
@@ -245,6 +268,13 @@ public class PlayerMovement : MonoBehaviour
             Vector3 limitedVel = flatVelocity.normalized * player.moveSpeed;
             rb.velocity = new Vector3(limitedVel.x,rb.velocity.y, limitedVel.z);
         }
+    }
+
+    void PlayerIsDead()
+    {
+        SceneManager.LoadScene("SavePlace",LoadSceneMode.Single);
+        player.healthPoint = player.maxHealth;
+        Instantiate(gameObject);
     }
 
 }
