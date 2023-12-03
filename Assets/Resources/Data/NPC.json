@@ -1,0 +1,28 @@
+{
+  "npc": [
+    {
+      "id": 0,
+      "name": "Tao Fang",
+      "isSaved": false,
+      "canFollow": false
+    },
+    {
+      "id": 1,
+      "name": "Neal Howell",
+      "isSaved": false,
+      "canFollow": false
+    },
+    {
+      "id": 2,
+      "name": "Dimitri Naumov",
+      "isSaved": false,
+      "canFollow": false
+    },
+    {
+      "id": 3,
+      "name": "Cole Silva",
+      "isSaved": false,
+      "canFollow": false
+    }
+  ]
+}

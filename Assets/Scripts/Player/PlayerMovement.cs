@@ -34,12 +34,13 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     bool grounded;
 
+    [SerializeField] DB dataBase;
+
 
 
     private void Start()
     {
-        healthBar.SetMaxHealth(player.maxHealth);
-
+        SetHealth();
         if (!playerCreated)
         {
             if (map.IsUnityNull())
@@ -80,13 +81,17 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(SetPlayerPosition());
             FindAndAssignJoystick<FixedJoystick>(ref moveJoystick, "MoveJoystick");
             FindAndAssignMap<Map>("YourMapName");
-
+            dataBase.npcSavingInProgres = false;
         }
         if (scene.name == "SavePlace") // Replace "YourPlayerScene" with the actual scene name where the player is present
         {
             StartCoroutine(SetPlayerPosition());
             FindAndAssignJoystick<FixedJoystick>(ref moveJoystick, "MoveJoystick");
             FindAndAssignMap<Map>("YourMapName");
+            if (dataBase.npcSavingInProgres)
+            {
+                dataBase.NPCList.npcIsSaved();
+            }
         }
     }
     private void FindAndAssignJoystick<T>(ref T joystick, string joystickName) where T : FixedJoystick
@@ -128,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
             if (tmpHealthBars != null)
             {
                 healthBar = tmpHealthBars;
+                SetHealth();
             }
             else
             {
@@ -274,7 +280,13 @@ public class PlayerMovement : MonoBehaviour
     {
         SceneManager.LoadScene("SavePlace",LoadSceneMode.Single);
         player.healthPoint = player.maxHealth;
+        SetHealth();
         Instantiate(gameObject);
+    }
+
+    void SetHealth()
+    {
+        healthBar.SetMaxHealth(player.maxHealth);
     }
 
 }

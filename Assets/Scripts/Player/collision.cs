@@ -8,9 +8,11 @@ public class collision : LoadWeapon
 {
     public InventoryObject inventory;
     public PlayerMovement playerMovement;
+    public DropObject dropObject;
+
     private WeaponParent weaponParent;
     private GameObject weaponToSpawn;
-    public DropObject dropObject;
+    [SerializeField] DB dataBase;
 
     private void Start()
     {
@@ -63,6 +65,10 @@ public class collision : LoadWeapon
             case "Drop":
                 dropObject += other.gameObject.GetComponent<GenerateDropData>().GetDrop();
                 other.gameObject.GetComponent<GenerateDropData>().PickedUp();
+                break;
+            case "House":
+                dataBase.npcSavingInProgres = true;
+                print("XDDDDD");
                 break;
             case "WeaponPickup":
                 var knife = other.gameObject.GetComponent<KnifeScript>();

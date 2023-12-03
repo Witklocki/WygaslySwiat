@@ -2731,6 +2731,7 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: 99d6878d393df8545b58d96475496acc, type: 2}
   playerMovement: {fileID: 1064111826}
   dropObject: {fileID: 11400000, guid: 68982f5c388b5cd4884a819bca421163, type: 2}
+  dataBase: {fileID: 1402525895}
 --- !u!136 &1064111822
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2848,7 +2849,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1064111825}
   moveJoystick: {fileID: 1038169096}
-  attackJoystick: {fileID: 0}
   rb: {fileID: 1064111823}
   map: {fileID: 337140630}
   player: {fileID: 11400000, guid: 3bdb7796a224c6f418817ea71083e583, type: 2}
@@ -2863,6 +2863,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
+  dataBase: {fileID: 1402525895}
 --- !u!4 &1064111827
 Transform:
   m_ObjectHideFlags: 0
@@ -2877,6 +2878,7 @@ Transform:
   m_Children:
   - {fileID: 824523392}
   - {fileID: 826657379}
+  - {fileID: 1402525894}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
@@ -3914,6 +3916,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6281221165105953203, guid: 84f23ae11b1b0414a9aa80fcfab50062, type: 3}
   m_PrefabInstance: {fileID: 6281221164318980578}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1402525893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1402525894}
+  - component: {fileID: 1402525895}
+  m_Layer: 8
+  m_Name: DBController
+  m_TagString: DBController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1402525894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402525893}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1064111827}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1402525895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402525893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f1073aba8713a4c9260e8412833896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPCList: {fileID: 0}
+  npcSavingInProgres: 0
 --- !u!1 &1456537773
 GameObject:
   m_ObjectHideFlags: 0
