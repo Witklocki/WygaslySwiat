@@ -72,7 +72,7 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player").transform;
 
-        playerObject = Resources.Load<PlayerObject>("Assets/Scripts/Player/PlayerData");
+        playerObject = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().player;
         rb.freezeRotation = true;
         navMeshAgent.updateRotation = false;
 

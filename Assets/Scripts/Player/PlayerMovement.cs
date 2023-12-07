@@ -40,6 +40,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        player.readJson();
+        Debug.Log(player.maxHealth);
+
         SetHealth();
         if (!playerCreated)
         {
