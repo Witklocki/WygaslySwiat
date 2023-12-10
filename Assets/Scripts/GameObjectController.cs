@@ -19,6 +19,7 @@ public class GameObjectController : MonoBehaviour
     void Start()
     {
         //wyci¹ganie max enemy z mapData
+        enemyCounter = 0;
         maxEnemysOnMap = (int)GameObject.FindObjectOfType<Map>().map.maxEnemy;
         enemyList = new List<GameObject>();
         playerPosition = GameObject.FindWithTag("Player").transform;
@@ -61,7 +62,7 @@ public class GameObjectController : MonoBehaviour
     {
 
         int number = Random.Range(0, 100);
-        if (number < 100)
+        if (number < 85)
         {
             return Instantiate(enemyNormal, RandomPointGenerator.RandomPointGenerate(playerPosition.position, 100), Quaternion.identity);
         }

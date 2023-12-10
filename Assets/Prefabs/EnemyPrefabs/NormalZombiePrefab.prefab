@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 20
   debug_bool: 1
+  isBoomer: 0
   dropPrefab: {fileID: 9172233093204734577, guid: 1602f24e4a733bc4bb6db3a88a95a0aa, type: 3}
   animator: {fileID: 6189525079039432172}
   enemy: {fileID: 11400000, guid: d2c5cf31b6023ce46bc90703902ffef7, type: 2}
@@ -111,6 +112,8 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   playerObject: {fileID: 11400000, guid: 3bdb7796a224c6f418817ea71083e583, type: 2}
   attackCircle: {fileID: -2413806693520163455, guid: 609a98402a16df54088632e0cd7fe851, type: 3}
+  normalZombieAnim: {fileID: 9100000, guid: ca1b02cdd4298f54fb660fc6f3e2ead8, type: 2}
+  boomerAnim: {fileID: 9100000, guid: e19c2835626b85944931c7730874cf16, type: 2}
   startWaitTime: 4
   playerMask:
     serializedVersion: 2

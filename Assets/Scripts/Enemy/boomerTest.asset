@@ -17,8 +17,8 @@ MonoBehaviour:
   healthMultiplayer: 1
   attack: 5
   attackMultiplayer: 1
-  moveSpeed: 2.5
-  runSpeed: 3
+  moveSpeed: 2
+  runSpeed: 2.8
   viewRadius: 12.5
   viewAngle: 360
   type: 2

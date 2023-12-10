@@ -9,6 +9,7 @@ namespace PlayerDataModel
 {
     public class PlayerDataObject
     {
+        public int id;
         public float healthPoint;
         public float maxHealth;
         public float attack;

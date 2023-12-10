@@ -37,13 +37,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] DB dataBase;
 
 
+    private void Awake()
+    {
+        player.readJson();
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
         player.readJson();
-        Debug.Log(player.maxHealth);
 
-        SetHealth();
         if (!playerCreated)
         {
             if (map.IsUnityNull())
@@ -60,11 +63,6 @@ public class PlayerMovement : MonoBehaviour
             // If playerCreated is true, destroy the duplicate player
             Destroy(gameObject);
         }
-    }
-
-    private void Awake()
-    {
-        DontDestroyOnLoad (gameObject);
     }
 
     private void OnEnable()
@@ -190,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
-        
+
     }
 
     private void FixedUpdate()
@@ -289,7 +287,10 @@ public class PlayerMovement : MonoBehaviour
 
     void SetHealth()
     {
-        healthBar.SetMaxHealth(player.maxHealth);
+        if (healthBar != null )
+        {
+            healthBar.SetMaxHealth(player.maxHealth);
+        }
     }
 
 }

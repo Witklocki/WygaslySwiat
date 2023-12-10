@@ -107,7 +107,7 @@ NavMeshSettings:
     serializedVersion: 2
     agentTypeID: 0
     agentRadius: 0.5
-    agentHeight: 2
+    agentHeight: 0.15
     agentSlope: 45
     agentClimb: 0.4
     ledgeDropHeight: 0
@@ -817,8 +817,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnemysOnMap: 0
-  enemyNormal: {fileID: 0}
-  enemyBoomer: {fileID: 0}
+  enemyNormal: {fileID: 1729602375143270788, guid: 7b618cf40fb5d06438d9336706c129d6, type: 3}
+  enemyBoomer: {fileID: 9069906001495587053, guid: 446d6534ce5a775498e627538ac686de, type: 3}
   enemyCounter: 0
   enemyCounterDestroyer: 0
   enemyList: []
@@ -3211,7 +3211,6 @@ MonoBehaviour:
   playerMovement: {fileID: 824269924}
   dropObject: {fileID: 11400000, guid: 68982f5c388b5cd4884a819bca421163, type: 2}
   dataBase: {fileID: 1662041107}
-  upgradeMenu: {fileID: 972147673}
 --- !u!136 &824269920
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3334,7 +3333,7 @@ MonoBehaviour:
   player: {fileID: 11400000, guid: 3bdb7796a224c6f418817ea71083e583, type: 2}
   groundDrag: 10
   equippedWeaponSlot: {fileID: 1758356707}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 1453173993}
   direction: {x: 0, y: 0, z: 0}
   circleRadius: 0.3
   weaponHeight: 0.5

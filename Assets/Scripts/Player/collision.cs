@@ -13,14 +13,9 @@ public class collision : LoadWeapon
     private WeaponParent weaponParent;
     private GameObject weaponToSpawn;
     [SerializeField] DB dataBase;
-    [SerializeField] ButtonWithLabel upgradeMenu;
 
     private void Start()
     {
-        if(upgradeMenu == null)
-        {
-            upgradeMenu = FindObjectOfType<Canvas>().GetComponent<ButtonWithLabel>();
-        }
         //inventory.ClearWeaponInventory();
         //StartCoroutine(DebugTempDetectedWeapon());
     }
@@ -52,23 +47,6 @@ public class collision : LoadWeapon
         {
             case "Exit":
                 print("Emtry Exit");
-                break;
-            case "lab":
-                print("Emtry lab");
-                if (upgradeMenu == null)
-                {
-                    upgradeMenu = FindObjectOfType<Canvas>().GetComponent<ButtonWithLabel>();
-                }
-                upgradeMenu.enabled = true;
-                break;
-            case "storage":
-                print("Emtry storage");
-                break;
-            case "armory":
-                print("Emtry armory");
-                break;
-            case "savedPeople":
-                print("Emtry savedPeople");
                 break;
             case "Fence":
                 break;
