@@ -52,7 +52,6 @@ public class NPCAIScript : MonoBehaviour
     {
         transform.localEulerAngles = new Vector3(45, 0, 0);
         Patroling();
-
         navMeshAgent.SetDestination(nextPosition);
 
     }

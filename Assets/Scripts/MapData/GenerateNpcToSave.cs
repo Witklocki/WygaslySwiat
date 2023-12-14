@@ -15,28 +15,42 @@ public class GenerateNpcToSave : MonoBehaviour
 
     public int npcIndex;
 
-
+    private List<int> modifiedHouseIndices = new List<int>();
     private void Start()
     {
-        housesList = GameObject.FindGameObjectsWithTag("House");
-        if (dataBase.NPCList.generateNotSavedNPC() != -1)
-        {
-            int index = Random.Range(0, housesList.Length - 1);
-            SpriteRenderer spriteRenderer = housesList[index].GetComponentInChildren<SpriteRenderer>();
+        Debug.Log(dataBase.NPCList.data.npc.Length);
 
-            if (spriteRenderer != null)
-            {
-                spriteRenderer.sprite = houseWithLight;
-                BoxCollider box;
-                box = housesList[index].AddComponent<BoxCollider>();
-                box.isTrigger = true;
-                box.center = new Vector3(-0.000175941f, 0.2292919f, 0.07555886f);
-                box.size = new Vector3(0.6f, 0.5f, 0.6f);
-            }
-        }
-        else
+        housesList = GameObject.FindGameObjectsWithTag("House");
+
+        for (int i = 0; i < dataBase.NPCList.data.npc.Length; i++)
         {
-            Debug.Log("Nie ma");
+            if (!dataBase.NPCList.data.npc[i].isSaved) 
+            {
+                if (dataBase.NPCList.generateNotSavedNPC() != -1)
+                {
+                    int index;
+                    do
+                    { 
+                        index = Random.Range(0, housesList.Length - 1); 
+                    } while (modifiedHouseIndices.Contains(index));
+
+                    SpriteRenderer spriteRenderer = housesList[index].GetComponentInChildren<SpriteRenderer>();
+                    if (spriteRenderer != null)
+                    {
+                        spriteRenderer.sprite = houseWithLight;
+                        modifiedHouseIndices.Add(index);
+                        BoxCollider box;
+                        box = housesList[index].AddComponent<BoxCollider>();
+                        box.isTrigger = true;
+                        box.center = new Vector3(-0.000175941f, 0.2292919f, 0.07555886f);
+                        box.size = new Vector3(0.6f, 0.5f, 0.6f);
+                    }
+                }
+                else
+                {
+                    Debug.Log("Nie ma");
+                }
+            } 
         }
     }
 
