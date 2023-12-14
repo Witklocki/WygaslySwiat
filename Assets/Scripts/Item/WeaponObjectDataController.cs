@@ -74,6 +74,7 @@ public class WeaponObjectDataController : ScriptableObject
 
     public void unlockWeapon(int id)
     {
+       Debug.Log(id);
        for (int i = 0; i < weaponObject.weapons.Length; i++)
         {
             if (weaponObject.weapons[i].id == id)
