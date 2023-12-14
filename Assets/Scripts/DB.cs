@@ -22,7 +22,7 @@ public class DB : MonoBehaviour
         weaponObject = new WeaponObjectDataController();
         for (int i = 0; i < weaponObject.weaponObject.weapons.Length; i++)
         {
-            print(weaponObject.weaponObject.weapons[i].name);
+            print(weaponObject.weaponObject.weapons[i].basicElement);
         }
     }
 }
