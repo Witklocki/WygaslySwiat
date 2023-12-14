@@ -49,6 +49,7 @@ public class KnifeScript : LoadWeapon
 
     void PlayerAttack()
     {
+        animator = GetComponentInParent<Animator>();
         Debug.Log("KnifeAttack");
         animator.SetTrigger("KnifeAttack");
     }

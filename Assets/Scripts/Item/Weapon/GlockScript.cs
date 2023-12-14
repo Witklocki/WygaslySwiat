@@ -59,7 +59,7 @@ public class GlockScript : LoadWeapon
 
     void PlayerAttack()
     {
-
+        animator = GetComponentInParent<Animator>();
         Debug.Log("GlockAttack");
         animator.SetTrigger("GlockAttack");
         SpriteRenderer childSpriteRenderer = GetComponentInChildren<SpriteRenderer>();

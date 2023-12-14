@@ -47,6 +47,7 @@ public class CrowbarScript : LoadWeapon
 
     void PlayerAttack()
     {
+        animator = GetComponentInParent<Animator>();
         Debug.Log("CrowbarAttack");
         animator.SetTrigger("CrowbarAttack");
     }

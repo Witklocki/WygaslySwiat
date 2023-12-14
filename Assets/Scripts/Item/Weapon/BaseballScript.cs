@@ -25,6 +25,7 @@ public class BaseballScript : LoadWeapon
         {
             Destroy(gameObject);
         }
+
     }
     private void Update()
     {
@@ -56,10 +57,11 @@ public class BaseballScript : LoadWeapon
 
     void PlayerAttack()
     {
-
+        animator = GetComponentInParent<Animator>();
+        BoxCollider baseballBox = GetComponent<BoxCollider>();
+        baseballBox.enabled = true;
         isAttacking = true;
         animator.SetTrigger("BaseballAttack");
-
     }
 
     private void OnTriggerEnter(Collider other)
