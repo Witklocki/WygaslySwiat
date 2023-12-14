@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 81bfa2f2316c36041a13c788d04cc859, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7714103779067982220}
   - component: {fileID: 1981260090108175309}
   - component: {fileID: 4599827004906064596}
+  - component: {fileID: 1471229490}
   m_Layer: 0
   m_Name: Crowbar
   m_TagString: WeaponPickup
@@ -145,5 +146,22 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.1940956, z: 1.2272161}
-  m_Center: {x: 0, y: 0.09704731, z: 0.3025439}
+  m_Size: {x: 0.99991035, y: 0.83179545, z: 1.2272161}
+  m_Center: {x: 0.46848488, y: 0.4512739, z: 0.30254394}
+--- !u!114 &1471229490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7714103779067982221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba2f54419ad7b642bd9d0407a4e73fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackJoystick: {fileID: 0}
+  crowbar: {fileID: 11400000, guid: 6057ff87d06c1cd46824cab3fefffe4e, type: 2}
+  animator: {fileID: 0}
+  canPickup: 1
+  isEquipped: 0

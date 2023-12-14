@@ -3,25 +3,25 @@
     {
       "id": 0,
       "name": "Tao Fang",
-      "isSaved": true,
+      "isSaved": false,
       "canFollow": false
     },
     {
       "id": 1,
       "name": "Neal Howell",
-      "isSaved": true,
+      "isSaved": false,
       "canFollow": false
     },
     {
       "id": 2,
       "name": "Dimitri Naumov",
-      "isSaved": true,
+      "isSaved": false,
       "canFollow": false
     },
     {
       "id": 3,
       "name": "Cole Silva",
-      "isSaved": true,
+      "isSaved": false,
       "canFollow": false
     }
   ]
