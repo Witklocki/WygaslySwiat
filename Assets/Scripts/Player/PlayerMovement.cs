@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public float groundDrag;
     public GameObject equippedWeaponSlot;
     public HealthBar healthBar;
+    public DropObjectController dropObject;
+
     // Ensure only one player is created
 
     private static bool playerCreated = false;
@@ -83,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
             FindAndAssignJoystick<FixedJoystick>(ref moveJoystick, "MoveJoystick");
             FindAndAssignMap<Map>("YourMapName");
             dataBase.npcSavingInProgres = false;
+            dropObject = new DropObjectController(0,0,0,0);
         }
         if (scene.name == "SavePlace") // Replace "YourPlayerScene" with the actual scene name where the player is present
         {

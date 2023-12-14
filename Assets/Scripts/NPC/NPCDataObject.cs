@@ -30,7 +30,7 @@ public class NPCList : MonoBehaviour
     public NPCData data;
     public int npcIndex;
 
-    private string fileName = "Assets/Resources/Data/NPC.json";
+    private static readonly string fileName = "Assets/Resources/Data/NPC.json";
 
     public NPCList()
     {

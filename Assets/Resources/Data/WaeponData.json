@@ -1,0 +1,15 @@
+{
+  "weapons": [
+    {
+      "id": 0,
+      "name": "test",
+      "isUnlocked": false,
+      "price": {
+        "commonElement": 0,
+        "basicElement": 0,
+        "rareElemnt": 0,
+        "elitElemnts": 0
+      }
+    }
+  ]
+}

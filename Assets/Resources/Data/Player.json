@@ -1,6 +1,6 @@
 {
     "id": 1,
-    "healthPoint": 200.0,
+    "healthPoint": 192.0,
     "maxHealth": 200.0,
     "attack": 40.0,
     "moveSpeed": 3.5,

@@ -3209,7 +3209,6 @@ MonoBehaviour:
   attackJoystick: {fileID: 0}
   inventory: {fileID: 11400000, guid: 99d6878d393df8545b58d96475496acc, type: 2}
   playerMovement: {fileID: 824269924}
-  dropObject: {fileID: 11400000, guid: 68982f5c388b5cd4884a819bca421163, type: 2}
   dataBase: {fileID: 1662041107}
 --- !u!136 &824269920
 CapsuleCollider:
@@ -3334,6 +3333,7 @@ MonoBehaviour:
   groundDrag: 10
   equippedWeaponSlot: {fileID: 1758356707}
   healthBar: {fileID: 1453173993}
+  dropObject: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
   circleRadius: 0.3
   weaponHeight: 0.5
@@ -6577,6 +6577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCList: {fileID: 0}
   npcSavingInProgres: 0
+  playerDrops: {fileID: 11400000, guid: 68982f5c388b5cd4884a819bca421163, type: 2}
 --- !u!4 &1662041108
 Transform:
   m_ObjectHideFlags: 0

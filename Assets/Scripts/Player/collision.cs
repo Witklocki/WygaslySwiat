@@ -8,7 +8,6 @@ public class collision : LoadWeapon
 {
     public InventoryObject inventory;
     public PlayerMovement playerMovement;
-    public DropObject dropObject;
 
     private WeaponParent weaponParent;
     private GameObject weaponToSpawn;
@@ -46,12 +45,13 @@ public class collision : LoadWeapon
         switch (tag)
         {
             case "Exit":
+                dataBase.playerDrops.incrementAtExit(playerMovement.dropObject.dropObj);
                 print("Emtry Exit");
                 break;
             case "Fence":
                 break;
             case "Drop":
-                dropObject += other.gameObject.GetComponent<GenerateDropData>().GetDrop();
+                playerMovement.dropObject.dropObj += other.gameObject.GetComponent<GenerateDropData>().GetDrop();
                 other.gameObject.GetComponent<GenerateDropData>().PickedUp();
                 break;
             case "House":
