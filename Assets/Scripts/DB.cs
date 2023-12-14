@@ -20,9 +20,5 @@ public class DB : MonoBehaviour
         NPCList = new NPCList();
         playerDrops = new DropObjectController();
         weaponObject = new WeaponObjectDataController();
-        for (int i = 0; i < weaponObject.weaponObject.weapons.Length; i++)
-        {
-            print(weaponObject.weaponObject.weapons[i].basicElement);
-        }
     }
 }

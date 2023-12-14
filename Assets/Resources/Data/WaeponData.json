@@ -3,7 +3,7 @@
         {
             "id": 0,
             "name": "Baseboll",
-            "isUnlocker": true,
+            "isUnlocker": false,
             "price": {
                 "commonElement": 25,
                 "basicElement": 10,
@@ -69,7 +69,7 @@
         {
             "id": 6,
             "name": "Rewolwer",
-            "isUnlocker": true,
+            "isUnlocker": false,
             "price": {
                 "commonElement": 25,
                 "basicElement": 10,
