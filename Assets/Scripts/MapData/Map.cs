@@ -5,30 +5,48 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     public MapData map;
-    [SerializeField] DB dataBase;
+    NPCList NPCList;
+    WeaponObjectDataController weaponObjectDataController;
+    [SerializeField] List<GameObject> npcPrefab;
+    [SerializeField] List <GameObject> weaponPrefab;
 
     private void Start()
     {
+        NPCList = new NPCList();
+        weaponObjectDataController = new WeaponObjectDataController();
+
         if(map.name == "SavePlace")
         {
             GenerateSavedNPC();
+            GenerateWeapon();
         }
         
     }
 
     private void Update()
     {
-        
+
     }
 
 
    public void GenerateSavedNPC()
     {
-        for (int i = 0; i < dataBase.NPCList.data.npc.Length; i++)
+        for (int i = 0; i < NPCList.data.npc.Length; i++)
         {
-            if (dataBase.NPCList.data.npc[i].isSaved)
+            if (NPCList.data.npc[i].isSaved)
             {
-                Debug.Log("Spawn " + dataBase.NPCList.data.npc[i].npcName);
+                npcPrefab[i].gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void GenerateWeapon()
+    {
+        for (int i = 0; i < weaponObjectDataController.weaponObject.weapons.Length ;i++)
+        {
+            if (weaponObjectDataController.weaponObject.weapons[i].isUnlocker)
+            {
+                weaponPrefab[i].gameObject.SetActive(true);
             }
         }
     }
