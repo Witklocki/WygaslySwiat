@@ -13,13 +13,9 @@ namespace NPCModel
         public string npcName;
         public bool isSaved;
         public bool canFollow;
-        public DialogueItem[] dialogue;
+        public string[] dialogue;
     }
-    public class DialogueItem
-    {
-        public string key;
-        public string value;
-    }
+
 
     [Serializable]
     public class NPCData
@@ -30,10 +26,10 @@ namespace NPCModel
 }
 
 
-
 public class NPCList : MonoBehaviour
 {
     public NPCData data;
+
     public int npcIndex;
 
     private static readonly string fileName = "Assets/Resources/Data/NPC.json";

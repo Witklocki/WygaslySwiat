@@ -12,15 +12,12 @@ public class NealScript : MonoBehaviour
     public GameObject dialoguePanel;
     public GameObject continueButton;
     public TextMeshProUGUI dialogueText;
-    public string[] dialogue;
     public float speed = 0.05f;
-    public bool endDialogue = false;
     [SerializeField] DB dataBase;
-    private int index = 0;
-    private int NPCindex = 0;
+    private int dialogueIndex;
+    private int npcIndex;
     private NPCAIScript npcAI;
-
-
+    private string stringToPrint;
     void Start()
     {
         dialogueText.text = "";
@@ -31,10 +28,9 @@ public class NealScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log(dataBase.NPCList.data.npc[0].dialogue[1].ToString());
-
+            //print(stringToPrint.ToString());
+            ChooseDialog(0, 2);
             npcAI.isPatrol = false;
-            endDialogue = false;
             if (!dialoguePanel.activeInHierarchy)
             {
                 dialoguePanel.SetActive(true);
@@ -49,7 +45,6 @@ public class NealScript : MonoBehaviour
     public void ClearTextField()
     {
         dialogueText.text = "";
-        index = 0;
         dialoguePanel.SetActive(false);
 
     }
@@ -57,28 +52,24 @@ public class NealScript : MonoBehaviour
     {
         continueButton.SetActive(false);
 
-        if (index < dialogue.Length - 1)
-        {
-            index++;
-            dialogueText.text = "";
-            StartCoroutine(Typing());
-        }
-        else
-        {
-            endDialogue = true;
-            ClearTextField();
-        }
-
+        dialogueText.text = "";
+        ClearTextField();
     }
     IEnumerator Typing()
     {
-        foreach(char letter in dataBase.NPCList.data.npc[NPCindex].dialogue[index+1].ToString().ToCharArray())
+        dialogueText.text = "";
+        foreach(char letter in stringToPrint.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(speed);
         }
         continueButton.SetActive(true);
-
     }
+    private void ChooseDialog(int npcIdx , int dialogueIdx)
+    {
+        npcIndex = npcIdx;
+        dialogueIndex = dialogueIdx;
 
+        stringToPrint = dataBase.NPCList.data.npc[npcIndex].dialogue[dialogueIndex];
+    }
 }

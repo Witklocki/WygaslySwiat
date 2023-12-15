@@ -6,21 +6,13 @@
       "isSaved": false,
       "canFollow": false,
       "dialogue": [
-        { "1": "Hi" },
-        { "2": "Thank your for saving me" },
-        { "3": "Please let me do my job..." },
-        {
-          "4": "This seems like the perfect place to start researching the cure, but I can't collect the items myself. Could you do something for me? I need the tools that are necessary for my research. Will you arrange them for me?"
-        },
-        {
-          "5": "Good, now what I need you to do is find a sample of these creatures' blood. I will examine it in order to find cure."
-        },
-        {
-          "6": "You got it? Perfect! I'll analyze it now, but i propose we do not waste time and in the meantime you can bring me a set of chemicals?"
-        },
-        {
-          "7": "Thank you. I do not think there is much left for me to finish my research. While I will be working here, please find the syringes, we will need them in order to test the cure on those beasts."
-        }
+        "Hi",
+        "Thank your for saving me",
+        "Please let me do my job...",
+        "This seems like the perfect place to start researching the cure, but I can't collect the items myself. Could you do something for me? I need the tools that are necessary for my research. Will you arrange them for me?",
+        "Good, now what I need you to do is find a sample of these creatures' blood. I will examine it in order to find cure.",
+        "You got it? Perfect! I'll analyze it now, but i propose we do not waste time and in the meantime you can bring me a set of chemicals?",
+        "Thank you. I do not think there is much left for me to finish my research. While I will be working here, please find the syringes, we will need them in order to test the cure on those beasts."
       ]
     },
     {
@@ -29,13 +21,9 @@
       "isSaved": false,
       "canFollow": false,
       "dialogue": [
-        { "1": "Hello" },
-        {
-          "2": "I am eternally grateful to you. I will repay you for what you did for me."
-        },
-        {
-          "3": "If you need more health, you can always go to lab. I will provide you with the best care I can, and in fact... the only you can currently get... "
-        }
+        "Hello",
+        "I am eternally grateful to you. I will repay you for what you did for me.",
+        "If you need more health, you can always go to lab. I will provide you with the best care I can, and in fact... the only you can currently get... "
       ]
     },
     {
@@ -44,13 +32,9 @@
       "isSaved": false,
       "canFollow": false,
       "dialogue": [
-        { "1": "Huh?! Who is there?" },
-        {
-          "2": "Oh, are you here to save me? I am doing fine, but I think I could use some company."
-        },
-        {
-          "3": "Hey you, if you need a new weapon go to armoury, I will provide you with the best weapons in this county ... for a small fee, of course."
-        }
+        "Huh?! Who is there?",
+        "Oh, are you here to save me? I am doing fine, but I think I could use some company.",
+        "Hey you, if you need a new weapon go to armoury, I will provide you with the best weapons in this county ... for a small fee, of course."
       ]
     },
     {
@@ -58,11 +42,7 @@
       "name": "Cole Silva",
       "isSaved": false,
       "canFollow": false,
-      "dialogue": [
-        { "1": "Hi" },
-        { "2": "How nice of you to come for me." },
-        { "3": "" }
-      ]
+      "dialogue": ["Hi", "How nice of you to come for me.", ""]
     }
   ]
 }
