@@ -131,11 +131,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7051d38d1f6cd344b8a976ccc7a4292e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackJoystick: {fileID: 0}
   glock: {fileID: 11400000, guid: e8232d06c8c468c42854763bccfbfc05, type: 2}
   animator: {fileID: 0}
   canPickup: 1
   isEquipped: 0
-  attackJoystick: {fileID: 0}
+  oldSprite: {fileID: 0}
+  newSprite: {fileID: 0}
+  shootingPoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}
 --- !u!65 &8460070767657299973
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -147,8 +151,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58051014, y: 0.577703, z: 1.0673318}
-  m_Center: {x: -0.020760536, y: -0.005176113, z: 0.19848989}
+  m_Size: {x: 0.5930786, y: 0.577703, z: 1.0673318}
+  m_Center: {x: 0.29089355, y: -0.005176134, z: 0.19848989}
 --- !u!54 &6040387242814511041
 Rigidbody:
   m_ObjectHideFlags: 0

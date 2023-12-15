@@ -47,6 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07fec2ddd89fbc848b67e7c8c659a3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackJoystick: {fileID: 0}
+  mp5: {fileID: 0}
+  animator: {fileID: 0}
+  canPickup: 1
+  isEquipped: 0
+  oldSprite: {fileID: 0}
+  newSprite: {fileID: 0}
+  shootingPoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}
 --- !u!54 &372333789041291365
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -74,8 +83,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.8583069, y: 0.7228963, z: 1}
+  m_Center: {x: 0.47113037, y: -0.012204676, z: 1.441558e-10}
 --- !u!1 &6913196502554692292
 GameObject:
   m_ObjectHideFlags: 0

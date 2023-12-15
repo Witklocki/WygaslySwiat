@@ -51,14 +51,13 @@ public class NPCAIScript : MonoBehaviour
     void Update()
     {
         transform.localEulerAngles = new Vector3(45, 0, 0);
-        Patroling();
+        if (isPatrol) { Patroling(); }
         navMeshAgent.SetDestination(nextPosition);
 
     }
     void Move(float speed)
     {
         navMeshAgent.isStopped = false;
-
 
         navMeshAgent.speed = speed;
     }

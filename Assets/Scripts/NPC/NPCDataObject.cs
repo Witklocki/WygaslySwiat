@@ -13,6 +13,12 @@ namespace NPCModel
         public string npcName;
         public bool isSaved;
         public bool canFollow;
+        public DialogueItem[] dialogue;
+    }
+    public class DialogueItem
+    {
+        public string key;
+        public string value;
     }
 
     [Serializable]

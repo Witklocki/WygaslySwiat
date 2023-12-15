@@ -46,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6027384, y: 0.7106266, z: 1.2520273}
-  m_Center: {x: 0.0131697655, y: 0.035131566, z: 0.12601365}
+  m_Size: {x: 0.7891998, y: 0.7106266, z: 1.2520273}
+  m_Center: {x: 0.3069229, y: 0.035131566, z: 0.12601365}
 --- !u!54 &5435695372388716415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -76,7 +76,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9663499b562216e49be73c59d23ee451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackJoystick: {fileID: 0}
   rewolwer: {fileID: 11400000, guid: cac38c5cf90228449831df620ef513cd, type: 2}
+  animator: {fileID: 0}
+  canPickup: 1
+  isEquipped: 0
+  oldSprite: {fileID: 0}
+  newSprite: {fileID: 0}
+  shootingPoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}
 --- !u!1 &5435695372612839354
 GameObject:
   m_ObjectHideFlags: 0
