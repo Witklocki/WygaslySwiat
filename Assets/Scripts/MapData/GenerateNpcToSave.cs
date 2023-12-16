@@ -13,7 +13,7 @@ public class GenerateNpcToSave : MonoBehaviour
 
     public BoxCollider boxCollider;
 
-    public int npcIndex;
+    public List<int> npcIndex;
 
     private List<int> modifiedHouseIndices = new List<int>();
     private void Start()
@@ -26,8 +26,8 @@ public class GenerateNpcToSave : MonoBehaviour
         {
             if (!dataBase.NPCList.data.npc[i].isSaved) 
             {
-                if (dataBase.NPCList.generateNotSavedNPC() != -1)
-                {
+                npcIndex = dataBase.NPCList.generateNotSavedNPC();
+
                     int index;
                     do
                     { 
@@ -45,11 +45,7 @@ public class GenerateNpcToSave : MonoBehaviour
                         box.center = new Vector3(-0.000175941f, 0.2292919f, 0.07555886f);
                         box.size = new Vector3(0.6f, 0.5f, 0.6f);
                     }
-                }
-                else
-                {
-                    Debug.Log("Nie ma");
-                }
+
             } 
         }
     }

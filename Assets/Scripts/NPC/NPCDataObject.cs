@@ -1,6 +1,8 @@
 using NPCModel;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -30,7 +32,7 @@ public class NPCList : MonoBehaviour
 {
     public NPCData data;
 
-    public int npcIndex;
+    public List<int> npcIndex;
 
     private static readonly string fileName = "Assets/Resources/Data/NPC.json";
 
@@ -51,24 +53,25 @@ public class NPCList : MonoBehaviour
         File.WriteAllText(fileName, jsonString);
     }
 
-    public int generateNotSavedNPC()
+    public List<int> generateNotSavedNPC()
     {
-        int index = Random.Range(0, data.npc.Length);
-        if (!data.npc[index].isSaved)
+        for (int i = 0; i < data.npc.Length; i++)
         {
-            npcIndex = index;
-            return index;
+            if (!data.npc[i].isSaved)
+            {
+                npcIndex.Add(i);
+            }
         }
-        else
-        {
-            npcIndex = -1;
-            return -1;
-        }
+        return npcIndex;
+
     }
 
     public void npcIsSaved()
     {
-        data.npc[npcIndex].isSaved = true;
+        for (int i = 0; i < data.npc.Length; i++)
+        {
+            data.npc[i].isSaved = true;
+        }
         writeJson();
     }
 }
