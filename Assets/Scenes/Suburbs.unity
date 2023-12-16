@@ -1229,7 +1229,7 @@ GameObject:
   - component: {fileID: 126796800}
   m_Layer: 5
   m_Name: DialogueText
-  m_TagString: DialogueText
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3791,6 +3791,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8659375616507568754, guid: df278daad77e037488a0988a658a5af5, type: 3}
+      propertyPath: dataBase
+      value: 
+      objectReference: {fileID: 1662041107}
+    - target: {fileID: 8659375616507568754, guid: df278daad77e037488a0988a658a5af5, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 126796800}
+    - target: {fileID: 8659375616507568754, guid: df278daad77e037488a0988a658a5af5, type: 3}
+      propertyPath: dialoguePanel
+      value: 
+      objectReference: {fileID: 1802907439}
+    - target: {fileID: 8659375616507568754, guid: df278daad77e037488a0988a658a5af5, type: 3}
+      propertyPath: continueButton
+      value: 
+      objectReference: {fileID: 25376424}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df278daad77e037488a0988a658a5af5, type: 3}
 --- !u!4 &937992295 stripped
@@ -7011,7 +7027,7 @@ GameObject:
   - component: {fileID: 1802907441}
   m_Layer: 5
   m_Name: DialoguePanel
-  m_TagString: DialoguePanel
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

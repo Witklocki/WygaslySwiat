@@ -13,11 +13,15 @@ public class NPCDialogue : MonoBehaviour
     public GameObject continueButton;
     public TextMeshProUGUI dialogueText;
     public float speed = 0.05f;
-    [SerializeField] DB dataBase;
+    [SerializeField] public DB dataBase;
     private int dialogueIndex;
     private int npcIndex;
     private NPCAIScript npcAI;
     private string stringToPrint;
+
+    public int npcID;
+    public int npcDialogID;
+
     void Start()
     {
         dialogueText.text = "";
@@ -29,8 +33,8 @@ public class NPCDialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //print(stringToPrint.ToString());
-            ChooseDialog(0, 2);
-            npcAI.isPatrol = false;
+            ChooseDialog(npcID, npcDialogID);
+            if (npcAI !=null) { npcAI.isPatrol = false; }
             if (!dialoguePanel.activeInHierarchy)
             {
                 dialoguePanel.SetActive(true);
