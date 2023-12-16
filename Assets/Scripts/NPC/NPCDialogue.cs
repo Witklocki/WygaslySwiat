@@ -6,7 +6,7 @@ using TMPro;
 
 
 
-public class NealScript : MonoBehaviour
+public class NPCDialogue : MonoBehaviour
 {
     
     public GameObject dialoguePanel;

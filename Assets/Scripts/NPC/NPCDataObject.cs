@@ -55,6 +55,7 @@ public class NPCList : MonoBehaviour
 
     public List<int> generateNotSavedNPC()
     {
+        npcIndex = new List<int>();
         for (int i = 0; i < data.npc.Length; i++)
         {
             if (!data.npc[i].isSaved)

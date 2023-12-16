@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 25376426}
   m_Layer: 5
   m_Name: ContinueButton
-  m_TagString: Untagged
+  m_TagString: ContinueButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -974,7 +974,7 @@ MonoBehaviour:
   housesList: []
   dataBase: {fileID: 1662041107}
   boxCollider: {fileID: 0}
-  npcIndex: 0
+  npcIndex: 
 --- !u!1 &120193149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,7 +1229,7 @@ GameObject:
   - component: {fileID: 126796800}
   m_Layer: 5
   m_Name: DialogueText
-  m_TagString: Untagged
+  m_TagString: DialogueText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3113,7 +3113,7 @@ GameObject:
   - component: {fileID: 749405471}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7011,7 +7011,7 @@ GameObject:
   - component: {fileID: 1802907441}
   m_Layer: 5
   m_Name: DialoguePanel
-  m_TagString: Untagged
+  m_TagString: DialoguePanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

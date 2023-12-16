@@ -17,6 +17,10 @@ TagManager:
   - Drop
   - House
   - DBController
+  - Canvas
+  - DialoguePanel
+  - DialogueText
+  - ContinueButton
   layers:
   - Default
   - TransparentFX

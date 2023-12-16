@@ -10,7 +10,7 @@ public class GenerateNpcToSave : MonoBehaviour
 
     public GameObject[] housesList;
     [SerializeField] DB dataBase;
-
+    private NPCDialogue npcDialogue;
     public BoxCollider boxCollider;
 
     public List<int> npcIndex;
@@ -26,7 +26,7 @@ public class GenerateNpcToSave : MonoBehaviour
         {
             if (!dataBase.NPCList.data.npc[i].isSaved) 
             {
-                npcIndex = dataBase.NPCList.generateNotSavedNPC();
+                    npcIndex = dataBase.NPCList.generateNotSavedNPC();
 
                     int index;
                     do
@@ -37,6 +37,7 @@ public class GenerateNpcToSave : MonoBehaviour
                     SpriteRenderer spriteRenderer = housesList[index].GetComponentInChildren<SpriteRenderer>();
                     if (spriteRenderer != null)
                     {
+
                         spriteRenderer.sprite = houseWithLight;
                         modifiedHouseIndices.Add(index);
                         BoxCollider box;
@@ -50,9 +51,8 @@ public class GenerateNpcToSave : MonoBehaviour
         }
     }
 
-
-    private void Update()
+    private void FindCanvasForObject(GameObject houseObject)
     {
-
+        
     }
 }
