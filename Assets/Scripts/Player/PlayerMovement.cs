@@ -47,8 +47,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        dropObject = new DropObjectController(0, 0, 0, 0);
-
         player.readJson();
 
         if (!playerCreated)
@@ -87,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
             FindAndAssignJoystick<FixedJoystick>(ref moveJoystick, "MoveJoystick");
             FindAndAssignMap<Map>("YourMapName");
             dataBase.npcSavingInProgres = false;
+            dropObject = new DropObjectController(0,0,0,0);
         }
         if (scene.name == "SavePlace") // Replace "YourPlayerScene" with the actual scene name where the player is present
         {

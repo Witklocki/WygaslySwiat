@@ -19,11 +19,9 @@ namespace DropModel
         public int elitElemnts;
 
         public DropObject()
-        {
-            commonElement = 0; basicElement = 0; rareElemnt = 0; elitElemnts = 0;
-        }
+        { }
 
-        public static DropObject operator + (DropObject a, DropObject b)
+        public static DropObject operator +(DropObject a, DropObject b)
         {
             DropObject dropObject = new DropObject();
 
@@ -33,42 +31,6 @@ namespace DropModel
             dropObject.commonElement = a.elitElemnts + b.elitElemnts;
 
             return dropObject;
-        }
-
-        // Overload >= operator
-        public static bool operator >=(DropObject left, DropObject right)
-        {
-            return left.commonElement >= right.commonElement
-                && left.basicElement >= right.basicElement
-                && left.rareElemnt >= right.rareElemnt
-                && left.elitElemnts >= right.elitElemnts;
-        }
-
-        // Overload > operator
-        public static bool operator >(DropObject left, DropObject right)
-        {
-            return left.commonElement > right.commonElement
-                && left.basicElement > right.basicElement
-                && left.rareElemnt > right.rareElemnt
-                && left.elitElemnts > right.elitElemnts;
-        }
-
-        // Overload <= operator
-        public static bool operator <=(DropObject left, DropObject right)
-        {
-            return left.commonElement <= right.commonElement
-                && left.basicElement <= right.basicElement
-                && left.rareElemnt <= right.rareElemnt
-                && left.elitElemnts <= right.elitElemnts;
-        }
-
-        // Overload < operator
-        public static bool operator <(DropObject left, DropObject right)
-        {
-            return left.commonElement < right.commonElement
-                && left.basicElement < right.basicElement
-                && left.rareElemnt < right.rareElemnt
-                && left.elitElemnts < right.elitElemnts;
         }
     }
 }
@@ -107,18 +69,9 @@ public class DropObjectController : ScriptableObject
         File.WriteAllText(fileName, jsonString);
     }
 
-    public void increment(DropObject dropToAdd)
+    public void incrementAtExit(DropObject dropToAdd)
     {
-        dropObj.commonElement += dropToAdd.commonElement;
-        dropObj.basicElement += dropToAdd.basicElement;
-        dropObj.rareElemnt += dropToAdd.rareElemnt;
-        dropObj.elitElemnts += dropToAdd.elitElemnts;
-    }
-
-    public void exitIncrement(DropObject dropToAdd)
-    {
-        increment(dropToAdd);
-        writeJson();
+        dropObj += dropToAdd;
     }
 
 
