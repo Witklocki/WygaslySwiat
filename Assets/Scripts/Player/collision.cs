@@ -1,3 +1,4 @@
+using DropModel;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -45,13 +46,14 @@ public class collision : LoadWeapon
         switch (tag)
         {
             case "Exit":
-                dataBase.playerDrops.incrementAtExit(playerMovement.dropObject.dropObj);
+                dataBase.playerDrops.exitIncrement(playerMovement.dropObject.dropObj);
                 print("Emtry Exit");
                 break;
             case "Fence":
                 break;
             case "Drop":
-                playerMovement.dropObject.dropObj += other.gameObject.GetComponent<GenerateDropData>().GetDrop();
+
+                playerMovement.dropObject.increment(other.gameObject.GetComponent<GenerateDropData>().GetDrop());
                 other.gameObject.GetComponent<GenerateDropData>().PickedUp();
                 break;
             case "House":

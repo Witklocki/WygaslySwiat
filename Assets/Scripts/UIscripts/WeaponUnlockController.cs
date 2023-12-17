@@ -8,7 +8,14 @@ public class WeaponUnlockController : MonoBehaviour
     [SerializeField] List<TabButton> tabButtons;
     [SerializeField] List<GameObject> objectSwap;
 
+    public DropObjectController dropObjectController;
+
     TabButton selectedButton;
+
+    private void Start()
+    {
+        dropObjectController = new DropObjectController();
+    }
 
     public void Subscribe(TabButton button)
     {
@@ -33,7 +40,6 @@ public class WeaponUnlockController : MonoBehaviour
     {
         selectedButton = button;
         int index = button.transform.GetSiblingIndex();
-        print(index);
         for (int i = 0; i < objectSwap.Count; i++)
         {
             if (i.Equals(index))
@@ -49,9 +55,6 @@ public class WeaponUnlockController : MonoBehaviour
 
     public void ResetButtons()
     {
-        foreach (var button in tabButtons)
-        {
-            //do sth;
-        }
+
     }
 }
