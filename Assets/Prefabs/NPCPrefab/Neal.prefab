@@ -210,3 +210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53afb44250f352949beb4dc71ca5bc29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 0}
+  continueButton: {fileID: 0}
+  dialogueText: {fileID: 0}
+  speed: 0.05
+  dataBase: {fileID: 0}
+  npcID: 1
+  npcDialogID: 2

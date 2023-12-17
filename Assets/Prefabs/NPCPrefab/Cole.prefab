@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5493430343749592653}
   - component: {fileID: 5493430343749592654}
   - component: {fileID: 927793895318437594}
+  - component: {fileID: 2046994306524728093}
   m_Layer: 0
   m_Name: Cole
   m_TagString: Untagged
@@ -197,3 +198,22 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 0.46666718, z: 0.000000027815531}
+--- !u!114 &2046994306524728093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5493430343749592662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53afb44250f352949beb4dc71ca5bc29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 0}
+  continueButton: {fileID: 0}
+  dialogueText: {fileID: 0}
+  speed: 0.05
+  dataBase: {fileID: 0}
+  npcID: 3
+  npcDialogID: 2

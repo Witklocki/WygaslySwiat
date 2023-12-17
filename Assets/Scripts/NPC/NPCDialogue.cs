@@ -19,7 +19,7 @@ public class NPCDialogue : MonoBehaviour
     private NPCAIScript npcAI;
     private string stringToPrint;
 
-    public int npcID;
+    public int npcID = -1;
     public int npcDialogID;
 
     void Start()
@@ -34,6 +34,8 @@ public class NPCDialogue : MonoBehaviour
         {
             //print(stringToPrint.ToString());
             ChooseDialog(npcID, npcDialogID);
+            setSaveNPC(npcID);
+
             if (npcAI !=null) { npcAI.isPatrol = false; }
             if (!dialoguePanel.activeInHierarchy)
             {
@@ -55,7 +57,6 @@ public class NPCDialogue : MonoBehaviour
     public void NextLine()
     {
         continueButton.SetActive(false);
-
         dialogueText.text = "";
         ClearTextField();
     }
@@ -73,7 +74,13 @@ public class NPCDialogue : MonoBehaviour
     {
         npcIndex = npcIdx;
         dialogueIndex = dialogueIdx;
-
         stringToPrint = dataBase.NPCList.data.npc[npcIndex].dialogue[dialogueIndex];
+    }
+    private void setSaveNPC(int npcIdx)
+    {
+        npcIndex = npcIdx;
+        dataBase.NPCList.data.npc[npcIndex].isSaved = true;
+        dataBase.NPCList.writeJson();
+
     }
 }

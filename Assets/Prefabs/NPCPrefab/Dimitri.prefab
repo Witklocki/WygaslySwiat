@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3536322361395305474}
   - component: {fileID: 3536322361395305473}
   - component: {fileID: 3150995873422004704}
+  - component: {fileID: 4397940269461731288}
   m_Layer: 0
   m_Name: Dimitri
   m_TagString: Untagged
@@ -197,3 +198,22 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 0.46666718, z: 0.000000027815531}
+--- !u!114 &4397940269461731288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536322361395305472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53afb44250f352949beb4dc71ca5bc29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 0}
+  continueButton: {fileID: 0}
+  dialogueText: {fileID: 0}
+  speed: 0.05
+  dataBase: {fileID: 0}
+  npcID: 2
+  npcDialogID: 2

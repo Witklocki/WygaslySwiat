@@ -36,6 +36,9 @@ public class NPCList : MonoBehaviour
 
     private static readonly string fileName = "Assets/Resources/Data/NPC.json";
 
+
+
+
     public NPCList()
     {
         readJson();

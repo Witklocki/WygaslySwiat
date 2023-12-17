@@ -54,11 +54,6 @@ public class GenerateNpcToSave : MonoBehaviour
                     npcDialogue.dialogueText = dialogueTextObject.GetComponent<TMPro.TextMeshProUGUI>();
                     npcDialogue.dataBase = dbObject.GetComponent<DB>();
 
-                    //BoxCollider box;
-                    //box = housesList[index].AddComponent<BoxCollider>();
-                    //box.isTrigger = true;
-                    //box.center = new Vector3(-0.000175941f, 0.2292919f, 0.07555886f);
-                    //box.size = new Vector3(0.6f, 0.5f, 0.6f);
                     npcDialogue.npcID = dataBase.NPCList.data.npc[i].id;
                     npcDialogue.npcDialogID = 1;
                 }
