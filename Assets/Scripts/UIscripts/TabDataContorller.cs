@@ -17,6 +17,9 @@ public class TabDataContorller : MonoBehaviour
 
     public WeaponObjectDataController weaponDataController;
 
+    public WeaponUnlockController weaponUnlockController;
+
+    [SerializeField] private bool hasEnoughtMoney;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,17 +30,31 @@ public class TabDataContorller : MonoBehaviour
         p3.text = weaponDataController.weaponObject.GetWeaponObjectWithId(index).rareElemnt.ToString();
         p4.text = weaponDataController.weaponObject.GetWeaponObjectWithId(index).elitElemnts.ToString();
 
+        hasEnoughtMoney = weaponDataController.weaponObject.weapons[index].price <= weaponUnlockController.dropObjectController.dropObj;
+
         unlock.gameObject.SetActive(!weaponDataController.weaponObject.GetWeaponObjectWithId(index).isUnlocker);
 
         unlocked.gameObject.SetActive(weaponDataController.weaponObject.GetWeaponObjectWithId(index).isUnlocker);
     }
+
+    private void Update()
+    {
+        hasEnoughtMoney = weaponDataController.weaponObject.weapons[index].price <= weaponUnlockController.dropObjectController.dropObj;
+
+        unlock.interactable = hasEnoughtMoney;
+    }
+
     public void unlockWeapon()
     {
-        weaponDataController.unlockWeapon(index);
+       
+        if (hasEnoughtMoney) {
+            weaponDataController.unlockWeapon(index);
 
-        unlock.gameObject.SetActive(!weaponDataController.weaponObject.GetWeaponObjectWithId(index).isUnlocker);
+            unlock.gameObject.SetActive(!weaponDataController.weaponObject.GetWeaponObjectWithId(index).isUnlocker);
 
-        unlocked.gameObject.SetActive(weaponDataController.weaponObject.GetWeaponObjectWithId(index).isUnlocker);
-    }
-    
+            unlocked.gameObject.SetActive(weaponDataController.weaponObject.GetWeaponObjectWithId(index).isUnlocker);
+        }
+
+
+    }    
 }
