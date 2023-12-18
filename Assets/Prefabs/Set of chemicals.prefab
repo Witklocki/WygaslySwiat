@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1435369379608544752}
   - component: {fileID: 3346221501918177448}
   - component: {fileID: 5845270956110538977}
+  - component: {fileID: 1528993338980448605}
   m_Layer: 0
   m_Name: Set of chemicals
   m_TagString: Untagged
@@ -98,3 +99,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1528993338980448605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037706520027902935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f0a72de7614f043a25519e3fc67f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qItemsList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2037706520027902935}
+  - {fileID: 0}
+  dataBase: {fileID: 0}

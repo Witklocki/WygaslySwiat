@@ -1,37 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class GenerateQuestObject : MonoBehaviour
 {
-
-    public List<GameObject> qItemsList;
-    public QuestItems questItems;
+    [SerializeField] public GameObject[] questObjectsToShow;
+    [SerializeField] DB dataBase;
+   
     void Start()
     {
-        questItems = new QuestItems();
-        GenerateItems();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void GenerateItems()
-    {
-        for (int i=0; i < questItems.qObj.questitems.Length; i++)
+        for (int i = 0; i < dataBase.quests.questitems.Length; i++)
         {
-            if (questItems.qObj.questitems[i].isQuest)
+            if (dataBase.quests.questitems[i].isQuest && !dataBase.quests.questitems[i].isPickedUp)
             {
-                qItemsList[i].SetActive(true);
-            }
-            else
-            {
-                qItemsList[i].SetActive(false);
+                questObjectsToShow[i].SetActive(true);
             }
         }
+    }
 
+    private void Update()
+    {
+        for (int i = 0; i < dataBase.quests.questitems.Length; i++)
+        {
+            if (!dataBase.quests.questitems[i].isQuest && dataBase.quests.questitems[i].isPickedUp)
+            {
+                questObjectsToShow[i].SetActive(false);
+            }
+        }
     }
 }

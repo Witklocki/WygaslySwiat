@@ -26,7 +26,7 @@ namespace QuestItemModel
 
 
 
-public class QuestItems : MonoBehaviour
+public class QuestItems : ScriptableObject
 {
     public QuestItemList qObj;
     private static readonly string fileName = "Assets/Resources/Data/QuestData.json";

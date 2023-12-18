@@ -21,6 +21,7 @@ TagManager:
   - DialoguePanel
   - DialogueText
   - ContinueButton
+  - QuestItem
   layers:
   - Default
   - TransparentFX

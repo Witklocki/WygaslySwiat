@@ -877,7 +877,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 667507364}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!154 &113212474
 TerrainCollider:
@@ -1700,7 +1700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7042905274788706689, guid: 10db983c071913043bc4fe1a0863e165, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7042905274788706689, guid: 10db983c071913043bc4fe1a0863e165, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2109,6 +2109,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1528993338980448605, guid: 66e93222ff8beaf43be08e2556e1c7bc, type: 3}
+      propertyPath: dataBase
+      value: 
+      objectReference: {fileID: 1662041107}
+    - target: {fileID: 1528993338980448605, guid: 66e93222ff8beaf43be08e2556e1c7bc, type: 3}
+      propertyPath: qItemsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1335416033}
+    - target: {fileID: 1528993338980448605, guid: 66e93222ff8beaf43be08e2556e1c7bc, type: 3}
+      propertyPath: qItemsList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1425721016}
+    - target: {fileID: 1528993338980448605, guid: 66e93222ff8beaf43be08e2556e1c7bc, type: 3}
+      propertyPath: qItemsList.Array.data[3]
+      value: 
+      objectReference: {fileID: 1605242150}
     - target: {fileID: 2037706520027902935, guid: 66e93222ff8beaf43be08e2556e1c7bc, type: 3}
       propertyPath: m_Name
       value: Set of chemicals
@@ -2116,6 +2132,10 @@ PrefabInstance:
     - target: {fileID: 2037706520027902935, guid: 66e93222ff8beaf43be08e2556e1c7bc, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037706520027902935, guid: 66e93222ff8beaf43be08e2556e1c7bc, type: 3}
+      propertyPath: m_TagString
+      value: QuestItem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66e93222ff8beaf43be08e2556e1c7bc, type: 3}
@@ -2599,6 +2619,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1383596040838029434, guid: ab8757aeb1cdaed479704ad2b32befa3, type: 3}
+      propertyPath: dataBase
+      value: 
+      objectReference: {fileID: 1662041107}
+    - target: {fileID: 1383596040838029434, guid: ab8757aeb1cdaed479704ad2b32befa3, type: 3}
+      propertyPath: qItemsList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1425721016}
+    - target: {fileID: 1383596040838029434, guid: ab8757aeb1cdaed479704ad2b32befa3, type: 3}
+      propertyPath: qItemsList.Array.data[2]
+      value: 
+      objectReference: {fileID: 591210794}
+    - target: {fileID: 1383596040838029434, guid: ab8757aeb1cdaed479704ad2b32befa3, type: 3}
+      propertyPath: qItemsList.Array.data[3]
+      value: 
+      objectReference: {fileID: 1605242150}
     - target: {fileID: 6379292987782533955, guid: ab8757aeb1cdaed479704ad2b32befa3, type: 3}
       propertyPath: m_Name
       value: Microscope
@@ -2606,6 +2642,10 @@ PrefabInstance:
     - target: {fileID: 6379292987782533955, guid: ab8757aeb1cdaed479704ad2b32befa3, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379292987782533955, guid: ab8757aeb1cdaed479704ad2b32befa3, type: 3}
+      propertyPath: m_TagString
+      value: QuestItem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab8757aeb1cdaed479704ad2b32befa3, type: 3}
@@ -2838,6 +2878,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 737398695}
   - {fileID: 974679922}
   - {fileID: 113212473}
   - {fileID: 1800290225}
@@ -2845,7 +2886,6 @@ Transform:
   - {fileID: 2029809619}
   - {fileID: 1303082306}
   - {fileID: 1431697670}
-  - {fileID: 737398695}
   - {fileID: 1626351370}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -3073,12 +3113,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737398694}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 202.42007, y: 16.368505, z: 266.2217}
+  m_LocalPosition: {x: 202.42007, y: 16.36851, z: 266.2217}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 667507364}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &737398696
 MonoBehaviour:
@@ -3474,6 +3514,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2008274633958753824, guid: 04d847dfa11a7cd4f8d04f3e6318331a, type: 3}
+      propertyPath: dataBase
+      value: 
+      objectReference: {fileID: 1662041107}
+    - target: {fileID: 2008274633958753824, guid: 04d847dfa11a7cd4f8d04f3e6318331a, type: 3}
+      propertyPath: qItemsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1335416033}
+    - target: {fileID: 2008274633958753824, guid: 04d847dfa11a7cd4f8d04f3e6318331a, type: 3}
+      propertyPath: qItemsList.Array.data[2]
+      value: 
+      objectReference: {fileID: 591210794}
+    - target: {fileID: 2008274633958753824, guid: 04d847dfa11a7cd4f8d04f3e6318331a, type: 3}
+      propertyPath: qItemsList.Array.data[3]
+      value: 
+      objectReference: {fileID: 1605242150}
     - target: {fileID: 4290060298313173089, guid: 04d847dfa11a7cd4f8d04f3e6318331a, type: 3}
       propertyPath: m_Name
       value: BloodSample
@@ -3481,6 +3537,10 @@ PrefabInstance:
     - target: {fileID: 4290060298313173089, guid: 04d847dfa11a7cd4f8d04f3e6318331a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290060298313173089, guid: 04d847dfa11a7cd4f8d04f3e6318331a, type: 3}
+      propertyPath: m_TagString
+      value: QuestItem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04d847dfa11a7cd4f8d04f3e6318331a, type: 3}
@@ -4157,7 +4217,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 667507364}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!108 &974679923
 Light:
@@ -4645,7 +4705,7 @@ Transform:
   - {fileID: 593171852}
   - {fileID: 1605767723}
   m_Father: {fileID: 667507364}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1120973201
 PrefabInstance:
@@ -5473,7 +5533,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 667507364}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 34.629, z: 0}
 --- !u!65 &1303082307
 BoxCollider:
@@ -5728,7 +5788,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 667507364}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 34.629, z: 0}
 --- !u!65 &1431697671
 BoxCollider:
@@ -6467,7 +6527,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1626351370}
-  - component: {fileID: 1626351372}
   - component: {fileID: 1626351371}
   m_Layer: 0
   m_Name: QuestItems
@@ -6507,26 +6566,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960815a3dc402ae46836de5501347114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qItemsList:
+  questObjectsToShow:
   - {fileID: 1335416033}
   - {fileID: 1425721016}
   - {fileID: 591210794}
   - {fileID: 1605242150}
-  questItems: {fileID: 0}
---- !u!114 &1626351372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1626351369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b22e3a0b499de540a2bd306ae0d9cb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qObj:
-    questitems: []
+  dataBase: {fileID: 1662041107}
 --- !u!1001 &1627458267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6862,6 +6907,7 @@ MonoBehaviour:
   npcSavingInProgres: 0
   playerDrops: {fileID: 11400000, guid: 68982f5c388b5cd4884a819bca421163, type: 2}
   weaponObject: {fileID: 0}
+  questItems: {fileID: 0}
 --- !u!4 &1662041108
 Transform:
   m_ObjectHideFlags: 0
@@ -7288,7 +7334,7 @@ Transform:
   m_Children:
   - {fileID: 1076126112}
   m_Father: {fileID: 667507364}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1800290226
 BoxCollider:
@@ -7910,6 +7956,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1626351370}
     m_Modifications:
+    - target: {fileID: 2952262323828176636, guid: b155f868dbac6ec4f8b345dc8072d2d1, type: 3}
+      propertyPath: dataBase
+      value: 
+      objectReference: {fileID: 1662041107}
+    - target: {fileID: 2952262323828176636, guid: b155f868dbac6ec4f8b345dc8072d2d1, type: 3}
+      propertyPath: qItemsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1335416033}
+    - target: {fileID: 2952262323828176636, guid: b155f868dbac6ec4f8b345dc8072d2d1, type: 3}
+      propertyPath: qItemsList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1425721016}
+    - target: {fileID: 2952262323828176636, guid: b155f868dbac6ec4f8b345dc8072d2d1, type: 3}
+      propertyPath: qItemsList.Array.data[2]
+      value: 
+      objectReference: {fileID: 591210794}
     - target: {fileID: 4117280692056198909, guid: b155f868dbac6ec4f8b345dc8072d2d1, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -7961,6 +8023,10 @@ PrefabInstance:
     - target: {fileID: 5930802264178024323, guid: b155f868dbac6ec4f8b345dc8072d2d1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930802264178024323, guid: b155f868dbac6ec4f8b345dc8072d2d1, type: 3}
+      propertyPath: m_TagString
+      value: QuestItem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b155f868dbac6ec4f8b345dc8072d2d1, type: 3}

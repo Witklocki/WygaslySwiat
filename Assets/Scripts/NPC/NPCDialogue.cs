@@ -26,11 +26,22 @@ public class NPCDialogue : MonoBehaviour
     {
         dialogueText.text = "";
         npcAI = GetComponent<NPCAIScript>();
+        dataBase = GameObject.FindWithTag("Player").GetComponentInChildren<DB>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (gameObject.name == "Tao")
+        {
+            if (other.CompareTag("Player"))
+            {
+                Debug.Log("Taoishere");
+                ChooseDialog(0 ,2);
+
+            }
+
+        }
+        if (other.CompareTag("Player") && gameObject.name != "Tao")
         {
             //print(stringToPrint.ToString());
             if(enabled)
@@ -49,7 +60,8 @@ public class NPCDialogue : MonoBehaviour
                     ClearTextField();
                 }
             }
-            
+
+
         }
     }
     public void ClearTextField()
@@ -79,7 +91,7 @@ public class NPCDialogue : MonoBehaviour
         npcIndex = npcIdx;
         dialogueIndex = dialogueIdx;
         Debug.Log("sth0");
-        stringToPrint = dataBase.NPCList.data.npc[npcIndex].dialogue[dialogueIndex];
+        stringToPrint = dataBase.NPCList.data.npc[npcIndex].dialogue[dialogueIndex]; //error 
     }
     private void setSaveNPC(int npcIdx)
     {

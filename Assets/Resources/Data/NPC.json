@@ -3,7 +3,7 @@
     {
       "id": 0,
       "npcName": "Tao",
-      "isSaved": false,
+      "isSaved": true,
       "canFollow": false,
       "dialogue": [
         "Tao: Hi",
@@ -18,7 +18,7 @@
     {
       "id": 1,
       "npcName": "Neal",
-      "isSaved": false,
+      "isSaved": true,
       "canFollow": false,
       "dialogue": [
         "Neal: Hello",
@@ -29,7 +29,7 @@
     {
       "id": 2,
       "npcName": "Dimitri",
-      "isSaved": false,
+      "isSaved": true,
       "canFollow": false,
       "dialogue": [
         "Dimitri: Huh?! Who is there?",
