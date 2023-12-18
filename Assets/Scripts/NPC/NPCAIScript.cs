@@ -17,8 +17,6 @@ public class NPCAIScript : MonoBehaviour
     float waitTime;
     public bool playerInRange;
     public bool isPatrol;
-    private float colorOpacity = 0.6f;
-    private float gloabalDistance = 0;
     Vector3 nextPosition;
 
 
