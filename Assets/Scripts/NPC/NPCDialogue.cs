@@ -33,19 +33,23 @@ public class NPCDialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //print(stringToPrint.ToString());
-            ChooseDialog(npcID, npcDialogID);
-            setSaveNPC(npcID);
-
-            if (npcAI !=null) { npcAI.isPatrol = false; }
-            if (!dialoguePanel.activeInHierarchy)
+            if(enabled)
             {
-                dialoguePanel.SetActive(true);
-                StartCoroutine(Typing());
+                ChooseDialog(npcID, npcDialogID);
+                setSaveNPC(npcID);
+                enabled = false;
+                if (npcAI != null) { npcAI.isPatrol = false; }
+                if (!dialoguePanel.activeInHierarchy)
+                {
+                    dialoguePanel.SetActive(true);
+                    StartCoroutine(Typing());
+                }
+                else
+                {
+                    ClearTextField();
+                }
             }
-            else
-            {
-                ClearTextField();
-            }
+            
         }
     }
     public void ClearTextField()
@@ -74,6 +78,7 @@ public class NPCDialogue : MonoBehaviour
     {
         npcIndex = npcIdx;
         dialogueIndex = dialogueIdx;
+        Debug.Log("sth0");
         stringToPrint = dataBase.NPCList.data.npc[npcIndex].dialogue[dialogueIndex];
     }
     private void setSaveNPC(int npcIdx)

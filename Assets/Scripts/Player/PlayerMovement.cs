@@ -81,18 +81,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Suburbs") // Replace "YourPlayerScene" with the actual scene name where the player is present
+        if (scene.name == "Suburbs") 
         {
             StartCoroutine(SetPlayerPosition());
             FindAndAssignJoystick<FixedJoystick>(ref moveJoystick, "MoveJoystick");
-            FindAndAssignMap<Map>("YourMapName");
+            FindAndAssignMap<Map>("Terrain");
             dataBase.npcSavingInProgres = false;
         }
-        if (scene.name == "SavePlace") // Replace "YourPlayerScene" with the actual scene name where the player is present
+        if (scene.name == "SavePlace")
         {
             StartCoroutine(SetPlayerPosition());
             FindAndAssignJoystick<FixedJoystick>(ref moveJoystick, "MoveJoystick");
-            FindAndAssignMap<Map>("YourMapName");
+            FindAndAssignMap<Map>("Terrain");
             if (dataBase.npcSavingInProgres)
             {
                 dataBase.NPCList.npcIsSaved();
