@@ -18,6 +18,7 @@ public class NPCDialogue : MonoBehaviour
     private int npcIndex;
     private NPCAIScript npcAI;
     private string stringToPrint;
+    private bool isTyping = false;
 
     public int npcID = -1;
     public int npcDialogID;
@@ -26,24 +27,45 @@ public class NPCDialogue : MonoBehaviour
     {
         dialogueText.text = "";
         npcAI = GetComponent<NPCAIScript>();
-        dataBase = GameObject.FindWithTag("Player").GetComponentInChildren<DB>();
     }
 
+
+    private void OnTriggerExit(Collider other)
+    {
+        npcAI.isPatrol = true;
+        StopTyping();
+        ClearTextField();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (gameObject.name == "Tao")
         {
             if (other.CompareTag("Player"))
             {
-                Debug.Log("Taoishere");
-                ChooseDialog(0 ,2);
 
+                npcIndex = dataBase.NPCList.data.npc[0].id;
+                dialogueIndex = 3;
+                if (!dialoguePanel.activeInHierarchy)
+                {
+                    if (gameObject.GetComponent<NPCAIScript>() != null)
+                    {
+                        npcAI.isPatrol = false;
+                    }
+                    ChooseDialog(npcIndex, dialogueIndex);
+
+                    dialoguePanel.SetActive(true);
+                    StartCoroutine(Typing());
+                }
+                else
+                {
+                    ClearTextField();
+                }
+            
             }
 
         }
         if (other.CompareTag("Player") && gameObject.name != "Tao")
         {
-            //print(stringToPrint.ToString());
             if(enabled)
             {
                 ChooseDialog(npcID, npcDialogID);
@@ -60,8 +82,6 @@ public class NPCDialogue : MonoBehaviour
                     ClearTextField();
                 }
             }
-
-
         }
     }
     public void ClearTextField()
@@ -70,28 +90,50 @@ public class NPCDialogue : MonoBehaviour
         dialoguePanel.SetActive(false);
 
     }
+    public void StopTyping()
+    {
+        if (isTyping)
+        {
+            StopCoroutine("Typing");
+            isTyping = false;
+        }
+    }
     public void NextLine()
     {
         continueButton.SetActive(false);
-        dialogueText.text = "";
         ClearTextField();
+        isTyping = false;
     }
     IEnumerator Typing()
     {
+        isTyping = true;
         dialogueText.text = "";
-        foreach(char letter in stringToPrint.ToCharArray())
+
+        foreach (char letter in stringToPrint.ToCharArray())
         {
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(speed);
+            if (isTyping)
+            {
+                dialogueText.text += letter;
+                yield return new WaitForSeconds(speed);
+            }
+            else
+            {
+                break;
+            }
         }
+
         continueButton.SetActive(true);
+        isTyping = false;
     }
     private void ChooseDialog(int npcIdx , int dialogueIdx)
     {
+        dialogueText.text = "";
+        stringToPrint = "";
+
         npcIndex = npcIdx;
         dialogueIndex = dialogueIdx;
-        Debug.Log("sth0");
-        stringToPrint = dataBase.NPCList.data.npc[npcIndex].dialogue[dialogueIndex]; //error 
+        stringToPrint = dataBase.NPCList.data.npc[npcIndex].dialogue[dialogueIndex]; //error
+
     }
     private void setSaveNPC(int npcIdx)
     {
