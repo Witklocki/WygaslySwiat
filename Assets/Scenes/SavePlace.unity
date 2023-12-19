@@ -1214,8 +1214,8 @@ GameObject:
   m_Component:
   - component: {fileID: 72279779}
   - component: {fileID: 72279778}
-  - component: {fileID: 72279777}
   - component: {fileID: 72279780}
+  - component: {fileID: 72279781}
   m_Layer: 0
   m_Name: ownGameManager
   m_TagString: Untagged
@@ -1223,25 +1223,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &72279777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 72279776}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53afb44250f352949beb4dc71ca5bc29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 328702199}
-  continueButton: {fileID: 568750900}
-  dialogueText: {fileID: 1255087449}
-  speed: 0.05
-  dataBase: {fileID: 0}
-  npcID: -1
-  npcDialogID: 0
 --- !u!114 &72279778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1286,6 +1267,25 @@ MonoBehaviour:
   playerDrops: {fileID: 0}
   weaponObject: {fileID: 0}
   questItems: {fileID: 0}
+--- !u!114 &72279781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72279776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53afb44250f352949beb4dc71ca5bc29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 328702199}
+  continueButton: {fileID: 568750900}
+  dialogueText: {fileID: 1255087449}
+  speed: 0.05
+  dataBase: {fileID: 72279780}
+  npcID: -1
+  npcDialogID: 0
 --- !u!1 &72502903
 GameObject:
   m_ObjectHideFlags: 0
@@ -7537,7 +7537,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 72279777}
+      - m_Target: {fileID: 72279781}
         m_TargetAssemblyTypeName: NPCDialogue, Assembly-CSharp
         m_MethodName: NextLine
         m_Mode: 1

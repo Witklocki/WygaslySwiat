@@ -50,6 +50,12 @@ public class NPCList : MonoBehaviour
         data = JsonUtility.FromJson<NPCData>(jsonString);
     }
 
+    public void readJson(string path)
+    {
+        string jsonString = File.ReadAllText(path);
+        data = JsonUtility.FromJson<NPCData>(jsonString);
+    }
+
     public void writeJson()
     {
         string jsonString = JsonUtility.ToJson(data,true);

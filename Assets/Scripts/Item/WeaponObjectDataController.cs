@@ -66,6 +66,12 @@ public class WeaponObjectDataController : ScriptableObject
         weaponObject = JsonUtility.FromJson<WeaponData>(jsonString);
     }
 
+    public void readJson(string path)
+    {
+        string jsonString = File.ReadAllText(path);
+        weaponObject = JsonUtility.FromJson<WeaponData>(jsonString);
+    }
+
     public void writeJson()
     {
         string jsonString = JsonUtility.ToJson(weaponObject, true);

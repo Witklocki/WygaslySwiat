@@ -92,6 +92,12 @@ public class PlayerObject :ScriptableObject
         _playerData = JsonUtility.FromJson<PlayerDataObject>(jsonString);
     }
 
+    public void readJson(string path)
+    {
+        string jsonString = File.ReadAllText(path);
+        _playerData = JsonUtility.FromJson<PlayerDataObject>(jsonString);
+    }
+
     public void writeJson()
     {
         string jsonString = JsonUtility.ToJson(_playerData, true);

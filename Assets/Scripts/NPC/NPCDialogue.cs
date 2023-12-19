@@ -44,7 +44,7 @@ public class NPCDialogue : MonoBehaviour
             {
 
                 npcIndex = dataBase.NPCList.data.npc[0].id;
-                dialogueIndex = 3;
+                QuestDialogeGet();
                 if (!dialoguePanel.activeInHierarchy)
                 {
                     if (gameObject.GetComponent<NPCAIScript>() != null)
@@ -141,5 +141,41 @@ public class NPCDialogue : MonoBehaviour
         dataBase.NPCList.data.npc[npcIndex].isSaved = true;
         dataBase.NPCList.writeJson();
 
+    }
+
+    public void QuestDialogeGet()
+    {
+        if (dataBase.NPCList.data.npc[npcIndex].npcName == "Tao")
+        {
+            for(int i = 0; i < dataBase.quests.questitems.Length; i++)
+            {
+                if (dataBase.quests.questitems[i].isQuest)
+                {
+                    dialogueIndex = i + 3;
+                    return;
+                }
+                else if (!dataBase.quests.questitems[i].isQuest && !dataBase.quests.questitems[i].isGiven && !dataBase.quests.questitems[i].isPickedUp)
+                {
+                    dialogueIndex = i + 3;
+                    dataBase.quests.questitems[i].isQuest = true;
+                    dataBase.questItems.writeJson();
+                    return;
+                }
+                else if (dataBase.quests.questitems[i].isPickedUp && !dataBase.quests.questitems[i].isGiven)
+                {
+                    if (i + 4 < 7)
+                    {
+                        dialogueIndex = i + 4;
+                    }
+                    else
+                    {
+                        dialogueIndex = i + 3;
+                    }
+                    dataBase.quests.questitems[i].isGiven = true;
+                    dataBase.questItems.writeJson();
+                    return;
+                }
+            }
+        }
     }
 }

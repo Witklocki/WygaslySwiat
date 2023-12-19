@@ -4,7 +4,7 @@
             "id": 0,
             "name": "Microscope",
             "isQuest": false,
-            "isPickedUp": true,
+            "isPickedUp": false,
             "isGiven": false
         },
         {
@@ -25,7 +25,7 @@
             "id": 3,
             "name": "Syringes",
             "isQuest": false,
-            "isPickedUp": true,
+            "isPickedUp": false,
             "isGiven": false
         }
     ]

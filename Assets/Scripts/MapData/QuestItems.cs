@@ -41,6 +41,12 @@ public class QuestItems : ScriptableObject
         qObj = JsonUtility.FromJson<QuestItemList>(jsonString);
     }
 
+    public void readJson(string path)
+    {
+        string jsonString = File.ReadAllText(path);
+        qObj = JsonUtility.FromJson<QuestItemList>(jsonString);
+    }
+
     public void writeJson()
     {
         string jsonString = JsonUtility.ToJson(qObj, true);

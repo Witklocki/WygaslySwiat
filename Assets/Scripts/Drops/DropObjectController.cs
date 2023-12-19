@@ -101,6 +101,12 @@ public class DropObjectController : ScriptableObject
         dropObj = JsonUtility.FromJson<DropObject>(jsonString);
     }
 
+    public void readJson(string path)
+    {
+        string jsonString = File.ReadAllText(path);
+        dropObj = JsonUtility.FromJson<DropObject>(jsonString);
+    }
+
     public void writeJson()
     {
         string jsonString = JsonUtility.ToJson(dropObj, true);
