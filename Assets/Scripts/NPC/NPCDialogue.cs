@@ -32,17 +32,22 @@ public class NPCDialogue : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        npcAI.isPatrol = true;
+        if (gameObject.GetComponent<NPCAIScript>() != null)
+        {
+            npcAI.isPatrol = true;
+        }
+
         StopTyping();
         ClearTextField();
     }
     private void OnTriggerEnter(Collider other)
     {
+        
         if (gameObject.name == "Tao")
         {
             if (other.CompareTag("Player"))
             {
-
+                Debug.Log("Tao");
                 npcIndex = dataBase.NPCList.data.npc[0].id;
                 QuestDialogeGet();
                 if (!dialoguePanel.activeInHierarchy)
@@ -55,6 +60,7 @@ public class NPCDialogue : MonoBehaviour
 
                     dialoguePanel.SetActive(true);
                     StartCoroutine(Typing());
+
                 }
                 else
                 {
@@ -64,10 +70,87 @@ public class NPCDialogue : MonoBehaviour
             }
 
         }
-        if (other.CompareTag("Player") && gameObject.name != "Tao")
+        if (gameObject.name == "Neal")
+        {
+            if (other.CompareTag("Player"))
+            {
+                ChooseDialog(1, 2);
+
+                Debug.Log("Neal");
+                if (!dialoguePanel.activeInHierarchy)
+                {
+                    if (gameObject.GetComponent<NPCAIScript>() != null)
+                    {
+                        npcAI.isPatrol = false;
+                    }
+
+
+                    dialoguePanel.SetActive(true);
+                    StartCoroutine(Typing());
+
+                }
+                else
+                {
+                    ClearTextField();
+                }
+
+            }
+        }
+        if (gameObject.name == "Dimitri")
+        {
+            if (other.CompareTag("Player"))
+            {
+                ChooseDialog(2, 2);
+
+                Debug.Log("Dimitri");
+                if (!dialoguePanel.activeInHierarchy)
+                {
+                    if (gameObject.GetComponent<NPCAIScript>() != null)
+                    {
+                        npcAI.isPatrol = false;
+                    }
+
+
+                    dialoguePanel.SetActive(true);
+                    StartCoroutine(Typing());
+                }
+                else
+                {
+                    ClearTextField();
+                }
+
+            }
+        }
+        if (gameObject.name == "Cole")
+        {
+            if (other.CompareTag("Player"))
+            {
+                ChooseDialog(3, 2);
+
+                Debug.Log("Cole");
+                if (!dialoguePanel.activeInHierarchy)
+                {
+                    if (gameObject.GetComponent<NPCAIScript>() != null)
+                    {
+                        npcAI.isPatrol = false;
+                    }
+
+
+                    dialoguePanel.SetActive(true);
+                    StartCoroutine(Typing());
+                }
+                else
+                {
+                    ClearTextField();
+                }
+
+            }
+        }
+        if (other.CompareTag("Player") && gameObject.name != "Tao" && gameObject.name != "Neal" && gameObject.name != "Dimitri" && gameObject.name != "Cole")
         {
             if(enabled)
             {
+
                 ChooseDialog(npcID, npcDialogID);
                 setSaveNPC(npcID);
                 enabled = false;
@@ -87,6 +170,8 @@ public class NPCDialogue : MonoBehaviour
     public void ClearTextField()
     {
         dialogueText.text = "";
+        stringToPrint = "";
+
         dialoguePanel.SetActive(false);
 
     }
@@ -96,6 +181,9 @@ public class NPCDialogue : MonoBehaviour
         {
             StopCoroutine("Typing");
             isTyping = false;
+            dialogueText.text = "";
+            stringToPrint = "";
+
         }
     }
     public void NextLine()
@@ -118,6 +206,9 @@ public class NPCDialogue : MonoBehaviour
             }
             else
             {
+                dialogueText.text = "";
+                stringToPrint = "";
+
                 break;
             }
         }

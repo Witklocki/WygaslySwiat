@@ -7471,7 +7471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &568750901
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7924,7 +7924,7 @@ PrefabInstance:
     - target: {fileID: 6789120493256990930, guid: de57432a3a5f47a4f91c5d41d0ce5b3b, type: 3}
       propertyPath: dataBase
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 72279780}
     - target: {fileID: 6789120493256990930, guid: de57432a3a5f47a4f91c5d41d0ce5b3b, type: 3}
       propertyPath: dialogueText
       value: 
@@ -13350,7 +13350,7 @@ PrefabInstance:
     - target: {fileID: 2046994306524728093, guid: 8d299cd5d5462144e8efd8f818dc1d10, type: 3}
       propertyPath: dataBase
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 72279780}
     - target: {fileID: 2046994306524728093, guid: 8d299cd5d5462144e8efd8f818dc1d10, type: 3}
       propertyPath: dialogueText
       value: 
@@ -13896,6 +13896,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2992298425855335002, guid: 794769ba863ef9a44948327bc4387210, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3467940568807018817, guid: 794769ba863ef9a44948327bc4387210, type: 3}
       propertyPath: dataBase
       value: 
@@ -22416,7 +22420,7 @@ PrefabInstance:
     - target: {fileID: 4397940269461731288, guid: 6c7cd08c40fdef948a1556ec483bc817, type: 3}
       propertyPath: dataBase
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 72279780}
     - target: {fileID: 4397940269461731288, guid: 6c7cd08c40fdef948a1556ec483bc817, type: 3}
       propertyPath: dialogueText
       value: 
