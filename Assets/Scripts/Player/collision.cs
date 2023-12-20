@@ -1,3 +1,4 @@
+using DropModel;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,9 +9,10 @@ public class collision : LoadWeapon
 {
     public InventoryObject inventory;
     public PlayerMovement playerMovement;
+
     private WeaponParent weaponParent;
     private GameObject weaponToSpawn;
-    public DropObject dropObject;
+    [SerializeField] DB dataBase;
 
     private void Start()
     {
@@ -44,25 +46,19 @@ public class collision : LoadWeapon
         switch (tag)
         {
             case "Exit":
+                dataBase.playerDrops.exitIncrement(playerMovement.dropObject.dropObj);
                 print("Emtry Exit");
-                break;
-            case "lab":
-                print("Emtry lab");
-                break;
-            case "storage":
-                print("Emtry storage");
-                break;
-            case "armory":
-                print("Emtry armory");
-                break;
-            case "savedPeople":
-                print("Emtry savedPeople");
                 break;
             case "Fence":
                 break;
             case "Drop":
-                dropObject += other.gameObject.GetComponent<GenerateDropData>().GetDrop();
+
+                playerMovement.dropObject.increment(other.gameObject.GetComponent<GenerateDropData>().GetDrop());
                 other.gameObject.GetComponent<GenerateDropData>().PickedUp();
+                break;
+            case "House":
+                dataBase.npcSavingInProgres = true;
+                print("XDDDDD");
                 break;
             case "WeaponPickup":
                 var knife = other.gameObject.GetComponent<KnifeScript>();

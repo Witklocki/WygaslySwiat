@@ -1,0 +1,9 @@
+{
+    "id": 1,
+    "healthPoint": 200.0,
+    "maxHealth": 200.0,
+    "attack": 40.0,
+    "moveSpeed": 3.5,
+    "defense": 4.5,
+    "attackSpeed": 1.0
+}

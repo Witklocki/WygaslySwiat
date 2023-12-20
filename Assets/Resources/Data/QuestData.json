@@ -1,0 +1,32 @@
+{
+    "questitems": [
+        {
+            "id": 0,
+            "name": "Microscope",
+            "isQuest": false,
+            "isPickedUp": false,
+            "isGiven": false
+        },
+        {
+            "id": 1,
+            "name": "BloodSample",
+            "isQuest": false,
+            "isPickedUp": false,
+            "isGiven": false
+        },
+        {
+            "id": 2,
+            "name": "Chemicals",
+            "isQuest": false,
+            "isPickedUp": false,
+            "isGiven": false
+        },
+        {
+            "id": 3,
+            "name": "Syringes",
+            "isQuest": false,
+            "isPickedUp": false,
+            "isGiven": false
+        }
+    ]
+}

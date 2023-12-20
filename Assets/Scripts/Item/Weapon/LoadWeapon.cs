@@ -38,13 +38,26 @@ public class LoadWeapon : MonoBehaviour
         {
             FindAndAssignJoystick<FixedJoystick>("AttackJoystick");
         }
-        if (baseballIsEquipped) { baseballExist = true; } else { baseballExist = false; }
-        if (knifeIsEquipped) { knifeExist = true; } else { knifeExist = false; }
-        if (remingtonIsEquipped) { remingtonExist = true; } else { remingtonExist = false; }
-        if (crowbarIsEquipped) { crowbarExist = true; } else { crowbarExist = false; }
-        if (rewolwerIsEquipped) { rewolwerExist = true; } else { rewolwerExist = false; }
-        if (MP5IsEquipped) { MP5Exist = true; } else { MP5Exist = false; }
-        if (glockIsEquipped) { glockExist = true; } else { glockExist = false; }
+/*        if(scene.name == "SavePlace")
+        {*/
+            if (baseballIsEquipped) { baseballExist = true; } else { baseballExist = false; }
+            if (knifeIsEquipped) { knifeExist = true; } else { knifeExist = false; }
+            if (remingtonIsEquipped) { remingtonExist = true; } else { remingtonExist = false; }
+            if (crowbarIsEquipped) { crowbarExist = true; } else { crowbarExist = false; }
+            if (rewolwerIsEquipped) { rewolwerExist = true; } else { rewolwerExist = false; }
+            if (MP5IsEquipped) { MP5Exist = true; } else { MP5Exist = false; }
+            if (glockIsEquipped) { glockExist = true; } else { glockExist = false; }
+        /*}*/
+   /*     else if (scene.name == "Suburbs")
+        {
+            if (baseballIsEquipped) { baseballExist = true; knifeExist = true; remingtonExist = true; crowbarExist = true; } else { baseballExist = false; }
+            if (knifeIsEquipped) { knifeExist = true; } else { knifeExist = false; }
+            if (remingtonIsEquipped) { remingtonExist = true; } else { remingtonExist = false; }
+            if (crowbarIsEquipped) { crowbarExist = true; } else { crowbarExist = false; }
+            if (rewolwerIsEquipped) { rewolwerExist = true; } else { rewolwerExist = false; }
+            if (MP5IsEquipped) { MP5Exist = true; } else { MP5Exist = false; }
+            if (glockIsEquipped) { glockExist = true; } else { glockExist = false; }
+        }*/
 
     }
 

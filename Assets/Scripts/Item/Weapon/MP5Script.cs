@@ -56,6 +56,7 @@ public class MP5Script : LoadWeapon
 
     void PlayerAttack()
     {
+        animator = GetComponentInParent<Animator>();
         Debug.Log("Mp5Attack");
         animator.SetTrigger("MP5Attack");
         SpriteRenderer childSpriteRenderer = GetComponentInChildren<SpriteRenderer>();

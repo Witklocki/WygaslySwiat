@@ -10,12 +10,15 @@ public class PlayerMovement : MonoBehaviour
 {
     public Animator animator;
     public FixedJoystick moveJoystick;
-    public FixedJoystick attackJoystick;
+    //public FixedJoystick attackJoystick;
     public Rigidbody rb;
     public Map map;
     public PlayerObject player;
     public float groundDrag;
     public GameObject equippedWeaponSlot;
+    public HealthBar healthBar;
+    public DropObjectController dropObject;
+
     // Ensure only one player is created
 
     private static bool playerCreated = false;
@@ -33,10 +36,21 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     bool grounded;
 
+    [SerializeField] DB dataBase;
 
+
+    private void Awake()
+    {
+        player.readJson();
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
+        dropObject = new DropObjectController(0, 0, 0, 0);
+
+        player.readJson();
+
         if (!playerCreated)
         {
             if (map.IsUnityNull())
@@ -45,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             rb = GetComponent<Rigidbody>();
-            player.healthPoint = 26;
+            player.healthPoint = player.maxHealth;
             playerCreated = true;
         }
         else
@@ -53,11 +67,6 @@ public class PlayerMovement : MonoBehaviour
             // If playerCreated is true, destroy the duplicate player
             Destroy(gameObject);
         }
-    }
-
-    private void Awake()
-    {
-        DontDestroyOnLoad (gameObject);
     }
 
     private void OnEnable()
@@ -72,19 +81,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Suburbs") // Replace "YourPlayerScene" with the actual scene name where the player is present
+        if (scene.name == "Suburbs") 
         {
             StartCoroutine(SetPlayerPosition());
             FindAndAssignJoystick<FixedJoystick>(ref moveJoystick, "MoveJoystick");
-            FindAndAssignMap<Map>("YourMapName");
-
+            FindAndAssignMap<Map>("Terrain");
+            dataBase.npcSavingInProgres = false;
         }
-        if (scene.name == "SavePlace") // Replace "YourPlayerScene" with the actual scene name where the player is present
+        if (scene.name == "SavePlace")
         {
-
             StartCoroutine(SetPlayerPosition());
             FindAndAssignJoystick<FixedJoystick>(ref moveJoystick, "MoveJoystick");
-            FindAndAssignMap<Map>("YourMapName");
+            FindAndAssignMap<Map>("Terrain");
+            if (dataBase.npcSavingInProgres)
+            {
+                dataBase.NPCList.npcIsSaved();
+            }
         }
     }
     private void FindAndAssignJoystick<T>(ref T joystick, string joystickName) where T : FixedJoystick
@@ -108,16 +120,31 @@ public class PlayerMovement : MonoBehaviour
             }
             // Find the AttackJoystick within the Canvas
             FixedJoystick[] attackJoysticks = canvas.GetComponentsInChildren<FixedJoystick>();
+            
+            
 
             // Assuming you have only one AttackJoystick, you might need to adjust this logic if there are multiple
             if (attackJoysticks.Length > 0)
             {
-                attackJoystick = attackJoysticks[0];
+                //attackJoystick = attackJoysticks[0];
             }
             else
             {
                 Debug.LogWarning("AttackJoystick not found in the Canvas.");
             }
+
+            HealthBar tmpHealthBars = canvas.GetComponentInChildren<HealthBar>();
+
+            if (tmpHealthBars != null)
+            {
+                healthBar = tmpHealthBars;
+                SetHealth();
+            }
+            else
+            {
+                Debug.LogWarning("Health bar not found in the Canvas.");
+            }
+
         }
         else
         {
@@ -147,9 +174,16 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        healthBar.SetHealth(player.healthPoint);
+
+        if (player.healthPoint <= 0)
+        {
+            PlayerIsDead();
+        }
 
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         PlayerSpeedControll();
+
         if (grounded)
         {
             rb.drag = groundDrag;
@@ -158,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
-        
+
     }
 
     private void FixedUpdate()
@@ -244,6 +278,22 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 limitedVel = flatVelocity.normalized * player.moveSpeed;
             rb.velocity = new Vector3(limitedVel.x,rb.velocity.y, limitedVel.z);
+        }
+    }
+
+    void PlayerIsDead()
+    {
+        SceneManager.LoadScene("SavePlace",LoadSceneMode.Single);
+        player.healthPoint = player.maxHealth;
+        SetHealth();
+        Instantiate(gameObject);
+    }
+
+    void SetHealth()
+    {
+        if (healthBar != null )
+        {
+            healthBar.SetMaxHealth(player.maxHealth);
         }
     }
 

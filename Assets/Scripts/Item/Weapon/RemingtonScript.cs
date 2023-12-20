@@ -56,6 +56,7 @@ public class RemingtonScript : LoadWeapon
 
     void PlayerAttack()
     {
+        animator = GetComponentInParent<Animator>();
         Debug.Log("RemingtonAttack");
         animator.SetTrigger("RemingtonAttack");
         SpriteRenderer childSpriteRenderer = GetComponentInChildren<SpriteRenderer>();

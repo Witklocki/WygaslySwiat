@@ -94,9 +94,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5440426907965083941}
   - component: {fileID: 5440426907965083942}
+  - component: {fileID: 8659375616507568754}
   m_Layer: 0
   m_Name: House
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,3 +131,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5926504, y: 0.4615974, z: 0.39888993}
   m_Center: {x: -0.000175941, y: 0.2292919, z: 0.075558856}
+--- !u!114 &8659375616507568754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5440426907965083940}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53afb44250f352949beb4dc71ca5bc29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 0}
+  continueButton: {fileID: 0}
+  dialogueText: {fileID: 0}
+  speed: 0.05
+  dataBase: {fileID: 0}

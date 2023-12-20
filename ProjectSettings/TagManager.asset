@@ -15,6 +15,13 @@ TagManager:
   - Map
   - whatIsGround
   - Drop
+  - House
+  - DBController
+  - Canvas
+  - DialoguePanel
+  - DialogueText
+  - ContinueButton
+  - QuestItem
   layers:
   - Default
   - TransparentFX

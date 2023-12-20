@@ -57,6 +57,7 @@ public class RewolwerScript : LoadWeapon
 
     void PlayerAttack()
     {
+        animator = GetComponentInParent<Animator>();
         Debug.Log("RewolwerAttack");
         animator.SetTrigger("RewolwerAttack");
         SpriteRenderer childSpriteRenderer = GetComponentInChildren<SpriteRenderer>();

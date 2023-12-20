@@ -19,6 +19,7 @@ public class GameObjectController : MonoBehaviour
     void Start()
     {
         //wyci¹ganie max enemy z mapData
+        enemyCounter = 0;
         maxEnemysOnMap = (int)GameObject.FindObjectOfType<Map>().map.maxEnemy;
         enemyList = new List<GameObject>();
         playerPosition = GameObject.FindWithTag("Player").transform;
@@ -50,7 +51,7 @@ public class GameObjectController : MonoBehaviour
             {
                 enemyCounter--;
                 enemyList[item].GetComponent<EnemyAI>().EnemyDead();
-                this.enemyList[item] = createObject();
+                enemyList[item] = createObject();
             }
 
         }

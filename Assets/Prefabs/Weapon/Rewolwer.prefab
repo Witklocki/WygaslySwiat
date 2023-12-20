@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1311031370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1311031371}
+  m_Layer: 0
+  m_Name: ShootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1311031371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311031370}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.244, y: 0.106, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5435695372388716413}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5435695372388716402
 GameObject:
   m_ObjectHideFlags: 0
@@ -26,12 +57,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5435695372388716402}
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 3.1279278, y: -3.030964, z: -3.1664655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5435695372612839365}
+  - {fileID: 1311031371}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
@@ -46,8 +78,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6027384, y: 0.7106266, z: 1.2520273}
-  m_Center: {x: 0.0131697655, y: 0.035131566, z: 0.12601365}
+  m_Size: {x: 0.7891998, y: 0.7106266, z: 1.2520273}
+  m_Center: {x: 0.3069229, y: 0.035131566, z: 0.12601365}
 --- !u!54 &5435695372388716415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -76,7 +108,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9663499b562216e49be73c59d23ee451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackJoystick: {fileID: 0}
   rewolwer: {fileID: 11400000, guid: cac38c5cf90228449831df620ef513cd, type: 2}
+  animator: {fileID: 0}
+  canPickup: 1
+  isEquipped: 0
+  oldSprite: {fileID: 21300000, guid: dac6f8f739b33ca4ba859a674b863135, type: 3}
+  newSprite: {fileID: 21300000, guid: 3cb89977ebc0e8d42973ef2f57c2ca71, type: 3}
+  shootingPoint: {fileID: 1311031371}
+  bulletPrefab: {fileID: 6959189882843171731, guid: 65438db5ef4d94d4fb19935a77bd5d96, type: 3}
 --- !u!1 &5435695372612839354
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +189,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: dac6f8f739b33ca4ba859a674b863135, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

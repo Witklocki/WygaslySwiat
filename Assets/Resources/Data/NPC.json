@@ -1,0 +1,52 @@
+{
+  "npc": [
+    {
+      "id": 0,
+      "npcName": "Tao Fang",
+      "isSaved": false,
+      "canFollow": false,
+      "dialogue": [
+        "Tao: Hi",
+        "Tao: Thank your for saving me",
+        "Tao: Please let me do my job...",
+        "Tao: This seems like the perfect place to start researching the cure, but I can't collect the items myself. Could you do something for me? I need the tools that are necessary for my research. Will you arrange them for me?",
+        "Tao: Good, now what I need you to do is find a sample of these creatures' blood. I will examine it in order to find cure.",
+        "Tao: You got it? Perfect! I'll analyze it now, but i propose we do not waste time and in the meantime you can bring me a set of chemicals?",
+        "Tao: Thank you. I do not think there is much left for me to finish my research. While I will be working here, please find the syringes, we will need them in order to test the cure on those beasts."
+      ]
+    },
+    {
+      "id": 1,
+      "npcName": "Neal Howell",
+      "isSaved": false,
+      "canFollow": false,
+      "dialogue": [
+        "Neal: Hello",
+        "Neal: I am eternally grateful to you. I will repay you for what you did for me.",
+        "Neal: If you need more health, you can always go to lab. I will provide you with the best care I can, and in fact... the only you can currently get... "
+      ]
+    },
+    {
+      "id": 2,
+      "npcName": "Dimitri Naumov",
+      "isSaved": false,
+      "canFollow": false,
+      "dialogue": [
+        "Dimitri: Huh?! Who is there?",
+        "Dimitri: Oh, are you here to save me? I am doing fine, but I think I could use some company.",
+        "Dimitri: Hey you, if you need a new weapon go to armoury, I will provide you with the best weapons in this county ... for a small fee, of course."
+      ]
+    },
+    {
+      "id": 3,
+      "npcName": "Cole Silva",
+      "isSaved": false,
+      "canFollow": false,
+      "dialogue": [
+        "Cole: Hi",
+        "Cole: How nice of you to come for me.",
+        "Cole: Thank you for saving me."
+      ]
+    }
+  ]
+}

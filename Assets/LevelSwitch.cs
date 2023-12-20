@@ -20,10 +20,7 @@ public class LevelSwitch : MonoBehaviour
         string tag = other.gameObject.tag;
         if (tag == "Player")
         {
-            
-
             StartCoroutine(DelayedSceneLoad(sceneIndex));
-
         }
     }
     private IEnumerator DelayedSceneLoad(int sceneIndex)

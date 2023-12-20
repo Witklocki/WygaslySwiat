@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3552719850905758491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5089635628040822337}
@@ -72,16 +72,16 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b6e91b915ded3294ea0c154cb9c57a16, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: 20af9a22010b2be4daa9519d3e981592, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 20.48, y: 20.48}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8083832644245371103
@@ -131,11 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc19756747504f4aae7873cd392e0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackJoystick: {fileID: 0}
   baseball: {fileID: 11400000, guid: 3ecf56e48aa231e469c0108c2597a21c, type: 2}
   animator: {fileID: 0}
   canPickup: 1
-  isEquipped: 1
-  attackJoystick: {fileID: 0}
+  isEquipped: 0
   isAttacking: 0
 --- !u!65 &5024092238400052773
 BoxCollider:
@@ -148,8 +148,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2709408, y: 1.2765574, z: 1.408196}
-  m_Center: {x: 0.13547039, y: 0.13827823, z: 0.20409787}
+  m_Size: {x: 1.0110083, y: 1.0718437, z: 1.408196}
+  m_Center: {x: 0.46230745, y: 0.4248862, z: 0.20409785}
 --- !u!54 &-2711588928938152025
 Rigidbody:
   m_ObjectHideFlags: 0

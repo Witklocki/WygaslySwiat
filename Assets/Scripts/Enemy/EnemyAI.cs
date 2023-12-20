@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 /// <summary>
 /// 
@@ -16,6 +17,7 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private float radius = 15.0f;
     [SerializeField] private bool debug_bool;
+    [SerializeField] bool isBoomer;
 
     public GameObject dropPrefab;
     private GameObject boomerAttackArea;
@@ -27,6 +29,10 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public PlayerObject playerObject;
     public Sprite attackCircle;
+
+    public RuntimeAnimatorController normalZombieAnim;
+    public RuntimeAnimatorController boomerAnim;
+
 
     public float startWaitTime = 2;
     
@@ -60,7 +66,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        enemy = new EnemyObject();
         isPatrol = true;
         isEnemyDead = caughtPlayer = false;
         playerInRange = false;
@@ -72,7 +78,7 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player").transform;
 
-        playerObject = Resources.Load<PlayerObject>("Assets/Scripts/Player/PlayerData");
+        playerObject = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().player;
         rb.freezeRotation = true;
         navMeshAgent.updateRotation = false;
 
@@ -82,12 +88,7 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.speed = enemy.moveSpeed;
         nextPosition = transform.position;
 
-        animator = gameObject.GetComponent<Animator>();
-        animator.runtimeAnimatorController = Resources.Load("Assets/Animations/Enemys/NormalZombiePrefab") as RuntimeAnimatorController;
-
-        animator.SetTrigger("normal");
-
-        boomerAttackArea = new GameObject("BoomerAttackAreaObject", typeof(SpriteRenderer));
+        animator = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -95,10 +96,8 @@ public class EnemyAI : MonoBehaviour
     {
         transform.localEulerAngles = new Vector3(45, 0, 0);
 
-        if (isEnemyDead)
-        {
-            EnemyDead();
-        }
+
+        IsEnemyDead();
 
         IsPlayerSeen();
         if (!isPatrol)
@@ -263,6 +262,7 @@ public class EnemyAI : MonoBehaviour
             caughtPlayer = false;
             isPatrol = false;   
             isEnemyDead = true;
+
         }
     }
 

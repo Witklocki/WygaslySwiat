@@ -10,6 +10,8 @@ public class BaseballScript : LoadWeapon
     public Animator animator;
     public bool canPickup = true;
     public bool isEquipped = false;
+    private PlayerObject player;
+
 
     private float attackCooldown = 0.0f;
     [SerializeField] private bool isAttacking = false;
@@ -17,6 +19,7 @@ public class BaseballScript : LoadWeapon
 
     private void Start()
     {
+        player = new PlayerObject();
         if (!baseballExist)
         {
             if (baseballIsEquipped) { baseballExist = true; }else { baseballExist = false; }
@@ -25,6 +28,7 @@ public class BaseballScript : LoadWeapon
         {
             Destroy(gameObject);
         }
+
     }
     private void Update()
     {
@@ -56,10 +60,11 @@ public class BaseballScript : LoadWeapon
 
     void PlayerAttack()
     {
-
+        animator = GetComponentInParent<Animator>();
+        BoxCollider baseballBox = GetComponent<BoxCollider>();
+        baseballBox.enabled = true;
         isAttacking = true;
         animator.SetTrigger("BaseballAttack");
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -67,9 +72,20 @@ public class BaseballScript : LoadWeapon
 
         if (other.tag == "Enemy" && isAttacking)
         {
-            Debug.Log("BaseballAttack");
-            other.gameObject.GetComponent<EnemyAI>().enemy.healthPoint -= baseball.damageBonus;
-            Debug.Log(other.gameObject.GetComponent<EnemyAI>().enemy.healthPoint);
+            other.gameObject.GetComponent<EnemyAI>().enemy.healthPoint -= player.attack;
+            isAttacking = false;
+
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (other.tag == "Enemy" && isAttacking)
+        {
+            other.gameObject.GetComponent<EnemyAI>().enemy.healthPoint -= player.attack;
+            isAttacking = false;
+
         }
     }
 }

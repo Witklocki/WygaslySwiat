@@ -1,11 +1,10 @@
+using DropModel;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DropGenerator : MonoBehaviour
 {
-
-
    public static DropObject generatDrop()
     {
         DropObject toReturn = new DropObject();
