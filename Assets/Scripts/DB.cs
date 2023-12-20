@@ -10,6 +10,8 @@ public class DB : MonoBehaviour
     public DropObjectController playerDrops;
     public WeaponObjectDataController weaponObject;
     public QuestItems questItems;
+    public PlayerObject playerObject;
+
     public WeaponData weapons
     {
         get => weaponObject.weaponObject;
@@ -24,5 +26,6 @@ public class DB : MonoBehaviour
         playerDrops = new DropObjectController();
         weaponObject = new WeaponObjectDataController();
         questItems = new QuestItems();
+        playerObject = new PlayerObject();
     }
 }

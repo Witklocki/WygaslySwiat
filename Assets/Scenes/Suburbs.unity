@@ -4840,7 +4840,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1132125714
 Transform:
   m_ObjectHideFlags: 0
@@ -6908,6 +6908,7 @@ MonoBehaviour:
   playerDrops: {fileID: 11400000, guid: 68982f5c388b5cd4884a819bca421163, type: 2}
   weaponObject: {fileID: 0}
   questItems: {fileID: 0}
+  playerObject: {fileID: 0}
 --- !u!4 &1662041108
 Transform:
   m_ObjectHideFlags: 0

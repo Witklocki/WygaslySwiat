@@ -20,6 +20,8 @@ public class NPCDialogue : MonoBehaviour
     private string stringToPrint;
     private bool isTyping = false;
 
+    public GameObject endScreens;
+    
     public int npcID = -1;
     public int npcDialogID;
 
@@ -47,7 +49,6 @@ public class NPCDialogue : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                Debug.Log("Tao");
                 npcIndex = dataBase.NPCList.data.npc[0].id;
                 QuestDialogeGet();
                 if (!dialoguePanel.activeInHierarchy)
@@ -76,7 +77,6 @@ public class NPCDialogue : MonoBehaviour
             {
                 ChooseDialog(1, 2);
 
-                Debug.Log("Neal");
                 if (!dialoguePanel.activeInHierarchy)
                 {
                     if (gameObject.GetComponent<NPCAIScript>() != null)
@@ -102,7 +102,6 @@ public class NPCDialogue : MonoBehaviour
             {
                 ChooseDialog(2, 2);
 
-                Debug.Log("Dimitri");
                 if (!dialoguePanel.activeInHierarchy)
                 {
                     if (gameObject.GetComponent<NPCAIScript>() != null)
@@ -127,7 +126,6 @@ public class NPCDialogue : MonoBehaviour
             {
                 ChooseDialog(3, 2);
 
-                Debug.Log("Cole");
                 if (!dialoguePanel.activeInHierarchy)
                 {
                     if (gameObject.GetComponent<NPCAIScript>() != null)
@@ -223,7 +221,7 @@ public class NPCDialogue : MonoBehaviour
 
         npcIndex = npcIdx;
         dialogueIndex = dialogueIdx;
-        stringToPrint = dataBase.NPCList.data.npc[npcIndex].dialogue[dialogueIndex]; //error
+        stringToPrint = dataBase.NPCList.data.npc[npcIndex].dialogue[dialogueIndex]; 
 
     }
     private void setSaveNPC(int npcIdx)
@@ -236,13 +234,12 @@ public class NPCDialogue : MonoBehaviour
 
     public void QuestDialogeGet()
     {
-        if (dataBase.NPCList.data.npc[npcIndex].npcName == "Tao")
-        {
+  
             for(int i = 0; i < dataBase.quests.questitems.Length; i++)
             {
                 if (dataBase.quests.questitems[i].isQuest)
                 {
-                    dialogueIndex = i + 3;
+                    dialogueIndex = i + 2;
                     return;
                 }
                 else if (!dataBase.quests.questitems[i].isQuest && !dataBase.quests.questitems[i].isGiven && !dataBase.quests.questitems[i].isPickedUp)
@@ -261,12 +258,13 @@ public class NPCDialogue : MonoBehaviour
                     else
                     {
                         dialogueIndex = i + 3;
+                        endScreens.SetActive(true);
+
                     }
                     dataBase.quests.questitems[i].isGiven = true;
                     dataBase.questItems.writeJson();
                     return;
                 }
             }
-        }
     }
 }

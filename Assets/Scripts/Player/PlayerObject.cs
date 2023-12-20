@@ -26,6 +26,11 @@ public class PlayerObject :ScriptableObject
     PlayerDataObject _playerData;
     private string fileName = "Assets/Resources/Data/Player.json";
 
+    public PlayerObject() 
+    { 
+        readJson();
+    }
+
     public float healthPoint   //getter setter for healthPoints
     {
         get => _playerData.healthPoint;

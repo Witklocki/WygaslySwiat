@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangX: 230
   rangY: 230
-  maxEnemy: 15
+  maxEnemy: 10

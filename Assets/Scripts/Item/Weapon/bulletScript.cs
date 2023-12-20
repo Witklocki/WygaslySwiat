@@ -8,9 +8,12 @@ public class bulletScript : MonoBehaviour
     public float maxDistance = 10f;
     private Vector3 initialPosition;
     private Rigidbody rb;
+    private PlayerObject player;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = new PlayerObject();    
         initialPosition = transform.position;
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.right * speedOfTheBullet;
@@ -31,7 +34,7 @@ public class bulletScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<EnemyAI>().enemy.healthPoint -= 10;
+            other.gameObject.GetComponent<EnemyAI>().enemy.healthPoint -= player.attack;
             Destroy(gameObject);
         }
     }

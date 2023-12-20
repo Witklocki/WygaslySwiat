@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 /// <summary>
 /// 
@@ -65,7 +66,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        enemy = new EnemyObject();
         isPatrol = true;
         isEnemyDead = caughtPlayer = false;
         playerInRange = false;
@@ -95,10 +96,8 @@ public class EnemyAI : MonoBehaviour
     {
         transform.localEulerAngles = new Vector3(45, 0, 0);
 
-        if (isEnemyDead)
-        {
-            EnemyDead();
-        }
+
+        IsEnemyDead();
 
         IsPlayerSeen();
         if (!isPatrol)
@@ -263,6 +262,7 @@ public class EnemyAI : MonoBehaviour
             caughtPlayer = false;
             isPatrol = false;   
             isEnemyDead = true;
+
         }
     }
 

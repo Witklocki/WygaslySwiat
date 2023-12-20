@@ -51,7 +51,7 @@ public class GameObjectController : MonoBehaviour
             {
                 enemyCounter--;
                 enemyList[item].GetComponent<EnemyAI>().EnemyDead();
-                this.enemyList[item] = createObject();
+                enemyList[item] = createObject();
             }
 
         }
@@ -62,7 +62,7 @@ public class GameObjectController : MonoBehaviour
     {
 
         int number = Random.Range(0, 100);
-        if (number < 85)
+        if (number < 100)
         {
             return Instantiate(enemyNormal, RandomPointGenerator.RandomPointGenerate(playerPosition.position, 100), Quaternion.identity);
         }

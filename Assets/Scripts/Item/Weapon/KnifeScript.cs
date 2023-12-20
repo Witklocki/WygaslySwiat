@@ -8,11 +8,17 @@ public class KnifeScript : LoadWeapon
     public Animator animator;
     public bool canPickup = true;
     public bool isEquipped = false;
+    private PlayerObject player;
+
 
     private float attackCooldown = 0.0f;
+    [SerializeField] private bool isAttacking = false;
+
 
     private void Start()
     {
+        player = new PlayerObject();
+
         if (!knifeExist)
         {
             if (knifeIsEquipped) { knifeExist = true; } else { knifeExist = false; }
@@ -50,7 +56,31 @@ public class KnifeScript : LoadWeapon
     void PlayerAttack()
     {
         animator = GetComponentInParent<Animator>();
-        Debug.Log("KnifeAttack");
+        BoxCollider knifeBox = GetComponent<BoxCollider>();
+        knifeBox.enabled = true;
+        isAttacking = true;
         animator.SetTrigger("KnifeAttack");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.tag == "Enemy" && isAttacking)
+        {
+            other.gameObject.GetComponent<EnemyAI>().enemy.healthPoint -= player.attack;
+            isAttacking = false;
+
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (other.tag == "Enemy" && isAttacking)
+        {
+            other.gameObject.GetComponent<EnemyAI>().enemy.healthPoint -= player.attack;
+            isAttacking = false;
+
+        }
     }
 }
